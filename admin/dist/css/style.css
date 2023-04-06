@@ -1,0 +1,9 @@
+.mt-3, .my-3 {
+    margin-top: -1rem !important;
+}
+
+.user-panel .image {
+    display: inline-block;
+    padding-left: 0rem;
+    margin-left: -.3rem;
+}
