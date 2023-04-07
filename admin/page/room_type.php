@@ -80,7 +80,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit" id="room_type_insert" class="btn btn-success">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal()">Cancel</button>
+                            <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
                         </div>
                     </form>
                 </div>

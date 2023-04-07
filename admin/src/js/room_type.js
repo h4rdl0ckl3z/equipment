@@ -59,3 +59,8 @@ function room_type_add_data() {
 function room_type_edit_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขประเภทห้อง";
 }
+
+// Clear Modal
+function clear_modal() {
+    $('#room_type_name').val('');
+}
