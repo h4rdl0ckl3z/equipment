@@ -61,7 +61,7 @@
                             </div>
                             <!-- Button trigger modal -->
                             <button class="btn btn-success" type="button" data-toggle="modal"
-                                data-target="#da_locat_add" title="เพิ่มข้อมูล" onclick="da_locat_add_data()">
+                                data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                 <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                             </button>
                             <button class="btn btn-info" type="button" title="Qrcode">
@@ -81,7 +81,7 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal Add $Edit-->
-<div class="modal fade" id="da_locat_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="da_item_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -130,20 +130,8 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">หน่วยนับ</label>
-                                        <!-- <input type="text" class="form-control" name="da_unit" id="da_unit"
-                                            placeholder="หน่วยนับ" required> -->
-                                        <select class="form-control" name="da_unit" id="da_unit">
-                                            <option value="เครื่อง">เครื่อง</option>
-                                            <option value="คัน">คัน</option>
-                                            <option value="เตียง">เตียง</option>
-                                            <option value="ตู้">ตู้</option>
-                                            <option value="ชุด">ชุด</option>
-                                            <option value="ตัว">ตัว</option>
-                                            <option value="จอ">จอ</option>
-                                            <option value="เตา">เตา</option>
-                                            <option value="หลัง">หลัง</option>
-                                            <option value="ชุด">ชุด</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="da_unit" id="da_unit"
+                                            placeholder="หน่วยนับ" required>
                                     </div>
                                 </div>
                             </div>
