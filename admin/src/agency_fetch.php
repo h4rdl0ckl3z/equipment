@@ -6,8 +6,8 @@
     }
     include_once("./connect.php");
     $conn = connectDB();
-    $da_location_id = $_POST["id"];
-    $sql = "SELECT * FROM da_locations WHERE da_location_id=" . $da_location_id;
+    $agency_id = $_POST["id"];
+    $sql = "SELECT * FROM agencys WHERE agency_id='" . $agency_id ."'";
     $result = $conn -> query($sql);
     $row = $result -> fetch_array(MYSQLI_ASSOC);
     echo json_encode($row);

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var table = $('#LocatTable').DataTable({
+    var table = $('#AgencyTable').DataTable({
         ajax: {
             url: './src/agency_select.php',
             method: 'post'
@@ -12,7 +12,7 @@ $(document).ready(function () {
             {data: 'agency_id'},
             {data: 'agency_name'},
             {data: 'agency_id', render: function(agency_id) {
-                return '<button type="button" name="update" id="' + agency_id + '"class="btn btn-warning update" title="แก้ไข" onclick="locat_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                return '<button type="button" name="update" id="' + agency_id + '"class="btn btn-warning update" title="แก้ไข" onclick="agency_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
             }},
             {data: 'agency_id', render: function(agency_id) {
                 return '<button type="button" name="delete" id="' + agency_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';   
@@ -26,7 +26,7 @@ $(document).ready(function () {
         "autoWidth": false,
         "responsive": true,
     });
-    $('#LocatTable tbody tr').each(function (idx) {
+    $('#AgencyTable tbody tr').each(function (idx) {
         $(this).children("td:eq(0)").html(idx + 1);
     });
     table.on('order.dt search.dt', function () {

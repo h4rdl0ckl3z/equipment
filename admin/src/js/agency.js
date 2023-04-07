@@ -1,50 +1,50 @@
-// Location
+// Agency
 $(document).ready(function () {
-    // Add Location
-    $('#insert_da_locat_form').on('submit', function (e) {
+    // Add Agency
+    $('#insert_agency_form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: "./src/locat_add.php",
+            url: "./src/agency_add.php",
             method: "post",
-            data: $('#insert_da_locat_form').serialize(),
+            data: $('#insert_agency_form').serialize(),
             beforeSend: function () {
-                $('#section_insert').val("กำลังบันทึก...");
+                $('#agency_insert').val("กำลังบันทึก...");
             },
             success: function () {
-                $('#insert_da_locat_form')[0].reset();
-                $('#locat_add').modal('hide');
-                $('#LocatTable').DataTable().ajax.reload();
+                $('#insert_agency_form')[0].reset();
+                $('#agency_add').modal('hide');
+                $('#AgencyTable').DataTable().ajax.reload();
             }
         })
     })
-    // Edit(Update) Location
-    $('#LocatTable').on('click', '.update', function () {
+    // Edit(Update) Agency
+    $('#AgencyTable').on('click', '.update', function () {
         var uid = $(this).attr("id");
         $.ajax({
-            url: "./src/locat_fetch.php",
+            url: "./src/agency_fetch.php",
             method: "post",
             data: { id: uid },
             dataType: "json",
             success: function (data) {
-                $('#locat_add').modal('show');
-                $('#da_location_id').val(data.da_location_id);
-                $('#da_location_name').val(data.da_location_name);
-                $('#locat_insert').val('อัพเดทข้อมูล');
+                $('#agency_add').modal('show');
+                $('#agency_id').val(data.agency_id);
+                $('#agency_name').val(data.agency_name);
+                $('#agency_insert').val('อัพเดทข้อมูล');
             }
         })
     })
-    // Delete Location
-    $('#LocatTable').on('click', '.delete', function () {
+    // Delete Agency
+    $('#AgencyTable').on('click', '.delete', function () {
         var uid = $(this).attr("id");
-        $('#locat_delete').modal('show');
-        $('.locat_confirm_delete').click(function () {
+        $('#agency_delete').modal('show');
+        $('.agency_confirm_delete').click(function () {
             $.ajax({
-                url: "./src/locat_delete.php",
+                url: "./src/agency_delete.php",
                 method: "post",
                 data: { id: uid },
                 success: function () {
-                    $('#locat_delete').modal('hide');
-                    $('#LocatTable').DataTable().ajax.reload();
+                    $('#agency_delete').modal('hide');
+                    $('#AgencyTable').DataTable().ajax.reload();
                 }
             })
         })
@@ -53,15 +53,19 @@ $(document).ready(function () {
 
 // Update Modal-Title
 
-function locat_add_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มสถานที่";
+function agency_add_data() {
+    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มสาขา";
+    document.getElementById("agency_id").readOnly = false;
 }
-function locat_edit_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขสถานที่";
+function agency_edit_data() {
+    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขสาขา";
+    document.getElementById("agency_id").readOnly = true;
 }
 
 
 // Clear Modal
 function clear_modal() {
-    $('#da_location_name').val('');
+    // $('#agency_id').val('');
+    $('#agency_name').val('');
 }
+

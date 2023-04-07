@@ -6,9 +6,9 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  $da_location_id = $_POST["id"];
+  $agency_id = $_POST["id"];
   // sql to delete a record
-  $sql = "DELETE FROM da_locations WHERE da_location_id=" . $da_location_id;
+  $sql = "DELETE FROM agencys WHERE agency_id='" . $agency_id . "'";
 
   if ($conn->query($sql) === TRUE) {
     echo "Record deleted successfully";

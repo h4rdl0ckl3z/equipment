@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-body">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <table id="LocatTable" class="table table-bordered dataTable dtr-inline"
+                                <table id="AgencyTable" class="table table-bordered dataTable dtr-inline"
                                     aria-describedby="example1_info">
                                     <thead class="text-center">
                                         <tr>
@@ -44,8 +44,8 @@
                                 </table>
                             </div>
                             <!-- Button trigger modal -->
-                            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#locat_add"
-                                title="เพิ่มข้อมูล" onclick="locat_add_data()">
+                            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#agency_add"
+                                title="เพิ่มข้อมูล" onclick="agency_add_data()">
                                 <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                             </button>
                         </div>
@@ -59,7 +59,7 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal Add $Edit-->
-<div class="modal fade" id="locat_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="agency_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -73,15 +73,19 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    <form method="post" id="insert_da_locat_form">
-                        <input type="hidden" name="da_location_id" id="da_location_id">
+                    <form method="post" id="insert_agency_form">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">สถานที่</label>
-                            <input type="text" class="form-control" name="da_location_name" id="da_location_name"
-                                placeholder="สถานที่" required>
+                            <label for="exampleInputEmail1">รหัสสาขา</label>
+                            <input type="text" class="form-control" name="agency_id" id="agency_id"
+                                placeholder="รหัสสาขา" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">สาขา</label>
+                            <input type="text" class="form-control" name="agency_name" id="agency_name"
+                                placeholder="สาขา" required>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="locat_insert" class="btn btn-success">Submit</button>
+                            <button type="submit" id="agency_insert" class="btn btn-success">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal()">Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
                         </div>
@@ -93,20 +97,20 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal fade" id="locat_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="agency_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">
-                    ลบสถานที่
+                    ลบสาขา
                 </h5>
             </div>
             <div class="modal-body">
-                <span>ต้องการลบข้อมูลผู้ใช้งานหรือไม่</span>
+                <span>ต้องการลบข้อมูลสาขาหรือไม่</span>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-info locat_confirm_delete">ลบข้อมูล</button>
+                <button type="submit" class="btn btn-info agency_confirm_delete">ลบข้อมูล</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
