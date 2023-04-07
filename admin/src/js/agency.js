@@ -65,7 +65,12 @@ function agency_edit_data() {
 
 // Clear Modal
 function clear_modal() {
-    // $('#agency_id').val('');
-    $('#agency_name').val('');
+    var agency_id = document.getElementById("agency_id").readOnly;
+    if (agency_id == true) {
+        $('#agency_name').val('');
+    } else {
+        $('#agency_id').val('');
+        $('#agency_name').val('');
+    }
 }
 

@@ -64,5 +64,8 @@ function room_edit_data() {
 
 // Clear Modal
 function clear_modal() {
-    $('#room_id').val('');
+    var room_id = document.getElementById("room_id").readOnly;
+    if (room_id == false) {
+        $('#room_id').val('');
+    }
 }
