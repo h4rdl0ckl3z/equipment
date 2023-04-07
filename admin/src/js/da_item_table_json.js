@@ -60,6 +60,8 @@ $(document).ready(function () {
             }},
             {data: 'da_type_name', visible: false},
             {data: 'room_id', visible: false},
+            {data: 'agency_name', visible: false},
+            {data: 'community_name', visible: false},
             {data: 'da_id', render: function (da_id) {
                 return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="locat_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
             }},

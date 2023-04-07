@@ -29,6 +29,7 @@ $(document).ready(function () {
                 $('#room_add').modal('show');
                 $('#room_id').val(data.room_id);
                 $('#room_type_id').val(data.room_type_id);
+                $('#agency_id').val(data.agency_id);
                 $('#room_insert').val('อัพเดทข้อมูล');
             }
         })

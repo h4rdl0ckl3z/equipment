@@ -11,6 +11,7 @@ $(document).ready(function () {
             },
             {data: 'room_id'},
             {data: 'room_type_name'},
+            {data: 'agency_name'},
             {data: 'room_id', render: function(room_id) {
                 return '<button type="button" name="update" id="' + room_id + '"class="btn btn-warning update" title="แก้ไข" onclick="room_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
             }},

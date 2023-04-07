@@ -45,9 +45,9 @@ $(document).ready(function () {
                 $('#fullname').val(data.fullname);
                 $('#address').val(data.address);
                 $('#phone').val(data.phone);
-                $('#access_level');
-                $('#section_id');
-                $('#agency_id');
+                $('#access_level').val(data.access_level);
+                $('#section_id').val(data.section_id);
+                $('#agency_id').val(data.agency_id);
                 $('#person_insert').val('อัพเดทข้อมูล');
             }
         })

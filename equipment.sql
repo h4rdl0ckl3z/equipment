@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 07/04/2023 12:12:59
+ Date: 07/04/2023 20:24:15
 */
 
 SET NAMES utf8mb4;
@@ -64,9 +64,11 @@ CREATE TABLE `agencys`  (
 -- ----------------------------
 -- Records of agencys
 -- ----------------------------
+INSERT INTO `agencys` VALUES ('22000000', 'ห้องเรียนคณะวิทยาศาสตร์และเทคโนโลยี', '013');
 INSERT INTO `agencys` VALUES ('22010000', 'สาขาวิชาเทคโนโลยีดิจิตอล', '013');
 INSERT INTO `agencys` VALUES ('22020000', 'สาขาวิชาการจัดการภัยพิบัติ', '013');
 INSERT INTO `agencys` VALUES ('22050000', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '013');
+INSERT INTO `agencys` VALUES ('22060000', 'สาขาวิชาชีววิทยา', '013');
 
 -- ----------------------------
 -- Table structure for communitys
@@ -198,21 +200,21 @@ DROP TABLE IF EXISTS `rooms`;
 CREATE TABLE `rooms`  (
   `room_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสห้อง',
   `room_type_id` int NOT NULL COMMENT 'รหัสประเภทห้อง',
-  `community_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '013',
+  `agency_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`room_id`) USING BTREE,
   INDEX `room_type`(`room_type_id` ASC) USING BTREE,
-  INDEX `community_id`(`community_id` ASC) USING BTREE,
-  CONSTRAINT `room_community` FOREIGN KEY (`community_id`) REFERENCES `communitys` (`community_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `room_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `room_agency`(`agency_id` ASC) USING BTREE,
+  CONSTRAINT `room_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `room_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rooms
 -- ----------------------------
-INSERT INTO `rooms` VALUES ('CS0201', 2, '013');
-INSERT INTO `rooms` VALUES ('CS0202', 2, '013');
-INSERT INTO `rooms` VALUES ('SCI0301', 1, '013');
-INSERT INTO `rooms` VALUES ('TEST01', 4, '013');
+INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000');
+INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000');
+INSERT INTO `rooms` VALUES ('SCI0301', 1, '22000000');
+INSERT INTO `rooms` VALUES ('TEST01', 4, '22060000');
 
 -- ----------------------------
 -- Table structure for sections

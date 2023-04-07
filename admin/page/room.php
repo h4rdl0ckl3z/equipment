@@ -35,6 +35,7 @@
                                             <th>ลำดับ</th>
                                             <th>รหัสห้อง</th>
                                             <th>ประเภทห้อง</th>
+                                            <th>สาขา</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -90,6 +91,23 @@
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo '<option value="' . $row["room_type_id"] . '">' . $row["room_type_name"] . '</option>';
+                                            }
+                                        }
+                                        $conn->close();
+                                        ?>
+                                    </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">สาขา</label>
+                            <select class="form-control" name="agency_id" id="agency_id" required>
+                                        <?php
+                                        include_once("./src/connect.php");
+                                        $conn = connectDB();
+                                        $sql = "SELECT * FROM agencys";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo '<option value="' . $row["agency_id"] . '">' . $row["agency_name"] . '</option>';
                                             }
                                         }
                                         $conn->close();
