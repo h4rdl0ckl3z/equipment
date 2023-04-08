@@ -39,7 +39,7 @@
                                             <th>รูปครุภัณฑ์</th>
                                             <th>สภาพครุภัณฑ์</th>
                                             <th>หน่วยนับ</th>
-                                            <th>มูลค่าครุภัณฑ์</th>
+                                            <th>มูลค่าครุภัณฑ์ (บาท)</th>
                                             <th>วันที่ได้มา</th>
                                             <th>แหล่งเงิน</th>
                                             <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
@@ -140,9 +140,9 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">มูลค่าครุภัณฑ์</label>
+                                        <label for="exampleInputEmail1">มูลค่าครุภัณฑ์ (บาท)</label>
                                         <input type="text" class="form-control" name="da_rates" id="da_rates"
-                                            placeholder="มูลค่าครุภัณฑ์" required>
+                                            placeholder="มูลค่าครุภัณฑ์ (บาท)" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

@@ -27,7 +27,10 @@ $(document).ready(function () {
                 }
             }},
             {data: 'da_unit'},
-            {data: 'da_rates'},
+            {data: 'da_rates', render: function (da_rates) {
+                let thai = new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(da_rates);
+                return thai;
+            }},
             {data: 'da_date', render: function (da_date) {
                 function toThaiDateString(date) {
                     let monthNames = [
