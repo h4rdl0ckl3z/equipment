@@ -60,8 +60,8 @@ $(document).ready(function () {
 function person_edit_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขผู้ใช้งาน";
 }
-function person_add_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มผู้ใช้งาน";
+function da_item_add_data() {
+    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มครุภัณฑ์";
 }
 
 // Clear Modal

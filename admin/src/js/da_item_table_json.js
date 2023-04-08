@@ -35,15 +35,20 @@ $(document).ready(function () {
                 function toThaiDateString(date) {
                     let monthNames = [
                         "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
-                        "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
+                        "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
                         "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
                     ];
-                
+                    let monthNames_Short = [
+                        "ม.ค.", "ก.พ.", "มี.ค.", "มี.ค.",
+                        "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.",
+                        "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."
+                    ];
+
                     let year = date.getFullYear() + 543;
-                    let month = monthNames[date.getMonth()];
+                    let month = monthNames_Short[date.getMonth()];
                     let numOfDay = date.getDate();
                 
-                    return `${numOfDay} ${month} ${year} `;
+                    return `${numOfDay} ${month} ${year}`;
                 }
                 let date = new Date(da_date);
                 return toThaiDateString(date);

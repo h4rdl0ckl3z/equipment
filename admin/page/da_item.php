@@ -60,8 +60,8 @@
                                 </table>
                             </div>
                             <!-- Button trigger modal -->
-                            <button class="btn btn-success" type="button" data-toggle="modal"
-                                data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
+                            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#da_item_add"
+                                title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                 <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                             </button>
                             <button class="btn btn-info" type="button" title="Qrcode">
@@ -96,25 +96,25 @@
             <div class="modal-body">
                 <div class="card-body">
                     <form method="post" id="insert_da_item_form">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
-                            <input type="text" class="form-control" name="da_id" id="da_id" placeholder="รหัสครุภัณฑ์"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">รายการครุภัณฑ์</label>
-                            <textarea class="form-control" name="da_lists" id="da_lists" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">สภาพครุภัณฑ์</label>
-                            <select class="form-control" name="da_status_i" id="da_status_i" required>
-                                <option value="0" selected>ปกติ</option>
-                                <option value="1">ชำรุด</option>
-                                <option value="2">เสื่อมคุณถาพ</option>
-                                <option value="3">สูญหาย</option>
-                            </select>
-                        </div>
                         <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
+                                        <input type="text" class="form-control" name="da_id" id="da_id"
+                                            placeholder="รหัสครุภัณฑ์" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">รายการครุภัณฑ์</label>
+                                        <textarea class="form-control" name="da_lists" id="da_lists"
+                                            required></textarea>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -135,8 +135,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -148,12 +146,11 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">วันที่ได้มา</label>
-                                        <input type="date" class="form-control" name="da_date" id="da_date" required>
+                                        <input type="date" class="form-control" name="da_date" id="da_date"
+                                            placeholder="วันที่ได้มา" required>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -170,13 +167,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">หมายเหตุ</label>
-                            <textarea class="form-control" name="da_annotation" id="da_annotation"
-                                placeholder="หมายเหตุ/เลขครุภัณฑ์เดิม" required></textarea>
-                        </div>
-                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">หมายเหตุ</label>
+                                        <textarea class="form-control" name="da_annotation" id="da_annotation"
+                                            placeholder="หมายเหตุ/เลขครุภัณฑ์เดิม" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -200,16 +199,16 @@
                                         <label for="exampleInputEmail1">ประเภทครุภัณฑ์</label>
                                         <select class="form-control" name="da_type_id" id="da_type_id" required>
                                             <?php
-                                                include_once("./src/connect.php");
-                                                $conn = connectDB();
-                                                $sql = "SELECT * FROM da_types";
-                                                $result = $conn->query($sql);
-                                                if ($result->num_rows > 0) {
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        echo '<option value="' . $row["da_type_id"] . '">' . $row["da_type_name"] . '</option>';
-                                                    }
+                                            include_once("./src/connect.php");
+                                            $conn = connectDB();
+                                            $sql = "SELECT * FROM da_types";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<option value="' . $row["da_type_id"] . '">' . $row["da_type_name"] . '</option>';
                                                 }
-                                                $conn->close();
+                                            }
+                                            $conn->close();
                                             ?>
                                         </select>
                                     </div>
@@ -219,32 +218,31 @@
                                         <label for="exampleInputEmail1">รหัสห้อง</label>
                                         <select class="form-control" name="room_id" id="room_id" required>
                                             <?php
-                                                include_once("./src/connect.php");
-                                                $conn = connectDB();
-                                                $sql = "SELECT * FROM rooms";
-                                                $result = $conn->query($sql);
-                                                if ($result->num_rows > 0) {
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        echo '<option value="' . $row["room_id"] . '">' . $row["room_id"] . '</option>';
-                                                    }
+                                            include_once("./src/connect.php");
+                                            $conn = connectDB();
+                                            $sql = "SELECT * FROM rooms";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<option value="' . $row["room_id"] . '">' . $row["room_id"] . '</option>';
                                                 }
-                                                $conn->close();
+                                            }
+                                            $conn->close();
                                             ?>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" id="da_locat_insert" class="btn btn-success">Submit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="da_locat_insert" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
+                </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Modal Delete -->
