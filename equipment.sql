@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/04/2023 12:21:12
+ Date: 08/04/2023 16:02:35
 */
 
 SET NAMES utf8mb4;
@@ -42,7 +42,7 @@ CREATE TABLE `accounts`  (
 -- ----------------------------
 -- Records of accounts
 -- ----------------------------
-INSERT INTO `accounts` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Avatart0Dev', '20230313_640f5f828453b.png', 'Bangkok', '0981111111', 0, 1, '22050000');
+INSERT INTO `accounts` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Avatart0Dev', '20230313_640f5f828453b.png', 'Bangkok', '0981111111', 0, 1, '20000000');
 INSERT INTO `accounts` VALUES (2, 'tester', '202cb962ac59075b964b07152d234b70', 'Tester', 'profile.png', 'Bangkok', '0981111112', 1, 3, '22020000');
 INSERT INTO `accounts` VALUES (3, 'asd', '7815696ecbf1c96e6894b779456d330e', 'asd eiei03', 'profile.png', 'asd', 'asd', 2, 2, '22050000');
 INSERT INTO `accounts` VALUES (4, 'asd02', '7815696ecbf1c96e6894b779456d330e', 'asd eiei02', 'profile.png', 'asd', '123', 3, 4, '22050000');
@@ -83,7 +83,7 @@ CREATE TABLE `communitys`  (
 -- ----------------------------
 -- Records of communitys
 -- ----------------------------
-INSERT INTO `communitys` VALUES ('013', 'คณะวิทยาศาสตร์และเทคโนโลยี');
+INSERT INTO `communitys` VALUES ('013', 'คลังคณะวิทยาศาสตร์และเทคโนโลยี');
 
 -- ----------------------------
 -- Table structure for da_brs
@@ -93,8 +93,8 @@ CREATE TABLE `da_brs`  (
   `dabr_id` int NOT NULL AUTO_INCREMENT,
   `account_id` int NOT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `da_borrow` datetime NULL DEFAULT NULL,
-  `da_return` datetime NULL DEFAULT NULL,
+  `da_borrow` date NULL DEFAULT NULL,
+  `da_return` date NULL DEFAULT NULL,
   `allow_br` int NULL DEFAULT NULL,
   PRIMARY KEY (`dabr_id`) USING BTREE,
   INDEX `da_br_accounts`(`account_id` ASC) USING BTREE,
@@ -147,7 +147,7 @@ CREATE TABLE `da_repairs`  (
   `da_r_id` int NOT NULL,
   `account_id` int NOT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `da_repair` datetime NULL DEFAULT NULL COMMENT 'วันแจ้งซ่อม',
+  `da_repair` date NULL DEFAULT NULL COMMENT 'วันแจ้งซ่อม',
   `da_repair_status` int NULL DEFAULT NULL COMMENT 'สถานะส่งซ่อม\r\n0.ปกติ\r\n1.ดำเนินการส่งซ่อม',
   PRIMARY KEY (`da_r_id`) USING BTREE,
   INDEX `da_repair_accounts`(`account_id` ASC) USING BTREE,
@@ -201,7 +201,6 @@ CREATE TABLE `rooms`  (
   `room_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสห้อง',
   `room_type_id` int NOT NULL COMMENT 'รหัสประเภทห้อง',
   `agency_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `community_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '013',
   PRIMARY KEY (`room_id`) USING BTREE,
   INDEX `room_type`(`room_type_id` ASC) USING BTREE,
   INDEX `room_agency`(`agency_id` ASC) USING BTREE,
@@ -212,11 +211,11 @@ CREATE TABLE `rooms`  (
 -- ----------------------------
 -- Records of rooms
 -- ----------------------------
-INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000', '013');
-INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000', '013');
-INSERT INTO `rooms` VALUES ('CS0203', 2, '22050000', '013');
-INSERT INTO `rooms` VALUES ('SCI0301', 1, '20000000', '013');
-INSERT INTO `rooms` VALUES ('TEST01', 4, '20000000', '013');
+INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000');
+INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000');
+INSERT INTO `rooms` VALUES ('CS0203', 2, '22050000');
+INSERT INTO `rooms` VALUES ('SCI0301', 1, '20000000');
+INSERT INTO `rooms` VALUES ('TEST01', 4, '20000000');
 
 -- ----------------------------
 -- Table structure for sections
