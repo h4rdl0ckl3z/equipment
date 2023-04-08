@@ -9,12 +9,12 @@ $conn = connectDB();
 $room_id = $_POST["id"];
 // sql to delete a record
 $sql = "DELETE FROM rooms WHERE room_id='" . $room_id . "'";
-$result = $conn->query($sql);
-if ($conn->query($sql) === TRUE) {
-  echo "Record deleted successfully";
-} else {
-  echo "Error deleting record: " . $conn->error;
-}
+$conn->query($sql);
+// if ($conn->query($sql) === TRUE) {
+//   echo "Record deleted successfully";
+// } else {
+//   echo "Error deleting record: " . $conn->error;
+// }
 
 $conn->close();
 ?>

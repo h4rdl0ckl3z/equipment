@@ -163,7 +163,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">คุณสมบัติ</label>
                                         <input type="text" class="form-control" name="da_feature" id="da_feature"
-                                            placeholder="คุณสมบัติ (ยี่ห่อ/รุ่น)" required>
+                                            placeholder="คุณสมบัติ (ยี่ห่อ/รุ่น)">
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">หมายเหตุ</label>
                                         <textarea class="form-control" name="da_annotation" id="da_annotation"
-                                            placeholder="หมายเหตุ/เลขครุภัณฑ์เดิม" required></textarea>
+                                            placeholder="หมายเหตุ/เลขครุภัณฑ์เดิม"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -236,8 +236,9 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="da_locat_insert" class="btn btn-success">Submit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancel()">Cancel</button>
+                    <button type="submit" id="da_item_insert" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal()">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
                 </div>
                 </form>
             </div>
@@ -246,20 +247,20 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal fade" id="da_locat_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="da_item_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">
-                    ลบสถานที่
+                    ลบครุภัณฑ์
                 </h5>
             </div>
             <div class="modal-body">
-                <span>ต้องการลบข้อมูลผู้ใช้งานหรือไม่</span>
+                <span>ต้องการลบครุภัณฑ์หรือไม่</span>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-info da_locat_confirm_delete">ลบข้อมูล</button>
+                <button type="submit" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

@@ -1,55 +1,61 @@
 // Da_Item
 $(document).ready(function () {
     // Add Da_Item
-    $('#insert_person_form').on('submit', function (e) {
+    $('#insert_da_item_form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: "./src/profile_add.php",
+            url: "./src/da_item_add.php",
             method: "post",
-            data: $('#insert_person_form').serialize(),
+            data: $('#insert_da_item_form').serialize(),
             beforeSend: function () {
-                $('#person_insert').val("กำลังบันทึก...");
+                $('#da_item_insert').val("กำลังบันทึก...");
             },
             success: function () {
-                $('#insert_person_form')[0].reset();
-                $('#person_add').modal('hide');
-                $('#PersonTable').DataTable().ajax.reload();
+                $('#insert_da_item_form')[0].reset();
+                $('#da_item_add').modal('hide');
+                $('#Da_ItemTable').DataTable().ajax.reload();
             }
         })
     })
     // Edit(Update) Da_Item
-    $('#PersonTable').on('click', '.update', function () {
+    $('#Da_ItemTable').on('click', '.update', function () {
         var uid = $(this).attr("id");
         $.ajax({
-            url: "./src/profile_fetch.php",
+            url: "./src/da_item_fetch.php",
             method: "post",
             data: { id: uid },
             dataType: "json",
             success: function (data) {
-                $('#person_add').modal('show');
-                $('#account_id').val(data.account_id);
-                $('#username').val(data.username);
-                $('#fullname').val(data.fullname);
-                $('#address').val(data.address);
-                $('#phone').val(data.phone);
-                $('#access_level');
-                $('#section_id');
-                $('#person_insert').val('อัพเดทข้อมูล');
+                $('#da_item_add').modal('show');
+                $('#da_id').val(data.da_id);
+                $('#da_lists').val(data.da_lists);
+                $('#da_status_i').val(data.da_status_i);
+                $('#da_unit').val(data.da_unit);
+                $('#da_rates').val(data.da_rates);
+                $('#da_date').val(data.da_date);
+                $('#da_source').val(data.da_source);
+                $('#da_feature').val(data.da_feature);
+                $('#da_annotation').val(data.da_annotation);
+                $('#da_location').val(data.da_location);
+                $('#da_status_ii').val(data.da_status_ii);
+                $('#da_type_id').val(data.da_type_id);
+                $('#room_id').val(data.room_id);
+                $('#da_item_insert').val('อัพเดทข้อมูล');
             }
         })
     })
     // Delete Da_Item
-    $('#PersonTable').on('click', '.delete', function () {
+    $('#Da_ItemTable').on('click', '.delete', function () {
         var uid = $(this).attr("id");
-        $('#person_delete').modal('show');
-        $('.person_confirm_delete').click(function () {
+        $('#da_item_delete').modal('show');
+        $('.da_item_confirm_delete').click(function () {
             $.ajax({
-                url: "./src/profile_delete.php",
+                url: "./src/da_item_delete.php",
                 method: "post",
                 data: { id: uid },
                 success: function () {
-                    $('#person_delete').modal('hide');
-                    $('#PersonTable').DataTable().ajax.reload();
+                    $('#da_item_delete').modal('hide');
+                    $('#Da_ItemTable').DataTable().ajax.reload();
                 }
             })
         })
@@ -57,8 +63,8 @@ $(document).ready(function () {
 })
 
 // Update Modal-Title
-function person_edit_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขผู้ใช้งาน";
+function da_item_edit_data() {
+    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขครุภัณฑ์";
 }
 function da_item_add_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มครุภัณฑ์";
@@ -66,13 +72,16 @@ function da_item_add_data() {
 
 // Clear Modal
 function clear_modal() {
-    $('#account_id').val('');
-    $('#username').val('');
-    $('#fullname').val('');
-    $('#address').val('');
-    $('#phone').val('');
-    $('#passwd').val('');
-    $('#passwd2').val('');
+    $('#da_id').val('');
+    $('#da_lists').val('');
+    $('#da_status_i').val('');
+    $('#da_unit').val('');
+    $('#da_rates').val('');
+    $('#da_date').val('');
+    $('#da_source').val('');
+    $('#da_feature').val('');
+    $('#da_annotation').val('');
+    $('#da_location').val('');
 }
 
 // Checkbox All

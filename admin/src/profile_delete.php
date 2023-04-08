@@ -9,12 +9,12 @@
   $account_id = $_POST["id"];
   // sql to delete a record
   $sql = "DELETE FROM accounts WHERE account_id=" . $account_id;
-
-  if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully";
-  } else {
-    echo "Error deleting record: " . $conn->error;
-  }
+  $conn->query($sql);
+  // if ($conn->query($sql) === TRUE) {
+  //   echo "Record deleted successfully";
+  // } else {
+  //   echo "Error deleting record: " . $conn->error;
+  // }
 
   $conn->close();
 ?>

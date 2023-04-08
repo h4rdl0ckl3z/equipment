@@ -71,7 +71,7 @@ $(document).ready(function () {
             {data: 'agency_name', visible: false},
             {data: 'community_name', visible: false},
             {data: 'da_id', render: function (da_id) {
-                return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="locat_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_item_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
             }},
             {data: 'da_id', render: function (da_id) {
                 return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';

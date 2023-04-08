@@ -6,14 +6,15 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  $agency_id = $_POST["id"];
+  $da_id = $_POST["id"];
   // sql to delete a record
-  $sql = "DELETE FROM agencys WHERE agency_id='" . $agency_id . "'";
-  $conn->query($sql);
-  // if ($conn->query($sql) === TRUE) {
-  //   echo "Record deleted successfully";
-  // } else {
-  //   echo "Error deleting record: " . $conn->error;
-  // }
+  $sql = "DELETE FROM da_items WHERE da_id='" . $da_id . "'";
+
+  if ($conn->query($sql) === TRUE) {
+    echo "Record deleted successfully";
+  } else {
+    echo "Error deleting record: " . $conn->error;
+  }
+
   $conn->close();
 ?>
