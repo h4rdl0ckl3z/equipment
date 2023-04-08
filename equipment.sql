@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/04/2023 16:02:35
+ Date: 08/04/2023 21:29:08
 */
 
 SET NAMES utf8mb4;
@@ -119,7 +119,7 @@ CREATE TABLE `da_items`  (
   `da_unit` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'หน่วยนับ',
   `da_rates` decimal(10, 2) NOT NULL,
   `da_date` date NOT NULL COMMENT 'วันที่ได้มา',
-  `da_source` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'แหล่งเงิน',
+  `da_source` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'แหล่งเงิน',
   `da_feature` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'คุณสมบัติ (ยี่ห้อ/รุ่น)',
   `da_annotation` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'หมายเหตุ/เลขครุภัณฑ์เดิม',
   `da_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานที่ตั้ง/จัดเก็บ',

@@ -6,9 +6,9 @@
     }
     include_once("./connect.php");
     $conn = connectDB();
-    $agency_id = $_POST["agency_id"];
-    $agency_name = $_POST["agency_name"];
-    $sql = "INSERT INTO agencys (agency_id, agency_name) VALUES ('$agency_id', '$agency_name') ON DUPLICATE KEY UPDATE agency_id='$agency_id', agency_name='$agency_name'";
+    $da_type_id = $_POST["da_type_id"];
+    $da_type_name = $_POST["da_type_name"];
+    $sql = "INSERT INTO da_types (da_type_id, da_type_name) VALUES ('$da_type_id', '$da_type_name') ON DUPLICATE KEY UPDATE da_type_id='$da_type_id', da_type_name='$da_type_name'";
     $conn->query($sql);
     $conn->close();
 ?>

@@ -6,9 +6,10 @@
     }
     include_once("./connect.php");
     $conn = connectDB();
-    $agency_id = $_POST["agency_id"];
-    $agency_name = $_POST["agency_name"];
-    $sql = "INSERT INTO agencys (agency_id, agency_name) VALUES ('$agency_id', '$agency_name') ON DUPLICATE KEY UPDATE agency_id='$agency_id', agency_name='$agency_name'";
-    $conn->query($sql);
+    $da_type_id = $_POST["id"];
+    $sql = "SELECT * FROM da_types WHERE da_type_id='" . $da_type_id ."'";
+    $result = $conn -> query($sql);
+    $row = $result -> fetch_array(MYSQLI_ASSOC);
+    echo json_encode($row);
     $conn->close();
 ?>
