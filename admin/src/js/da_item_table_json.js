@@ -59,8 +59,10 @@ $(document).ready(function () {
             {data: 'da_location'},
             {data: 'da_status_ii', visible: false, render: function (da_status_ii) {
                 if (da_status_ii == '0') {
-                    return 'ยืม';
+                    return 'ปกติ';
                 } else if (da_status_ii == '1') {
+                    return 'ยืม';
+                } else if (da_status_ii == '2') {
                     return 'แจ้งซ่อม';
                 } else {
                     return 'ครุภัณฑ์ห้อง';

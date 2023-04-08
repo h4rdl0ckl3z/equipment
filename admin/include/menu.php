@@ -66,7 +66,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="./da_borrow.php" class="nav-link">
         <i class="nav-icon fas fa-exchange-alt"></i>
         <p>
             ยืม-คืนครุภัณฑ์

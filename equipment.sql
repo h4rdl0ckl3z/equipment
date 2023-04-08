@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/04/2023 21:29:08
+ Date: 08/04/2023 21:55:53
 */
 
 SET NAMES utf8mb4;
@@ -123,7 +123,7 @@ CREATE TABLE `da_items`  (
   `da_feature` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'คุณสมบัติ (ยี่ห้อ/รุ่น)',
   `da_annotation` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'หมายเหตุ/เลขครุภัณฑ์เดิม',
   `da_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานที่ตั้ง/จัดเก็บ',
-  `da_status_ii` int NOT NULL COMMENT 'สถานะครุภัณฑ์\r\n0.ยืม\r\n1.แจ้งซ่อม\r\n2.ครุภัณฑ์ห้อง',
+  `da_status_ii` int NOT NULL COMMENT 'สถานะครุภัณฑ์\r\n0.ปกติ\r\n1.ยืม\r\n2.แจ้งซ่อม\r\n3.ครุภัณฑ์ห้อง',
   `da_type_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสประเภทครุภัณฑ์',
   `room_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสห้อง',
   PRIMARY KEY (`da_id`) USING BTREE,
@@ -136,8 +136,10 @@ CREATE TABLE `da_items`  (
 -- ----------------------------
 -- Records of da_items
 -- ----------------------------
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0010', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 2, '201', 'CS0201');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 2, '201', 'CS0201');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0010', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 3, '201', 'CS0201');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 3, '201', 'CS0201');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0012', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', 0, '200', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0013', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 0, '200', 'SCI0402');
 
 -- ----------------------------
 -- Table structure for da_repairs
@@ -173,6 +175,7 @@ CREATE TABLE `da_types`  (
 -- ----------------------------
 -- Records of da_types
 -- ----------------------------
+INSERT INTO `da_types` VALUES ('200', 'EiEi');
 INSERT INTO `da_types` VALUES ('201', 'ครุภัณฑ์สํานักงาน');
 
 -- ----------------------------
@@ -215,6 +218,7 @@ INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000');
 INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000');
 INSERT INTO `rooms` VALUES ('CS0203', 2, '22050000');
 INSERT INTO `rooms` VALUES ('SCI0301', 1, '20000000');
+INSERT INTO `rooms` VALUES ('SCI0402', 2, '22050000');
 INSERT INTO `rooms` VALUES ('TEST01', 4, '20000000');
 
 -- ----------------------------
