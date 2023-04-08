@@ -65,9 +65,6 @@
                                 title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                 <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                             </button>
-                            <button class="btn btn-info" type="button" title="Qrcode">
-                                <i class="fas fa-qrcode"></i> Qrcode
-                            </button>
                             <button class="btn btn-danger" type="button" title="Delete">
                                 <i class="fas fa-trash-alt"></i> Delete
                             </button>
