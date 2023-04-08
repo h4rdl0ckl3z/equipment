@@ -6,7 +6,7 @@ $(document).ready(function () {
         },
         columns: [
             {data: 'da_id', render: function (da_id) {
-                return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + da_id + '">';
+                return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + "'" + da_id + "'" + '">';
             }},
             {
                 data: '',
@@ -85,7 +85,7 @@ $(document).ready(function () {
         "paging": true,
         "lengthChange": true,
         "searching": true,
-        "ordering": false,
+        "ordering": true,
         "info": true,
         "autoWidth": false,
         "responsive": true

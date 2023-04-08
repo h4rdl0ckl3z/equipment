@@ -26,49 +26,51 @@
                         <div class="card-header">
                             <h3 class="card-title">ครุภัณฑ์</h3>
                         </div>
-                        <div class="card-body">
-                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <table id="Da_ItemTable" class="table table-bordered dataTable dtr-inline"
-                                    aria-describedby="example1_info">
-                                    <thead class="text-center">
-                                        <tr>
-                                            <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                    onclick="checkUncheck(this)" value=""></th>
-                                            <th>ลำดับ</th>
-                                            <th>รหัสครุภัณฑ์</th>
-                                            <th>รายการครุภัณฑ์</th>
-                                            <th>รูปครุภัณฑ์</th>
-                                            <th>สภาพครุภัณฑ์</th>
-                                            <th>หน่วยนับ</th>
-                                            <th>มูลค่าครุภัณฑ์ (บาท)</th>
-                                            <th>วันที่ได้มา</th>
-                                            <th>แหล่งเงิน</th>
-                                            <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
-                                            <th>หมายเหตุ/เลขครุภัณฑ์เดิม</th>
-                                            <th>สถานที่ตั้ง/จัดเก็บ</th>
-                                            <th>สถานะครุภัณฑ์</th>
-                                            <th>ประเภทครุภัณฑ์</th>
-                                            <th>รหัสห้อง</th>
-                                            <th>สาขา</th>
-                                            <th>คณะ</th>
-                                            <th>แก้ไข</th>
-                                            <th>ลบ</th>
-                                            <th>QrCode</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                    </tbody>
-                                </table>
+                        <form action="./src/da_item_delete_select.php" method="post">
+                            <div class="card-body">
+                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <table id="Da_ItemTable" class="table table-bordered dataTable dtr-inline"
+                                        aria-describedby="example1_info">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
+                                                        onclick="checkUncheck(this)" value=""></th>
+                                                <th>ลำดับ</th>
+                                                <th>รหัสครุภัณฑ์</th>
+                                                <th>รายการครุภัณฑ์</th>
+                                                <th>รูปครุภัณฑ์</th>
+                                                <th>สภาพครุภัณฑ์</th>
+                                                <th>หน่วยนับ</th>
+                                                <th>มูลค่าครุภัณฑ์ (บาท)</th>
+                                                <th>วันที่ได้มา</th>
+                                                <th>แหล่งเงิน</th>
+                                                <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
+                                                <th>หมายเหตุ/เลขครุภัณฑ์เดิม</th>
+                                                <th>สถานที่ตั้ง/จัดเก็บ</th>
+                                                <th>สถานะครุภัณฑ์</th>
+                                                <th>ประเภทครุภัณฑ์</th>
+                                                <th>รหัสห้อง</th>
+                                                <th>สาขา</th>
+                                                <th>คณะ</th>
+                                                <th>แก้ไข</th>
+                                                <th>ลบ</th>
+                                                <th>QrCode</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- Button trigger modal -->
+                                <button class="btn btn-success" type="button" data-toggle="modal"
+                                    data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
+                                    <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
+                                </button>
+                                <button class="btn btn-danger" type="submit" title="Delete">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
                             </div>
-                            <!-- Button trigger modal -->
-                            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#da_item_add"
-                                title="เพิ่มข้อมูล" onclick="da_item_add_data()">
-                                <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
-                            </button>
-                            <button class="btn btn-danger" type="button" title="Delete">
-                                <i class="fas fa-trash-alt"></i> Delete
-                            </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
