@@ -37,7 +37,7 @@
                                             <th>ที่อยู่</th>
                                             <th>เบอร์โทร</th>
                                             <th>แผนก</th>
-                                            <th>สาขา</th>
+                                            <th>คณะ/สาขา</th>
                                             <th>ระดับผู้ใช้งาน</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
@@ -169,7 +169,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">สาขา</label>
+                                <label for="exampleInputEmail1">คณะ/สาขา</label>
                                 <select class="form-control" name="agency_id" id="agency_id">
                                     <?php
                                     include_once("./src/connect.php");

@@ -27,7 +27,7 @@
     <a href="./agency.php" class="nav-link">
         <i class="nav-icon fa fa-map-pin"></i>
         <p>
-            สาขา
+            คณะ/สาขา
         </p>
     </a>
 </li>
