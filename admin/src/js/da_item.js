@@ -63,25 +63,40 @@ $(document).ready(function () {
 })
 
 // Update Modal-Title
-function da_item_edit_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขครุภัณฑ์";
-}
 function da_item_add_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มครุภัณฑ์";
+    document.getElementById("da_id").readOnly = false;
+}
+function da_item_edit_data() {
+    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขครุภัณฑ์";
+    document.getElementById("da_id").readOnly = true;
 }
 
 // Clear Modal
 function clear_modal() {
-    $('#da_id').val('');
-    $('#da_lists').val('');
-    $('#da_status_i').val('');
-    $('#da_unit').val('');
-    $('#da_rates').val('');
-    $('#da_date').val('');
-    $('#da_source').val('');
-    $('#da_feature').val('');
-    $('#da_annotation').val('');
-    $('#da_location').val('');
+    var da_id = document.getElementById("da_id").readOnly;
+    if (da_id == true) {
+        $('#da_lists').val('');
+        $('#da_status_i').val('');
+        $('#da_unit').val('');
+        $('#da_rates').val('');
+        $('#da_date').val('');
+        $('#da_source').val('');
+        $('#da_feature').val('');
+        $('#da_annotation').val('');
+        $('#da_location').val('');
+    } else {
+        $('#da_id').val('');
+        $('#da_lists').val('');
+        $('#da_status_i').val('');
+        $('#da_unit').val('');
+        $('#da_rates').val('');
+        $('#da_date').val('');
+        $('#da_source').val('');
+        $('#da_feature').val('');
+        $('#da_annotation').val('');
+        $('#da_location').val('');
+    }
 }
 
 // Checkbox All

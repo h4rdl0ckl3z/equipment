@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">รหัสคณะ/รหัสสาขา</label>
                             <input type="text" class="form-control" name="agency_id" id="agency_id"
-                                placeholder="รหัสคณะ/รหัสสาขา" required readonly>
+                                placeholder="รหัสคณะ/รหัสสาขา" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">คณะ/สาขา</label>
