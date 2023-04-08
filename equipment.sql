@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 07/04/2023 20:24:15
+ Date: 08/04/2023 12:21:12
 */
 
 SET NAMES utf8mb4;
@@ -64,7 +64,7 @@ CREATE TABLE `agencys`  (
 -- ----------------------------
 -- Records of agencys
 -- ----------------------------
-INSERT INTO `agencys` VALUES ('22000000', 'ห้องเรียนคณะวิทยาศาสตร์และเทคโนโลยี', '013');
+INSERT INTO `agencys` VALUES ('20000000', 'คณะวิทยาศาสตร์และเทคโนโลยี', '013');
 INSERT INTO `agencys` VALUES ('22010000', 'สาขาวิชาเทคโนโลยีดิจิตอล', '013');
 INSERT INTO `agencys` VALUES ('22020000', 'สาขาวิชาการจัดการภัยพิบัติ', '013');
 INSERT INTO `agencys` VALUES ('22050000', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '013');
@@ -191,7 +191,7 @@ CREATE TABLE `room_types`  (
 INSERT INTO `room_types` VALUES (1, 'ห้องเรียน');
 INSERT INTO `room_types` VALUES (2, 'ห้องสำนักงาน');
 INSERT INTO `room_types` VALUES (3, 'ห้องคณบดี');
-INSERT INTO `room_types` VALUES (4, 'ห้องนอน');
+INSERT INTO `room_types` VALUES (4, 'ห้องสำนักงานคณะ');
 
 -- ----------------------------
 -- Table structure for rooms
@@ -201,20 +201,22 @@ CREATE TABLE `rooms`  (
   `room_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสห้อง',
   `room_type_id` int NOT NULL COMMENT 'รหัสประเภทห้อง',
   `agency_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `community_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '013',
   PRIMARY KEY (`room_id`) USING BTREE,
   INDEX `room_type`(`room_type_id` ASC) USING BTREE,
   INDEX `room_agency`(`agency_id` ASC) USING BTREE,
-  CONSTRAINT `room_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `room_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `room_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `room_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rooms
 -- ----------------------------
-INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000');
-INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000');
-INSERT INTO `rooms` VALUES ('SCI0301', 1, '22000000');
-INSERT INTO `rooms` VALUES ('TEST01', 4, '22060000');
+INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000', '013');
+INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000', '013');
+INSERT INTO `rooms` VALUES ('CS0203', 2, '22050000', '013');
+INSERT INTO `rooms` VALUES ('SCI0301', 1, '20000000', '013');
+INSERT INTO `rooms` VALUES ('TEST01', 4, '20000000', '013');
 
 -- ----------------------------
 -- Table structure for sections

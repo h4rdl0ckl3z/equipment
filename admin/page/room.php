@@ -35,7 +35,7 @@
                                             <th>ลำดับ</th>
                                             <th>รหัสห้อง</th>
                                             <th>ประเภทห้อง</th>
-                                            <th>สาขา</th>
+                                            <th>คณะ/สาขา</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -98,7 +98,7 @@
                                     </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">สาขา</label>
+                            <label for="exampleInputEmail1">คณะ/สาขา</label>
                             <select class="form-control" name="agency_id" id="agency_id" required>
                                         <?php
                                         include_once("./src/connect.php");
