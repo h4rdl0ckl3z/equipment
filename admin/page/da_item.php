@@ -32,7 +32,8 @@
                                     aria-describedby="example1_info">
                                     <thead class="text-center">
                                         <tr>
-                                            <th><input type="checkbox" onclick="checkUncheck(this)"></th>
+                                            <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
+                                                    onclick="checkUncheck(this)" value=""></th>
                                             <th>ลำดับ</th>
                                             <th>รหัสครุภัณฑ์</th>
                                             <th>รายการครุภัณฑ์</th>
@@ -238,7 +239,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="da_item_insert" class="btn btn-success">Submit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal()">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        onclick="clear_modal()">Cancel</button>
                     <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
                 </div>
                 </form>
@@ -261,7 +263,7 @@
                 <span>ต้องการลบครุภัณฑ์หรือไม่</span>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

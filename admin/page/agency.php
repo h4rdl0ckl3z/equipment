@@ -110,7 +110,7 @@
                 <span>ต้องการลบข้อมูลสาขาหรือไม่</span>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-info agency_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-info agency_confirm_delete">ลบข้อมูล</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

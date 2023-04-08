@@ -104,7 +104,7 @@
                 <span>ต้องการลบข้อมูลประเภทห้องหรือไม่</span>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-info room_type_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-info room_type_confirm_delete">ลบข้อมูล</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

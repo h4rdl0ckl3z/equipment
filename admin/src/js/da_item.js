@@ -77,7 +77,6 @@ function clear_modal() {
     var da_id = document.getElementById("da_id").readOnly;
     if (da_id == true) {
         $('#da_lists').val('');
-        $('#da_status_i').val('');
         $('#da_unit').val('');
         $('#da_rates').val('');
         $('#da_date').val('');
@@ -88,7 +87,6 @@ function clear_modal() {
     } else {
         $('#da_id').val('');
         $('#da_lists').val('');
-        $('#da_status_i').val('');
         $('#da_unit').val('');
         $('#da_rates').val('');
         $('#da_date').val('');
@@ -101,7 +99,7 @@ function clear_modal() {
 
 // Checkbox All
 function checkUncheck(checkBox) {
-    get = document.getElementsByName('checkbox_da_id');
+    get = document.getElementsByName('checkbox_da_id[]');
     for (var i = 0; i < get.length; i++) {
         get[i].checked = checkBox.checked;
     }
