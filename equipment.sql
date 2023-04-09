@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/04/2023 21:55:53
+ Date: 09/04/2023 11:42:08
 */
 
 SET NAMES utf8mb4;
@@ -137,9 +137,8 @@ CREATE TABLE `da_items`  (
 -- Records of da_items
 -- ----------------------------
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0010', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 3, '201', 'CS0201');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 3, '201', 'CS0201');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0012', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', 0, '200', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0013', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 0, '200', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 0, '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0012', 'เก้าอี้สํานักงาน', NULL, 0, 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', 0, '201', 'SCI0402');
 
 -- ----------------------------
 -- Table structure for da_repairs
@@ -177,6 +176,24 @@ CREATE TABLE `da_types`  (
 -- ----------------------------
 INSERT INTO `da_types` VALUES ('200', 'EiEi');
 INSERT INTO `da_types` VALUES ('201', 'ครุภัณฑ์สํานักงาน');
+
+-- ----------------------------
+-- Table structure for qrcodes
+-- ----------------------------
+DROP TABLE IF EXISTS `qrcodes`;
+CREATE TABLE `qrcodes`  (
+  `qrcode_id` int NOT NULL,
+  `qrcode_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`qrcode_id`) USING BTREE,
+  INDEX `qrcode_da_id`(`da_id` ASC) USING BTREE,
+  CONSTRAINT `qrcode_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of qrcodes
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for room_types

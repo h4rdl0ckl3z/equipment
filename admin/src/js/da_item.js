@@ -60,6 +60,22 @@ $(document).ready(function () {
             })
         })
     })
+    // DeleteSelect Da_Item
+    $('#delete_da_item_form').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: "./src/da_item_delete_select.php",
+            method: "post",
+            data: $('#delete_da_item_form').serialize(),
+            beforeSend: function () {
+                $('#da_item_delete').val("กำลังลบ...");
+            },
+            success: function () {
+                $('#da_item_delete_select').modal('hide');
+                $('#Da_ItemTable').DataTable().ajax.reload();
+            }
+        })
+    })
 })
 
 // Update Modal-Title

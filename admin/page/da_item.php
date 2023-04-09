@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">ครุภัณฑ์</h3>
                         </div>
-                        <form action="./src/da_item_delete_select.php" method="post">
+                        <form method="post" id="delete_da_item_form">
                             <div class="card-body">
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <table id="Da_ItemTable" class="table table-bordered dataTable dtr-inline"
@@ -34,7 +34,7 @@
                                         <thead class="text-center">
                                             <tr>
                                                 <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                        onclick="checkUncheck(this)" value=""></th>
+                                                        onclick="checkUncheck(this)"></th>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
                                                 <th>รายการครุภัณฑ์</th>
@@ -66,9 +66,32 @@
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
-                                <button class="btn btn-danger" type="submit" title="Delete">
+                                <button class="btn btn-danger delete_select" type="button" data-toggle="modal"
+                                    data-target="#da_item_delete_select" title="Delete">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
+                            </div>
+
+                            <!-- Modal Delete Select -->
+                            <div class="modal fade" id="da_item_delete_select" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                ลบครุภัณฑ์
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <span>ต้องการลบครุภัณฑ์ที่เลือกหรือไม่</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-info" id="da_item_delete">ลบข้อมูล</button>
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">ยกเลิก</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -94,8 +117,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="card-body">
-                    <form method="post" id="insert_da_item_form">
+                <form method="post" id="insert_da_item_form">
+                    <div class="card-body">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col">
@@ -235,13 +258,13 @@
                                 </div>
                             </div>
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="da_item_insert" class="btn btn-success">Submit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        onclick="clear_modal()">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="da_item_insert" class="btn btn-success">Submit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"
+                            onclick="clear_modal()">Cancel</button>
+                        <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
+                    </div>
                 </form>
             </div>
         </div>
