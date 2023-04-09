@@ -12,9 +12,17 @@ $(document).ready(function () {
                 data: '',
                 defaultContent: ''
             },
-            {data: 'da_id'},
+            {data: 'da_id', render: function (da_id) {
+                return '<a href="./da_id.php?da_id=' + da_id + '" class="text-dark">' + da_id + '</a>';
+            }},
             {data: 'da_lists'},
-            {data: 'da_img', visible: false},
+            {data: 'da_img', visible: false, render: function (da_img) {
+                if (da_img != null) {
+                    return '<img src="../upload/da/' + da_img + '" class="img-fluid" alt="da_img">';
+                } else {
+                    return '';
+                }
+            }},
             {data: 'da_status_i', render: function (da_status_i) {
                 if (da_status_i == '0') {
                     return 'ปกติ';
@@ -79,7 +87,7 @@ $(document).ready(function () {
                 return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
             }},
             {data: 'da_id', visible: false, render: function (da_id) {
-                return '<button type="button" name="gen_qrcode" id="' + da_id + '"class="btn btn-info gen_qrcode" title="QrCode"><i class="fas fa-qrcode"></i></button>';
+                return '<a href="../api/da_item.php?da_id=' + da_id + '" target="_blank" class="btn btn-info" title="API"><i class="far fa-share-square"></i></a>';
             }}
         ],
         "paging": true,

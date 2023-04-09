@@ -1,4 +1,8 @@
 <?php
+    if (!isset($_SESSION['account'])) { // ถ้าไม่เข้าระบบอยู่
+        header("location: ../auth/login.php"); // redirect ไปยังหน้า login.php
+        exit;
+    }
     include_once("./src/connect.php");
     $objCon = connectDB();
     $account_id = $_GET['account_id'];
