@@ -50,6 +50,7 @@
                                                 <th>สถานะครุภัณฑ์</th>
                                                 <th>ประเภทครุภัณฑ์</th>
                                                 <th>รหัสห้อง</th>
+                                                <th>ประเภทห้อง</th>
                                                 <th>สาขา</th>
                                                 <th>คณะ</th>
                                                 <th>แก้ไข</th>
@@ -214,6 +215,7 @@
                                         <option value="1">ยืม</option>
                                         <option value="2">แจ้งซ่อม</option>
                                         <option value="3" selected>ครุภัณฑ์ห้อง</option>
+                                        <option value="4">การตัดจำหน่าย</option>
                                     </select>
                                 </div>
                             </div>

@@ -1,20 +1,15 @@
 $(document).ready(function () {
-    var table = $('#Da_ItemTable').DataTable({
+    var table = $('#Da_ItemTable_Borrow').DataTable({
         ajax: {
-            url: './src/da_item_select.php',
+            url: './src/da_borrow_select.php',
             method: 'post'
         },
         columns: [
-            {data: 'da_id', render: function (da_id) {
-                return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + "'" + da_id + "'" + '">';
-            }},
             {
                 data: '',
                 defaultContent: ''
             },
-            {data: 'da_id', render: function (da_id) {
-                return '<a href="./da_id.php?da_id=' + da_id + '" class="text-dark">' + da_id + '</a>';
-            }},
+            {data: 'da_id'},
             {data: 'da_lists'},
             {data: 'da_img', visible: false, render: function (da_img) {
                 if (da_img != null) {
@@ -65,33 +60,22 @@ $(document).ready(function () {
             {data: 'da_feature'},
             {data: 'da_annotation'},
             {data: 'da_location'},
-            {data: 'da_status_ii', visible: false, render: function (da_status_ii) {
+            {data: 'da_status_ii', render: function (da_status_ii) {
                 if (da_status_ii == '0') {
                     return 'ปกติ';
                 } else if (da_status_ii == '1') {
                     return 'ยืม';
                 } else if (da_status_ii == '2') {
                     return 'แจ้งซ่อม';
-                } else if (da_status_ii == '3') {
-                    return 'ครุภัณฑ์ห้อง';
                 } else {
-                    return 'การตัดจำหน่าย';
+                    return 'ครุภัณฑ์ห้อง';
                 }
             }},
             {data: 'da_type_name', visible: false},
             {data: 'room_id', visible: false},
             {data: 'room_type_name', visible: false},
             {data: 'agency_name', visible: false},
-            {data: 'community_name', visible: false},
-            {data: 'da_id', render: function (da_id) {
-                return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_item_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
-            }},
-            {data: 'da_id', render: function (da_id) {
-                return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
-            }},
-            {data: 'da_id', visible: false, render: function (da_id) {
-                return '<a href="../api/da_item.php?da_id=' + da_id + '" target="_blank" class="btn btn-info" title="API"><i class="far fa-share-square"></i></a>';
-            }}
+            {data: 'community_name', visible: false}
         ],
         "paging": true,
         "lengthChange": true,
@@ -101,17 +85,17 @@ $(document).ready(function () {
         "autoWidth": false,
         "responsive": true
     });
-    $('#Da_ItemTable tbody tr').each(function (idx) {
+    $('#Da_ItemTable_Borrow tbody tr').each(function (idx) {
         $(this).children("td:eq(0)").html(idx + 1);
     });
     table.on('order.dt search.dt', function () {
         let i = 1;
-        table.cells(null, 1, { search: 'applied', order: 'applied' }).every(function (cell) {
+        table.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
             this.data(i++);
         });
     }).draw();
     new $.fn.dataTable.Buttons( table, {
-        "buttons": ["excel", "print", "colvis"]
+        "buttons": ["colvis"]
     } );
     table.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)', table.table().container());
 });

@@ -24,16 +24,60 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ยืม-คืนครุภัณฑ์</h3>
+                            <h3 class="card-title">ครุภัณฑ์</h3>
                         </div>
                         <div class="card-body">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <table id="SectionTable" class="table table-bordered dataTable dtr-inline"
+                                <table id="Da_ItemTable_Borrow" class="table table-bordered dataTable dtr-inline"
                                     aria-describedby="example1_info">
                                     <thead class="text-center">
                                         <tr>
                                             <th>ลำดับ</th>
-                                            <th>แผนก</th>
+                                            <th>รหัสครุภัณฑ์</th>
+                                            <th>รายการครุภัณฑ์</th>
+                                            <th>รูปครุภัณฑ์</th>
+                                            <th>สภาพครุภัณฑ์</th>
+                                            <th>หน่วยนับ</th>
+                                            <th>มูลค่าครุภัณฑ์ (บาท)</th>
+                                            <th>วันที่ได้มา</th>
+                                            <th>แหล่งเงิน</th>
+                                            <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
+                                            <th>หมายเหตุ/เลขครุภัณฑ์เดิม</th>
+                                            <th>สถานที่ตั้ง/จัดเก็บ</th>
+                                            <th>สถานะครุภัณฑ์</th>
+                                            <th>ประเภทครุภัณฑ์</th>
+                                            <th>รหัสห้อง</th>
+                                            <th>ประเภทห้อง</th>
+                                            <th>สาขา</th>
+                                            <th>คณะ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">ยืม-คืนครุภัณฑ์</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <table id="Da_BorrowTable" class="table table-bordered dataTable dtr-inline"
+                                    aria-describedby="example1_info">
+                                    <thead class="text-center">
+                                        <tr>
+                                            <th>ลำดับ</th>
+                                            <th>ชื่อผู้ยืม</th>
+                                            <th>รายการครุภัณฑ์</th>
+                                            <th>ยืมวันที่</th>
+                                            <th>คืนวันที่</th>
+                                            <th>สถานะการยืม</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -82,7 +126,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit" id="section_insert" class="btn btn-success">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal()">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                onclick="clear_modal()">Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
                         </div>
                     </form>
