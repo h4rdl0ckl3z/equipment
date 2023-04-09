@@ -60,42 +60,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">ยืม-คืนครุภัณฑ์</h3>
-                        </div>
-                        <div class="card-body">
-                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <table id="Da_BorrowTable" class="table table-bordered dataTable dtr-inline"
-                                    aria-describedby="example1_info">
-                                    <thead class="text-center">
-                                        <tr>
-                                            <th>ลำดับ</th>
-                                            <th>ชื่อผู้ยืม</th>
-                                            <th>รายการครุภัณฑ์</th>
-                                            <th>ยืมวันที่</th>
-                                            <th>คืนวันที่</th>
-                                            <th>สถานะการยืม</th>
-                                            <th>แก้ไข</th>
-                                            <th>ลบ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- Button trigger modal -->
-                            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#section_add"
-                                title="เพิ่มข้อมูล" onclick="section_add_data()">
-                                <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <!-- /.content -->

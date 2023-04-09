@@ -29,12 +29,12 @@ $(document).ready(function () {
                     return 'สูญหาย';
                 }
             }},
-            {data: 'da_unit'},
-            {data: 'da_rates', render: function (da_rates) {
+            {data: 'da_unit', visible: false},
+            {data: 'da_rates', visible: false, render: function (da_rates) {
                 let thai = new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(da_rates);
                 return thai;
             }},
-            {data: 'da_date', render: function (da_date) {
+            {data: 'da_date', visible: false, render: function (da_date) {
                 function toThaiDateString(date) {
                     let monthNames = [
                         "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
@@ -56,7 +56,7 @@ $(document).ready(function () {
                 let date = new Date(da_date);
                 return toThaiDateString(date);
             }},
-            {data: 'da_source'},
+            {data: 'da_source', visible: false},
             {data: 'da_feature'},
             {data: 'da_annotation'},
             {data: 'da_location'},
