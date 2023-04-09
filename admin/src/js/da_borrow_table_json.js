@@ -20,7 +20,7 @@ $(document).ready(function () {
             {data: 'da_lists'},
             {data: 'da_img', visible: false, render: function (da_img) {
                 if (da_img != null) {
-                    return '<img src="../upload/da/' + da_img + '" class="img-fluid" alt="da_img">';
+                    return '<img src="../upload/da/' + da_img + '" class="img-fluid" alt="da_img" width="80" height="80">';
                 } else {
                     return '';
                 }
