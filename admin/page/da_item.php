@@ -55,7 +55,6 @@
                                                 <th>คณะ</th>
                                                 <th>แก้ไข</th>
                                                 <th>ลบ</th>
-                                                <th>API</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">

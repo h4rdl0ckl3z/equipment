@@ -88,9 +88,6 @@ $(document).ready(function () {
             }},
             {data: 'da_id', render: function (da_id) {
                 return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
-            }},
-            {data: 'da_id', visible: false, render: function (da_id) {
-                return '<a href="../api/da_item.php?da_id=' + da_id + '" target="_blank" class="btn btn-info" title="API"><i class="far fa-share-square"></i></a>';
             }}
         ],
         "paging": true,
