@@ -17,7 +17,7 @@
           array_push($data["data"], $row);
       }
     } else {
-      echo "0 results";
+      // echo "0 results";
     }
   $conn -> close();
   echo json_encode($data);

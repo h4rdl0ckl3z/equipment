@@ -33,8 +33,8 @@
                                     <thead class="text-center">
                                         <tr>
                                             <th>ลำดับ</th>
-                                            <th>รหัสคณะ/รหัสสาขา</th>
-                                            <th>คณะ/สาขา</th>
+                                            <th>รหัสสาขา</th>
+                                            <th>สาขา</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -75,14 +75,14 @@
                 <div class="card-body">
                     <form method="post" id="insert_agency_form">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">รหัสคณะ/รหัสสาขา</label>
+                            <label for="exampleInputEmail1">รหัสสาขา</label>
                             <input type="text" class="form-control" name="agency_id" id="agency_id"
-                                placeholder="รหัสคณะ/รหัสสาขา" required>
+                                placeholder="รหัสสาขา" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">คณะ/สาขา</label>
+                            <label for="exampleInputEmail1">สาขา</label>
                             <input type="text" class="form-control" name="agency_name" id="agency_name"
-                                placeholder="คณะ/สาขา" required>
+                                placeholder="สาขา" required>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" id="agency_insert" class="btn btn-success">Submit</button>

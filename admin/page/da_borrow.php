@@ -17,6 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
     <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
     <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
     <!-- Main content -->
@@ -52,6 +53,7 @@
                                             <th>ประเภทห้อง</th>
                                             <th>สาขา</th>
                                             <th>คณะ</th>
+                                            <th>ยืม</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
@@ -69,13 +71,14 @@
                             <h3 class="card-title">ยืม-คืนครุภัณฑ์</h3>
                         </div>
                         <div class="card-body">
-                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <table id="Da_BorrowTable" class="table table-bordered dataTable dtr-inline"
                                     aria-describedby="example1_info">
                                     <thead class="text-center">
                                         <tr>
                                             <th>ลำดับ</th>
                                             <th>ชื่อผู้ยืม</th>
+                                            <th>รหัสครุภัณฑ์</th>
                                             <th>รายการครุภัณฑ์</th>
                                             <th>ยืมวันที่</th>
                                             <th>คืนวันที่</th>
@@ -89,11 +92,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- Button trigger modal -->
-                            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#section_add"
-                                title="เพิ่มข้อมูล" onclick="section_add_data()">
-                                <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -105,7 +103,7 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal Add $Edit-->
-<div class="modal fade" id="section_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="da_borrow_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -119,15 +117,35 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    <form method="post" id="insert_section_form">
-                        <input type="hidden" name="section_id" id="section_id">
+                    <form method="post" id="insert_da_borrow_form">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">แผนก</label>
-                            <input type="text" class="form-control" name="section_name" id="section_name"
-                                placeholder="แผนก" required>
+                            <label for="exampleInputEmail1">ชื่อผู้ยืม</label>
+                            <input type="text" class="form-control" name="fullname" id="fullname"
+                                placeholder="ชื่อผู้ยืม" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
+                            <input type="text" class="form-control" name="da_id" id="da_id" placeholder="รหัสครุภัณฑ์"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">รายการครุภัณฑ์</label>
+                            <textarea class="form-control" name="da_lists" id="da_lists" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">สถานที่ตั้ง/จัดเก็บ</label>
+                            <input type="text" class="form-control" name="da_location" id="da_location"
+                                placeholder="สถานที่ตั้ง/จัดเก็บ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">สถานะการยืม</label>
+                            <select class="form-control" name="allow_br" id="allow_br">
+                                <option value="0">รอดำเนินการ</option>
+                                <option value="1">ยืม</option>
+                            </select>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="section_insert" class="btn btn-success">Submit</button>
+                            <button type="submit" id="da_borrow_insert" class="btn btn-success">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"
                                 onclick="clear_modal()">Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
@@ -139,21 +157,51 @@
     </div>
 </div>
 
-<!-- Modal Delete -->
-<div class="modal fade" id="section_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- Modal Borrow -->
+<div class="modal fade" id="da_item_borrow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">
-                    ลบข้อมูลแผนก
+
                 </h5>
             </div>
             <div class="modal-body">
-                <span>ต้องการข้อมูลแผนกหรือไม่</span>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">วันที่ยืม</label>
+                        <input type="date" class="form-control" name="da_borrow" id="da_borrow" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">วันที่คืน</label>
+                        <input type="date" class="form-control" name="da_return" id="da_return" required>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info section_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-info da_item_confirm_borrow">ยืม</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="da_item_borrow_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    ลบสาขา
+                </h5>
+            </div>
+            <div class="modal-body">
+                <span>ต้องการลบข้อมูลสาขาหรือไม่</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info agency_confirm_delete">ลบข้อมูล</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

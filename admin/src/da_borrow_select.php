@@ -9,17 +9,12 @@
   $agency_id = $_POST["agency_id"];
   $access_level = $_POST["access_level"];
   if ($access_level == '0') {
-    $sql = "SELECT * FROM (((((da_items INNER JOIN da_types ON da_items.da_type_id = da_types.da_type_id)
-    INNER JOIN rooms ON da_items.room_id = rooms.room_id)
-    INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
-    INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
-    INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE da_status_ii='0'";
+    $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
+    INNER JOIN da_items ON da_brs.da_id = da_items.da_id) WHERE da_status_ii='0' OR da_status_ii='1'";
   } else {
-    $sql = "SELECT * FROM (((((da_items INNER JOIN da_types ON da_items.da_type_id = da_types.da_type_id)
-    INNER JOIN rooms ON da_items.room_id = rooms.room_id)
-    INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
-    INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
-    INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE da_status_ii='0' AND agencys.agency_id='$agency_id'";
+    $sql = "SELECT * FROM (((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
+    INNER JOIN da_items ON da_brs.da_id = da_items.da_id)
+    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE agencys.agency_id='$agency_id' AND da_status_ii='0'";
   }
   $result = $conn -> query($sql);
   $data = array("data"=>array());
