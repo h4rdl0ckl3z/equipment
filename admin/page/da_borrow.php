@@ -17,6 +17,8 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
+    <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -28,8 +30,6 @@
                         </div>
                         <div class="card-body">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
-                                <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
                                 <table id="Da_ItemTable_Borrow" class="table table-bordered dataTable dtr-inline"
                                     aria-describedby="example1_info">
                                     <thead class="text-center">
