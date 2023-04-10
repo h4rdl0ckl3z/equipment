@@ -30,7 +30,7 @@ if ($row["access_level"] == '0') {
     <a href="./agency.php" class="nav-link">
         <i class="nav-icon fa fa-map-pin"></i>
         <p>
-            คณะ/สาขา
+            สาขา
         </p>
     </a>
 </li>
@@ -152,7 +152,7 @@ if ($row["access_level"] == '0') {
     <a href="./agency.php" class="nav-link">
         <i class="nav-icon fa fa-map-pin"></i>
         <p>
-            คณะ/สาขา
+            สาขา
         </p>
     </a>
 </li>

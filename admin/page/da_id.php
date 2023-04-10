@@ -59,6 +59,7 @@ $da_id = $_GET['da_id'];
                     </div>
                 </div>
             </div>
+            <a class="btn btn-danger" href="./da_item.php">กลับไปหน้าครุภัณฑ์</a>
             <?php
             if (isset($_FILES["da_img"])) {
                 $da_img = $_FILES["da_img"]["name"];
@@ -103,8 +104,7 @@ $da_id = $_GET['da_id'];
 
             ?>
         </div>
-</div>
-</section>
+    </section>
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

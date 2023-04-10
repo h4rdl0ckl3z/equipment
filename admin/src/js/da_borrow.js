@@ -105,3 +105,7 @@ function clear_modal() {
         $('#da_location').val('');
     }
 }
+function clear_modal_borrow_date() {
+    $('#da_borrow').val('');
+    $('#da_return').val('');
+}

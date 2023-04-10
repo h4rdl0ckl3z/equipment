@@ -127,7 +127,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info da_item_confirm_borrow">ยืม</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal_borrow_date()">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="clear_modal_borrow_date()">Reset</button>
             </div>
         </div>
     </div>

@@ -15,14 +15,12 @@
   } else {
     include("./page/da_borrow_al.php");
   }
-  
 ?>
 
 <!-- footer -->
 <?php
   include("./include/footer.php");
 ?>
-
 
 <script src="./src/js/da_borrow_table_json.js"></script>
 <script src="./src/js/da_borrow.js"></script>
