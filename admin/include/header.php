@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="dist/css/sweetalert2.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="dist/css/style.css">
-  
+
   <!-- DataTables Adminlte 3 -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -115,7 +115,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <?php
-              include("menu.php");
+            include("menu.php");
             ?>
           </ul>
         </nav>
