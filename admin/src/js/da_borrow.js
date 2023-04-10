@@ -90,7 +90,7 @@ function da_borrow_add_data() {
     document.getElementById("da_id").readOnly = false;
 }
 function da_borrow_edit_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขการยืม";
+    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขการยืม <span style='font-size: 10pt; color: red;'>หมายเหตุ *ชื่อผู้ยืมไม่มีผลต่อการแก้ไข</span>";
     document.getElementById("account_id").readOnly = true;
     document.getElementById("da_id").readOnly = true;
 }
