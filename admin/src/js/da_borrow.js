@@ -14,6 +14,7 @@ $(document).ready(function () {
                 $('#insert_da_borrow_form')[0].reset();
                 $('#da_borrow_add').modal('hide');
                 $('#Da_BorrowTable').DataTable().ajax.reload();
+                $('#Da_ItemTable_Borrow').DataTable().ajax.reload();
             }
         })
     })
@@ -27,11 +28,12 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 $('#da_borrow_add').modal('show');
+                $('#account_id').val(data.account_id);
                 $('#dabr_id').val(data.dabr_id);
-                $('#fullname').val(data.fullname);
                 $('#da_id').val(data.da_id);
-                $('#da_lists').val(data.da_lists);
                 $('#da_location').val(data.da_location);
+                $('#da_borrow').val(data.da_borrow);
+                $('#da_return').val(data.da_return);
                 $('#allow_br').val(data.allow_br);
                 $('#da_borrow_insert').val('อัพเดทข้อมูล');
             }
@@ -49,6 +51,7 @@ $(document).ready(function () {
                 success: function () {
                     $('#da_item_borrow_delete').modal('hide');
                     $('#Da_BorrowTable').DataTable().ajax.reload();
+                    $('#Da_ItemTable_Borrow').DataTable().ajax.reload();
                 }
             })
         })
@@ -81,42 +84,24 @@ $(document).ready(function () {
 })
 
 // Update Modal-Title
+function da_borrow_add_data() {
+    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มการยืม";
+    document.getElementById("account_id").readOnly = false;
+    document.getElementById("da_id").readOnly = false;
+}
 function da_borrow_edit_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขการยืม";
-    document.getElementById("fullname").readOnly = true;
+    document.getElementById("account_id").readOnly = true;
     document.getElementById("da_id").readOnly = true;
-    document.getElementById("da_lists").readOnly = true;
 }
 
 // Clear Modal
 function clear_modal() {
     var da_id = document.getElementById("da_id").readOnly;
     if (da_id == true) {
-        $('#da_lists').val('');
-        $('#da_unit').val('');
-        $('#da_rates').val('');
-        $('#da_date').val('');
-        $('#da_source').val('');
-        $('#da_feature').val('');
-        $('#da_annotation').val('');
         $('#da_location').val('');
     } else {
         $('#da_id').val('');
-        $('#da_lists').val('');
-        $('#da_unit').val('');
-        $('#da_rates').val('');
-        $('#da_date').val('');
-        $('#da_source').val('');
-        $('#da_feature').val('');
-        $('#da_annotation').val('');
         $('#da_location').val('');
-    }
-}
-
-// Checkbox All
-function checkUncheck(checkBox) {
-    get = document.getElementsByName('checkbox_da_id[]');
-    for (var i = 0; i < get.length; i++) {
-        get[i].checked = checkBox.checked;
     }
 }

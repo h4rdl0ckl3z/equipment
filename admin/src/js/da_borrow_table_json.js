@@ -87,10 +87,14 @@ $(document).ready(function () {
             {data: 'agency_name', visible: false},
             {data: 'community_name', visible: false},
             {data: 'da_id', render: function (da_id) {
-                if (check_da_status_ii == '0') {
-                    return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ลบ"><i class="fas fa-archive"></i></button>';
-                } else {
+                if (access_level.value == '0' || access_level.value == '2') {
                     return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                } else {
+                    if (check_da_status_ii == '0') {
+                        return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ยืม"><i class="fas fa-archive"></i></button>';
+                    } else {
+                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                    }
                 }
             }}
         ],
@@ -121,6 +125,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     var agency_id = document.getElementById('agency_id');
     var access_level = document.getElementById('access_level');
+    var check_allow_br = '';
     // console.log(access_level.value);
     var table2 = $('#Da_BorrowTable').DataTable({
         ajax: {
@@ -184,6 +189,7 @@ $(document).ready(function () {
                 return toThaiDateString(date);
             }},
             {data: 'allow_br', render: function (allow_br) {
+                check_allow_br = allow_br
                 if (allow_br == '0') {
                     return 'รอดำเนินการ';
                 } else {
@@ -198,7 +204,11 @@ $(document).ready(function () {
                 }
             }},
             {data: 'dabr_id', render: function (dabr_id) {
-                return '<button type="button" name="delete" id="' + dabr_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
+                if (check_allow_br == '0') {
+                    return '<button type="button" name="delete" id="' + dabr_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
+                } else {
+                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                }
             }}
         ],
         "paging": true,

@@ -17,6 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
     <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
     <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
     <!-- Main content -->
@@ -26,7 +27,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *ผู้ดูแลระบบ และเจ้าหน้าที่ไม่สามารถกดยืมได้โดยตรง ต้องเพิ่มข้อมูลเท่านั้น</span></h3>
+                            <h3 class="card-title">ครุภัณฑ์</h3>
                         </div>
                         <div class="card-body">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -91,11 +92,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- Button trigger modal -->
-                            <button class="btn btn-success" type="button" data-toggle="modal"
-                                data-target="#da_borrow_add" title="เพิ่มข้อมูล" onclick="da_borrow_add_data()">
-                                <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -106,77 +102,6 @@
 </div>
 <!-- /.content-wrapper -->
 
-<!-- Modal Add $Edit-->
-<div class="modal fade" id="da_borrow_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">
-
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <form method="post" id="insert_da_borrow_form">
-                        <input type="hidden" name="dabr_id" id="dabr_id">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">ชื่อผู้ยืม</label>
-                            <select class="form-control" name="account_id" id="account_id" required>
-                                <?php
-                                include_once("./src/connect.php");
-                                $conn = connectDB();
-                                $sql = "SELECT * FROM accounts";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo '<option value="' . $row["account_id"] . '">' . $row["fullname"] . '</option>';
-                                    }
-                                }
-                                $conn->close();
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
-                            <input type="text" class="form-control" name="da_id" id="da_id" placeholder="รหัสครุภัณฑ์"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">สถานที่ตั้ง/จัดเก็บ</label>
-                            <input type="text" class="form-control" name="da_location" id="da_location"
-                                placeholder="สถานที่ตั้ง/จัดเก็บ" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">วันที่ยืม</label>
-                            <input type="date" class="form-control" name="da_borrow" id="da_borrow" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">วันที่คืน</label>
-                            <input type="date" class="form-control" name="da_return" id="da_return" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">สถานะการยืม</label>
-                            <select class="form-control" name="allow_br" id="allow_br">
-                                <option value="0">รอดำเนินการ</option>
-                                <option value="1">ยืม</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" id="da_borrow_insert" class="btn btn-success">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"
-                                onclick="clear_modal()">Cancel</button>
-                            <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Modal Borrow -->
 <div class="modal fade" id="da_item_borrow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

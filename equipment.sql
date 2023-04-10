@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 09/04/2023 21:17:49
+ Date: 10/04/2023 19:01:04
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,7 @@ CREATE TABLE `accounts`  (
   `profile_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT 'profile.png',
   `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `access_level` int NULL DEFAULT NULL COMMENT '0.ผู้ดูแลระบบ\r\n1.ผู้บริหาร\r\n2.เจ้าหน้าที่\r\n3.ผู้ใช้งาน',
+  `access_level` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '0.ผู้ดูแลระบบ\r\n1.ผู้บริหาร\r\n2.เจ้าหน้าที่\r\n3.ผู้ใช้งาน',
   `section_id` int NULL DEFAULT NULL,
   `agency_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`account_id`) USING BTREE,
@@ -42,11 +42,11 @@ CREATE TABLE `accounts`  (
 -- ----------------------------
 -- Records of accounts
 -- ----------------------------
-INSERT INTO `accounts` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Avatart0Dev', '20230409_64325a4ae006c.png', 'Bangkok', '0981111111', 0, 1, '20000000');
-INSERT INTO `accounts` VALUES (2, 'tester', '202cb962ac59075b964b07152d234b70', 'Tester', 'profile.png', 'Bangkok', '0981111112', 1, 3, '22020000');
-INSERT INTO `accounts` VALUES (3, 'asd', '7815696ecbf1c96e6894b779456d330e', 'asd eiei03', 'profile.png', 'asd', 'asd', 2, 2, '22050000');
-INSERT INTO `accounts` VALUES (4, 'asd02', '7815696ecbf1c96e6894b779456d330e', 'asd eiei02', 'profile.png', 'asd', '123', 3, 4, '22050000');
-INSERT INTO `accounts` VALUES (5, 'tester03', '202cb962ac59075b964b07152d234b70', 'Tester03', 'profile.png', 'BKK', '123', 3, 4, '22010000');
+INSERT INTO `accounts` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Avatart0Dev', '20230409_64325a4ae006c.png', 'Bangkok', '0981111111', '0', 1, '22050000');
+INSERT INTO `accounts` VALUES (2, 'tester', '202cb962ac59075b964b07152d234b70', 'Tester', 'profile.png', 'Bangkok', '0981111112', '1', 3, '22020000');
+INSERT INTO `accounts` VALUES (3, 'asd', '7815696ecbf1c96e6894b779456d330e', 'asd eiei03', 'profile.png', 'asd', 'asd', '2', 2, '22050000');
+INSERT INTO `accounts` VALUES (4, 'asd02', '7815696ecbf1c96e6894b779456d330e', 'asd eiei02', 'profile.png', 'asd', '123', '3', 4, '22050000');
+INSERT INTO `accounts` VALUES (5, 'tester03', '202cb962ac59075b964b07152d234b70', 'Tester03', 'profile.png', 'BKK', '123', '2', 4, '22010000');
 
 -- ----------------------------
 -- Table structure for agencys
@@ -64,7 +64,6 @@ CREATE TABLE `agencys`  (
 -- ----------------------------
 -- Records of agencys
 -- ----------------------------
-INSERT INTO `agencys` VALUES ('20000000', 'คณะวิทยาศาสตร์และเทคโนโลยี', '013');
 INSERT INTO `agencys` VALUES ('22010000', 'สาขาวิชาเทคโนโลยีดิจิตอล', '013');
 INSERT INTO `agencys` VALUES ('22020000', 'สาขาวิชาการจัดการภัยพิบัติ', '013');
 INSERT INTO `agencys` VALUES ('22050000', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '013');
@@ -78,7 +77,7 @@ CREATE TABLE `communitys`  (
   `community_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `community_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`community_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of communitys
@@ -95,17 +94,19 @@ CREATE TABLE `da_brs`  (
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `da_borrow` date NULL DEFAULT NULL,
   `da_return` date NULL DEFAULT NULL,
-  `allow_br` int NOT NULL COMMENT 'สถานะการยืม\r\n0.รอดำเนินการ\r\n1.ยืม',
+  `allow_br` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานะการยืม\r\n0.รอดำเนินการ\r\n1.ยืม',
   PRIMARY KEY (`dabr_id`) USING BTREE,
   INDEX `da_br_accounts`(`account_id` ASC) USING BTREE,
   INDEX `da_br_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `da_br_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `da_br_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_brs
 -- ----------------------------
+INSERT INTO `da_brs` VALUES (1, 1, '61-21-220500-201-00007-0020', '2023-04-10', '2023-04-15', '1');
+INSERT INTO `da_brs` VALUES (2, 5, '61-21-220500-201-00007-0021', '2023-04-10', '2023-04-14', '0');
 
 -- ----------------------------
 -- Table structure for da_items
@@ -140,15 +141,14 @@ INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0010', 'เก้าอ�
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', '20230409_64325d79ec38e.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0012', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0013', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '4', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0014', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '1', '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0014', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0015', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '2', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0016', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '4', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0017', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0018', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0019', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0020', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0021', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิชาเทคโนโลยีดิจิตอล', '0', '201', 'SCI0401');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0022', 'เก้าอี้ห้องเรียน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'ห้องเรียนคณะวิทยาศาสตร์และเทคโนโลยี', '0', '201', 'SCI0301');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0020', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'ห้องเรียนสาขาวิชาวิทยาการคอมพิวเตอร์', '1', '201', 'SCI0403');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0021', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2018-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'ห้องเรียนสาขาวิชาเทคโนโลยีดิจิตอล', '0', '201', 'SCI0401');
 
 -- ----------------------------
 -- Table structure for da_repairs
@@ -199,7 +199,7 @@ CREATE TABLE `qrcodes`  (
   PRIMARY KEY (`qrcode_id`) USING BTREE,
   INDEX `qrcode_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `qrcode_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrcodes
@@ -213,7 +213,7 @@ CREATE TABLE `room_types`  (
   `room_type_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสประเภทห้อง',
   `room_type_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ชื่อประเภทห้อง',
   PRIMARY KEY (`room_type_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of room_types
@@ -222,6 +222,7 @@ INSERT INTO `room_types` VALUES (1, 'ห้องเรียน');
 INSERT INTO `room_types` VALUES (2, 'ห้องสำนักงาน');
 INSERT INTO `room_types` VALUES (3, 'ห้องคณบดี');
 INSERT INTO `room_types` VALUES (4, 'ห้องสำนักงานคณะ');
+INSERT INTO `room_types` VALUES (5, 'ห้องเรียนสาขา');
 
 -- ----------------------------
 -- Table structure for rooms
@@ -244,11 +245,10 @@ CREATE TABLE `rooms`  (
 INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000');
 INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000');
 INSERT INTO `rooms` VALUES ('CS0203', 2, '22050000');
-INSERT INTO `rooms` VALUES ('SCI0301', 1, '20000000');
 INSERT INTO `rooms` VALUES ('SCI0401', 2, '22010000');
 INSERT INTO `rooms` VALUES ('SCI0402', 2, '22050000');
+INSERT INTO `rooms` VALUES ('SCI0403', 5, '22050000');
 INSERT INTO `rooms` VALUES ('SCI0501', 1, '22020000');
-INSERT INTO `rooms` VALUES ('TEST01', 4, '20000000');
 
 -- ----------------------------
 -- Table structure for sections

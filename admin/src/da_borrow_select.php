@@ -14,7 +14,7 @@
   } else {
     $sql = "SELECT * FROM (((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
     INNER JOIN da_items ON da_brs.da_id = da_items.da_id)
-    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE agencys.agency_id='$agency_id' AND da_status_ii='0'";
+    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE agencys.agency_id='$agency_id'";
   }
   $result = $conn -> query($sql);
   $data = array("data"=>array());

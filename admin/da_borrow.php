@@ -10,7 +10,12 @@
 
 <!-- da borrow -->
 <?php 
-  include("./page/da_borrow.php");
+  if ($row["access_level"] == '0' || $row["access_level"] == '2') {
+    include("./page/da_borrow.php");
+  } else {
+    include("./page/da_borrow_al.php");
+  }
+  
 ?>
 
 <!-- footer -->
