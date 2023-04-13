@@ -77,7 +77,7 @@ if ($row["access_level"] == '0') {
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="./da_sale.php" class="nav-link">
         <i class="nav-icon fas fa-store-slash"></i>
         <p>
             การจัดจำหน่าย
