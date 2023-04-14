@@ -210,11 +210,11 @@
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">สถานะครุภัณฑ์</label>
                                     <select class="form-control" name="da_status_ii" id="da_status_ii">
-                                        <!-- <option value="0">ปกติ</option>
+                                        <option value="0">ปกติ</option>
                                         <option value="1">ยืม</option>
                                         <option value="2">แจ้งซ่อม</option>
-                                        <option value="3">ครุภัณฑ์ห้อง</option> -->
-                                        <option value="4" selected>การตัดจำหน่าย</option>
+                                        <option value="3" selected>ครุภัณฑ์ห้อง</option>
+                                        <option value="4">การตัดจำหน่าย</option>
                                     </select>
                                 </div>
                             </div>
