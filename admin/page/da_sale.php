@@ -24,7 +24,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถอัพโหลดรูปภาพครุณฑ์ได้จากรหัสครุภัณฑ์</span></h3>
+                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *ผู้ดูแลระบบ และเจ้าหน้าที่ต้องตรวจสอบสภาพครุภัณฑ์ก่อนเปลี่ยนแปลง</span></h3>
                         </div>
                         <form method="post" id="delete_da_item_form">
                             <div class="card-body">

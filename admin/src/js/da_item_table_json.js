@@ -74,8 +74,10 @@ $(document).ready(function () {
                     return 'แจ้งซ่อม';
                 } else if (da_status_ii == '3') {
                     return 'ครุภัณฑ์ห้อง';
-                } else {
+                } else if (da_status_ii == '4') {
                     return 'การตัดจำหน่าย';
+                } else {
+                    return 'ตรวจสอบสภาพ';
                 }
             }},
             {data: 'da_type_name', visible: false},
