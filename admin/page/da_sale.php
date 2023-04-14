@@ -215,6 +215,7 @@
                                         <option value="2">แจ้งซ่อม</option>
                                         <option value="3" selected>ครุภัณฑ์ห้อง</option>
                                         <option value="4">การตัดจำหน่าย</option>
+                                        <option value="5">ตรวจสอบสภาพ</option>
                                     </select>
                                 </div>
                             </div>

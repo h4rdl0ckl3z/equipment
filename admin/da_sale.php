@@ -18,5 +18,5 @@ include("./page/da_sale.php");
 include("./include/footer.php");
 ?>
 
-<script src="./src/js/da_sale_table_json.js"></script>
-<script src="./src/js/da_sale.js"></script>
+<script src="./src/js/da_item_sale_table_json.js"></script>
+<script src="./src/js/da_item_sale.js"></script>
