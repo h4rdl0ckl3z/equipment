@@ -74,11 +74,11 @@
 
                             <!-- Modal Delete Select -->
                             <div class="modal fade" id="da_item_delete_select" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                aria-labelledby="exampleModalCenterTitle02" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalCenterTitle">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle02">
                                                 ลบครุภัณฑ์
                                             </h5>
                                         </div>
