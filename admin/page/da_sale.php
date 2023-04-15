@@ -24,7 +24,8 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *ผู้ดูแลระบบ และเจ้าหน้าที่ต้องตรวจสอบสภาพครุภัณฑ์ก่อนเปลี่ยนแปลง</span></h3>
+                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ
+                                    *ผู้ดูแลระบบ และเจ้าหน้าที่ต้องตรวจสอบสภาพครุภัณฑ์ก่อนเปลี่ยนแปลง</span></h3>
                         </div>
                         <form method="post" id="delete_da_item_form">
                             <div class="card-body">
@@ -70,6 +71,10 @@
                                     data-target="#da_item_delete_select" title="Delete">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
+                                <button class="btn btn-info da_year_update" type="button" data-toggle="modal"
+                                    data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
+                                    <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
+                                </button>
                             </div>
 
                             <!-- Modal Delete Select -->
@@ -86,7 +91,8 @@
                                             <span>ต้องการลบครุภัณฑ์ที่เลือกหรือไม่</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info" id="da_item_delete_select">ลบข้อมูล</button>
+                                            <button type="submit" class="btn btn-info"
+                                                id="da_item_delete_select">ลบข้อมูล</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">ยกเลิก</button>
                                         </div>
@@ -288,6 +294,28 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal DaYear -->
+<div class="modal fade" id="da_item_year" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                ครุภัณฑ์ประจำปี
+                </h5>
+            </div>
+            <div class="modal-body">
+                <span>ต้องการดึงครุภัณฑ์ประจำปีหรือไม่</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info da_item_year_confirm">ครุภัณฑ์ประจำปี</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

@@ -76,6 +76,19 @@ $(document).ready(function () {
             }
         })
     })
+    // Year Da_Item
+    $('.da_year_update').click(function () {
+        $('.da_item_year_confirm').click(function () {
+            $.ajax({
+                url: "./src/da_item_year.php",
+                method: "post",
+                success: function () {
+                    $('#da_item_year').modal('hide');
+                    $('#Da_ItemTable').DataTable().ajax.reload();
+                }
+            })
+        })
+    })
 })
 
 // Update Modal-Title
