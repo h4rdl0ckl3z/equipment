@@ -86,7 +86,7 @@
                                             <span>ต้องการลบครุภัณฑ์ที่เลือกหรือไม่</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info" id="da_item_delete">ลบข้อมูล</button>
+                                            <button type="submit" class="btn btn-info" id="da_item_delete_select">ลบข้อมูล</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">ยกเลิก</button>
                                         </div>
