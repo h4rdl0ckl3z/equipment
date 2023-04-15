@@ -1,9 +1,4 @@
 <?php
-session_start(); // เปิดใช้งาน session
-if (!isset($_SESSION['account'])) { // ถ้าไม่เข้าระบบอยู่
-    header("location: ../auth/login.php"); // redirect ไปยังหน้า login.php
-    exit;
-}
 include_once("./connect.php");
 $conn = connectDB();
 $sql = "SELECT da_id, da_status_ii, ADDDATE(da_date, INTERVAL 1 YEAR) AS Date_NEW FROM da_items";
