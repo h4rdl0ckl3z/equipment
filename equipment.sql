@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 15/04/2023 21:31:12
+ Date: 16/04/2023 20:02:27
 */
 
 SET NAMES utf8mb4;
@@ -135,37 +135,38 @@ CREATE TABLE `da_items`  (
 -- ----------------------------
 -- Records of da_items
 -- ----------------------------
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', '20230409_64325d79ec38e.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0012', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0013', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0014', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0015', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '5', '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', '20230409_64325d79ec38e.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '5', '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0012', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '5', '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0013', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', '4', '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0014', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', '4', '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0015', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0016', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0017', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0018', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0018', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', '2', '201', 'SCI0402');
 INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0019', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0020', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '2', '201', 'SCI0403');
 
 -- ----------------------------
 -- Table structure for da_repairs
 -- ----------------------------
 DROP TABLE IF EXISTS `da_repairs`;
 CREATE TABLE `da_repairs`  (
-  `da_r_id` int NOT NULL,
+  `da_r_id` int NOT NULL AUTO_INCREMENT,
   `account_id` int NOT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `da_repair` date NULL DEFAULT NULL COMMENT 'วันแจ้งซ่อม',
-  `da_repair_status` int NULL DEFAULT NULL COMMENT 'สถานะส่งซ่อม\r\n0.ปกติ\r\n1.ดำเนินการส่งซ่อม',
+  `da_repair` date NOT NULL COMMENT 'วันแจ้งซ่อม',
+  `da_repair_status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานะส่งซ่อม\r\n0.แจ้งซ่อม\r\n1.ดำเนินการส่งซ่อม',
   PRIMARY KEY (`da_r_id`) USING BTREE,
   INDEX `da_repair_accounts`(`account_id` ASC) USING BTREE,
   INDEX `da_repair_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `da_repair_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `da_repair_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_repairs
 -- ----------------------------
+INSERT INTO `da_repairs` VALUES (1, 1, '61-21-220500-201-00007-0018', '2023-04-16', '1');
+INSERT INTO `da_repairs` VALUES (2, 1, '61-21-220500-201-00007-0014', '2023-04-16', '0');
 
 -- ----------------------------
 -- Table structure for da_types

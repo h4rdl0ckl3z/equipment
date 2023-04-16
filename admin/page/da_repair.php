@@ -17,8 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
-    <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
+    <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -26,11 +25,11 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *ผู้ดูแลระบบ และเจ้าหน้าที่ไม่สามารถกดยืมได้โดยตรง ต้องเพิ่มข้อมูลเท่านั้น</span></h3>
+                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถกดแจ้งซ่อมได้</span></h3>
                         </div>
                         <div class="card-body">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <table id="Da_ItemTable_Borrow" class="table table-bordered dataTable dtr-inline"
+                                <table id="Da_ItemTable_Repair" class="table table-bordered dataTable dtr-inline"
                                     aria-describedby="example1_info">
                                     <thead class="text-center">
                                         <tr>
@@ -52,7 +51,7 @@
                                             <th>ประเภทห้อง</th>
                                             <th>สาขา</th>
                                             <th>คณะ</th>
-                                            <th>ยืม</th>
+                                            <th>แจ้งซ่อม</th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-center">
@@ -67,21 +66,20 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ยืม-คืนครุภัณฑ์</h3>
+                            <h3 class="card-title">แจ้งซ่อมครุภัณฑ์</h3>
                         </div>
                         <div class="card-body">
                             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <table id="Da_BorrowTable" class="table table-bordered dataTable dtr-inline"
+                                <table id="Da_RepairTable" class="table table-bordered dataTable dtr-inline"
                                     aria-describedby="example1_info">
                                     <thead class="text-center">
                                         <tr>
                                             <th>ลำดับ</th>
-                                            <th>ชื่อผู้ยืม</th>
+                                            <th>ชื่อผู้แจ้งซ่อม</th>
                                             <th>รหัสครุภัณฑ์</th>
                                             <th>รายการครุภัณฑ์</th>
-                                            <th>ยืมวันที่</th>
-                                            <th>คืนวันที่</th>
-                                            <th>สถานะการยืม</th>
+                                            <th>วันที่แจ้ง</th>
+                                            <th>สถานะการแจ้งซ่อม</th>
                                             <th>แก้ไข</th>
                                             <th>ลบ</th>
                                         </tr>
@@ -92,10 +90,10 @@
                                 </table>
                             </div>
                             <!-- Button trigger modal -->
-                            <button class="btn btn-success" type="button" data-toggle="modal"
-                                data-target="#da_borrow_add" title="เพิ่มข้อมูล" onclick="da_borrow_add_data()">
+                            <!-- <button class="btn btn-success" type="button" data-toggle="modal"
+                                data-target="#da_repair_add" title="เพิ่มข้อมูล" onclick="da_repair_add_data()">
                                 <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -107,7 +105,7 @@
 <!-- /.content-wrapper -->
 
 <!-- Modal Add $Edit-->
-<div class="modal fade" id="da_borrow_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="da_repair_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -121,24 +119,11 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    <form method="post" id="insert_da_borrow_form">
-                        <input type="hidden" name="dabr_id" id="dabr_id">
+                    <form method="post" id="insert_da_repair_form">
+                        <input type="hidden" name="da_r_id" id="da_r_id">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">ชื่อผู้ยืม</label>
-                            <select class="form-control" name="account_id" id="account_id" required>
-                                <?php
-                                include_once("./src/connect.php");
-                                $conn = connectDB();
-                                $sql = "SELECT * FROM accounts";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo '<option value="' . $row["account_id"] . '">' . $row["fullname"] . '</option>';
-                                    }
-                                }
-                                $conn->close();
-                                ?>
-                            </select>
+                            <label for="exampleInputEmail1">ชื่อผู้แจ้งซ่อม</label>
+                            <input type="text" class="form-control" name="fullname" id="fullname" required placeholder="ชื่อผู้แจ้งซ่อม">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
@@ -151,22 +136,18 @@
                                 placeholder="สถานที่ตั้ง/จัดเก็บ" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">วันที่ยืม</label>
-                            <input type="date" class="form-control" name="da_borrow" id="da_borrow" required>
+                            <label for="exampleInputEmail1">วันที่แจ้ง</label>
+                            <input type="date" class="form-control" name="da_repair" id="da_repair" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">วันที่คืน</label>
-                            <input type="date" class="form-control" name="da_return" id="da_return" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">สถานะการยืม</label>
-                            <select class="form-control" name="allow_br" id="allow_br">
-                                <option value="0">รอดำเนินการ</option>
-                                <option value="1">ยืม</option>
+                            <label for="exampleInputEmail1">สถานะการแจ้งซ่อม</label>
+                            <select class="form-control" name="da_repair_status" id="da_repair_status">
+                                <option value="0" selected>แจ้งซ่อม</option>
+                                <option value="1">ดำเนินการส่งซ่อม</option>
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="da_borrow_insert" class="btn btn-success">Submit</button>
+                            <button type="submit" id="da_repair_insert" class="btn btn-success">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"
                                 onclick="clear_modal()">Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
@@ -178,30 +159,26 @@
     </div>
 </div>
 
-<!-- Modal Borrow -->
-<div class="modal fade" id="da_item_borrow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- Modal Repair -->
+<div class="modal fade" id="da_item_repair" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">
-                    เลือกระยะเวลาการยืม
+                    วันที่แจ้งซ่อม
                 </h5>
             </div>
             <div class="modal-body">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">วันที่ยืม</label>
-                        <input type="date" class="form-control" name="da_borrow" id="da_borrow" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">วันที่คืน</label>
-                        <input type="date" class="form-control" name="da_return" id="da_return" required>
+                        <label for="exampleInputEmail1">วันที่แจ้ง</label>
+                        <input type="date" class="form-control" name="da_repair_btn" id="da_repair_btn" required>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info da_item_confirm_borrow">ยืม</button>
+                <button type="button" class="btn btn-info da_item_confirm_repair">แจ้งซ่อม</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
@@ -209,20 +186,20 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal fade" id="da_item_borrow_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="da_item_repair_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">
-                    ลบการยืม
+                    ลบการแจ้งซ่อม
                 </h5>
             </div>
             <div class="modal-body">
-                <span>ต้องการลบข้อมูลการยืมหรือไม่</span>
+                <span>ต้องการลบข้อมูลการแจ้งซ่อมหรือไม่</span>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info agency_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-info da_repair_confirm_delete">ลบข้อมูล</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

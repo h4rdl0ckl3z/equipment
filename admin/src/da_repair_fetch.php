@@ -6,9 +6,9 @@
     }
     include_once("./connect.php");
     $conn = connectDB();
-    $dabr_id = $_POST["id"];
-    $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
-    INNER JOIN da_items ON da_brs.da_id = da_items.da_id) WHERE dabr_id=" . $dabr_id;
+    $da_r_id = $_POST["id"];
+    $sql = "SELECT * FROM ((da_repairs INNER JOIN accounts ON da_repairs.account_id = accounts.account_id)
+    INNER JOIN da_items ON da_repairs.da_id = da_items.da_id) WHERE da_r_id=" . $da_r_id;
     $result = $conn -> query($sql);
     $row = $result -> fetch_array(MYSQLI_ASSOC);
     echo json_encode($row);
