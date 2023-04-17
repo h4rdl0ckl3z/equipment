@@ -120,3 +120,9 @@ function checkUncheck(checkBox) {
         get[i].checked = checkBox.checked;
     }
 }
+function checkUncheck2(checkBox) {
+    get = document.getElementsByName('checkbox_da_id2[]');
+    for (var i = 0; i < get.length; i++) {
+        get[i].checked = checkBox.checked;
+    }
+}

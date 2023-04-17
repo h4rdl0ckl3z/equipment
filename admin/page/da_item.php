@@ -24,9 +24,10 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถอัพโหลดรูปภาพครุณฑ์ได้จากรหัสครุภัณฑ์</span></h3>
+                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ
+                                    *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถอัพโหลดรูปภาพครุณฑ์ได้จากรหัสครุภัณฑ์</span></h3>
                         </div>
-                        <form method="post" id="delete_da_item_form">
+                        <form method="post" id="da_item_form">
                             <div class="card-body">
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <table id="Da_ItemTable" class="table table-bordered dataTable dtr-inline"
@@ -34,7 +35,7 @@
                                         <thead class="text-center">
                                             <tr>
                                                 <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                        onclick="checkUncheck(this)"></th>
+                                                        value="" onclick="checkUncheck(this)"></th>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
                                                 <th>รายการครุภัณฑ์</th>
@@ -67,7 +68,7 @@
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
-                                <button class="btn btn-danger delete_select" type="button" data-toggle="modal"
+                                <button class="btn btn-danger" type="button" data-toggle="modal"
                                     data-target="#da_item_delete_select" title="Delete">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
@@ -87,7 +88,8 @@
                                             <span>ต้องการลบครุภัณฑ์ที่เลือกหรือไม่</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info" id="da_item_delete_select">ลบข้อมูล</button>
+                                            <button type="button" class="btn btn-info delete_all"
+                                                id="da_item_delete_select">ลบข้อมูล</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">ยกเลิก</button>
                                         </div>

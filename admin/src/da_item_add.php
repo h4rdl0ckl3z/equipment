@@ -28,5 +28,4 @@
     da_annotation='$da_annotation', da_location='$da_location', da_status_ii='$da_status_ii', 
     da_type_id='$da_type_id', room_id='$room_id'";
     $conn->query($sql);
-    $conn->close();
 ?>

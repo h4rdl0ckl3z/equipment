@@ -17,6 +17,8 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
+    <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -24,17 +26,63 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;"></span></h3>
+                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ
+                                    *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถกดเพิ่มได้โดยตรง ต้องเพิ่มข้อมูลเท่านั้น</span>
+                            </h3>
                         </div>
-                        <form method="post" id="delete_da_qrcode_form">
+                        <div class="card-body">
+                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <table id="Da_ItemTable_QrCode" class="table table-bordered dataTable dtr-inline"
+                                    aria-describedby="example1_info">
+                                    <thead class="text-center">
+                                        <tr>
+                                            <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
+                                                    value="" onclick="checkUncheck(this)"></th>
+                                            <th>ลำดับ</th>
+                                            <th>รหัสครุภัณฑ์</th>
+                                            <th>รายการครุภัณฑ์</th>
+                                            <th>รูปครุภัณฑ์</th>
+                                            <th>สภาพครุภัณฑ์</th>
+                                            <th>หน่วยนับ</th>
+                                            <th>มูลค่าครุภัณฑ์ (บาท)</th>
+                                            <th>วันที่ได้มา</th>
+                                            <th>แหล่งเงิน</th>
+                                            <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
+                                            <th>หมายเหตุ/เลขครุภัณฑ์เดิม</th>
+                                            <th>สถานที่ตั้ง/จัดเก็บ</th>
+                                            <th>สถานะครุภัณฑ์</th>
+                                            <th>ประเภทครุภัณฑ์</th>
+                                            <th>รหัสห้อง</th>
+                                            <th>ประเภทห้อง</th>
+                                            <th>สาขา</th>
+                                            <th>คณะ</th>
+                                            <th>เพิ่ม QrCode</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">QrCode ครุภัณฑ์ <span style="font-size: 10pt; color: red;"></span>
+                            </h3>
+                        </div>
+                        <form method="post" id="da_qrcode_form">
                             <div class="card-body">
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <table id="Da_ItemTable" class="table table-bordered dataTable dtr-inline"
                                         aria-describedby="example1_info">
                                         <thead class="text-center">
                                             <tr>
-                                                <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                        onclick="checkUncheck(this)"></th>
+                                                <th><input type="checkbox" name="checkbox_da_id2[]" id="checkbox_da_id2" value=""
+                                                        onclick="checkUncheck2(this)"></th>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
                                                 <th>QRCode</th>
@@ -73,7 +121,8 @@
                                             <span>ต้องการสร้าง Qrcode ครุภัณฑ์ที่เลือกหรือไม่</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info" id="da_item_qrcode_select">สร้าง Qrcode</button>
+                                            <button type="submit" class="btn btn-info" id="da_item_qrcode_select">สร้าง
+                                                Qrcode</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">ยกเลิก</button>
                                         </div>
