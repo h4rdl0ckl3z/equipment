@@ -1,7 +1,7 @@
 <?php
 include_once("../admin/src/connect.php");
 $conn = connectDB();
-$da_id = $_GET["da_id"];
+$da_id = $_POST["id"];
 $sql = "SELECT * FROM (((((da_items INNER JOIN da_types ON da_items.da_type_id = da_types.da_type_id)
     INNER JOIN rooms ON da_items.room_id = rooms.room_id)
     INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
@@ -16,7 +16,7 @@ if ($result->num_rows > 0) {
         array_push($data["data"], $row);
     }
 } else {
-    echo "0 results";
+    // echo "0 results";
 }
 $conn->close();
 echo json_encode($data);
