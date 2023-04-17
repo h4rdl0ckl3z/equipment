@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Durable Articles (Sale)</h1>
+                    <h1 class="m-0">Durable Articles (QRCode)</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Durable Articles (Sale)</li>
+                        <li class="breadcrumb-item active">Durable Articles (QRCode)</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,10 +24,9 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ
-                                    *ผู้ดูแลระบบ และเจ้าหน้าที่ต้องตรวจสอบสภาพครุภัณฑ์ก่อนเปลี่ยนแปลง</span></h3>
+                            <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;"></span></h3>
                         </div>
-                        <form method="post" id="delete_da_item_form">
+                        <form method="post" id="delete_da_qrcode_form">
                             <div class="card-body">
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <table id="Da_ItemTable" class="table table-bordered dataTable dtr-inline"
@@ -38,22 +37,9 @@
                                                         onclick="checkUncheck(this)"></th>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
-                                                <th>รายการครุภัณฑ์</th>
-                                                <th>รูปครุภัณฑ์</th>
-                                                <th>สภาพครุภัณฑ์</th>
-                                                <th>หน่วยนับ</th>
-                                                <th>มูลค่าครุภัณฑ์ (บาท)</th>
-                                                <th>วันที่ได้มา</th>
-                                                <th>แหล่งเงิน</th>
-                                                <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
-                                                <th>หมายเหตุ/เลขครุภัณฑ์เดิม</th>
-                                                <th>สถานที่ตั้ง/จัดเก็บ</th>
-                                                <th>สถานะครุภัณฑ์</th>
-                                                <th>ประเภทครุภัณฑ์</th>
-                                                <th>รหัสห้อง</th>
-                                                <th>ประเภทห้อง</th>
-                                                <th>สาขา</th>
-                                                <th>คณะ</th>
+                                                <th>QRCode</th>
+                                                <th>Link</th>
+                                                <th>สถานะ</th>
                                                 <th>แก้ไข</th>
                                                 <th>ลบ</th>
                                             </tr>
@@ -67,32 +53,27 @@
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
-                                <button class="btn btn-danger delete_select" type="button" data-toggle="modal"
-                                    data-target="#da_item_delete_select" title="Delete">
-                                    <i class="fas fa-trash-alt"></i> Delete
-                                </button>
-                                <button class="btn btn-info da_year_update" type="button" data-toggle="modal"
-                                    data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
-                                    <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
+                                <button class="btn btn-info qrcode_select" type="button" data-toggle="modal"
+                                    data-target="#da_item_qrcode_select" title="Qrcode">
+                                    <i class="fas fa-qrcode"></i> Qrcode
                                 </button>
                             </div>
 
-                            <!-- Modal Delete Select -->
-                            <div class="modal fade" id="da_item_delete_select" tabindex="-1" role="dialog"
+                            <!-- Modal Qrcode Select -->
+                            <div class="modal fade" id="da_item_qrcode_select" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalCenterTitle02" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalCenterTitle02">
-                                                ลบครุภัณฑ์
+                                                สร้าง Qrcode ครุภัณฑ์
                                             </h5>
                                         </div>
                                         <div class="modal-body">
-                                            <span>ต้องการลบครุภัณฑ์ที่เลือกหรือไม่</span>
+                                            <span>ต้องการสร้าง Qrcode ครุภัณฑ์ที่เลือกหรือไม่</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info"
-                                                id="da_item_delete_select">ลบข้อมูล</button>
+                                            <button type="submit" class="btn btn-info" id="da_item_qrcode_select">สร้าง Qrcode</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">ยกเลิก</button>
                                         </div>
@@ -294,28 +275,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal DaYear -->
-<div class="modal fade" id="da_item_year" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">
-                ครุภัณฑ์ประจำปี
-                </h5>
-            </div>
-            <div class="modal-body">
-                <span>ต้องการดึงครุภัณฑ์ประจำปีหรือไม่</span>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info da_item_year_confirm">ครุภัณฑ์ประจำปี</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
