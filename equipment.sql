@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 16/04/2023 20:02:27
+ Date: 18/04/2023 20:08:58
 */
 
 SET NAMES utf8mb4;
@@ -94,13 +94,13 @@ CREATE TABLE `da_brs`  (
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `da_borrow` date NULL DEFAULT NULL,
   `da_return` date NULL DEFAULT NULL,
-  `allow_br` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานะการยืม\r\n0.รอดำเนินการ\r\n1.ยืม',
+  `allow_br` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT 'สถานะการยืม\r\n0.รอดำเนินการ\r\n1.ยืม',
   PRIMARY KEY (`dabr_id`) USING BTREE,
   INDEX `da_br_accounts`(`account_id` ASC) USING BTREE,
   INDEX `da_br_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `da_br_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `da_br_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_brs
@@ -125,6 +125,7 @@ CREATE TABLE `da_items`  (
   `da_status_ii` enum('0','1','2','3','4','5') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานะครุภัณฑ์\r\n0.ปกติ\r\n1.ยืม\r\n2.แจ้งซ่อม\r\n3.ครุภัณฑ์ห้อง\r\n4.การตัดจำหน่าย\r\n5.ตรวจสอบสภาพ',
   `da_type_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสประเภทครุภัณฑ์',
   `room_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสห้อง',
+  `qrcode_status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`da_id`) USING BTREE,
   INDEX `room_da`(`room_id` ASC) USING BTREE,
   INDEX `da_type`(`da_type_id` ASC) USING BTREE,
@@ -135,15 +136,6 @@ CREATE TABLE `da_items`  (
 -- ----------------------------
 -- Records of da_items
 -- ----------------------------
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0011', 'เก้าอี้สํานักงาน', '20230409_64325d79ec38e.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '5', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0012', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '5', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0013', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', '4', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0014', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-04-15', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', '4', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0015', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0016', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0017', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0018', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบนโยบายต่อเนื่อง)', '', '', 'สาขาวิทยาการคอมพิวเตอร์', '2', '201', 'SCI0402');
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0019', 'เก้าอี้สํานักงาน', '20230409_64325d818eadd.jpg', '0', 'ตัว', 1300.00, '2022-01-08', 'เงินรายได้ (งบ\r\nนโยบายต่อเนื่อง)', NULL, NULL, 'สาขาวิทยาการคอมพิวเตอร์', '0', '201', 'SCI0402');
 
 -- ----------------------------
 -- Table structure for da_repairs
@@ -165,8 +157,6 @@ CREATE TABLE `da_repairs`  (
 -- ----------------------------
 -- Records of da_repairs
 -- ----------------------------
-INSERT INTO `da_repairs` VALUES (1, 1, '61-21-220500-201-00007-0018', '2023-04-16', '1');
-INSERT INTO `da_repairs` VALUES (2, 1, '61-21-220500-201-00007-0014', '2023-04-16', '0');
 
 -- ----------------------------
 -- Table structure for da_types
@@ -189,14 +179,14 @@ INSERT INTO `da_types` VALUES ('201', 'ครุภัณฑ์สํานั�
 -- ----------------------------
 DROP TABLE IF EXISTS `qrcodes`;
 CREATE TABLE `qrcodes`  (
-  `qrcode_id` int NOT NULL,
-  `qrcode_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `qrcode_id` int NOT NULL AUTO_INCREMENT,
+  `qrcode_img` varbinary(200) NULL DEFAULT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `qrcode_date` date NOT NULL,
   PRIMARY KEY (`qrcode_id`) USING BTREE,
   INDEX `qrcode_da_id`(`da_id` ASC) USING BTREE,
-  CONSTRAINT `qrcode_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `qrcode_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrcodes

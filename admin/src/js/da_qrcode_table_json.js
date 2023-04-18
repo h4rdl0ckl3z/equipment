@@ -11,7 +11,7 @@ $(document).ready(function () {
         },
         columns: [
             {data: 'da_id', render: function (da_id) {
-                return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + "'" + da_id + "'" + '">';
+                return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + da_id + '">';
             }},
             {
                 data: '',
@@ -123,9 +123,6 @@ $(document).ready(function () {
             method: 'post',
         },
         columns: [
-            {data: 'qrcode_id', render: function (qrcode_id) {
-                return '<input type="checkbox" name="checkbox_da_id2[]" id="checkbox_da_id2" value="' + "'" + qrcode_id + "'" + '">';
-            }},
             {
                 data: '',
                 defaultContent: ''
@@ -144,23 +141,27 @@ $(document).ready(function () {
             {data: 'da_id', render: function (da_id) {
                 return '<a href="../da_item.html?da_id=' + da_id + '"class="btn btn-info" target="_blank">link</a>';
             }},
-            {data: 'qrcode_status', render: function (qrcode_status) {
-                check_qrcode_status = qrcode_status;
-                if (qrcode_status == '0') {
-                    return 'ไม่มี QrCode';
-                } else {
-                    return 'มี QrCode';
+            {data: 'qrcode_date', render: function (qrcode_date) {
+                function toThaiDateString(date) {
+                    let monthNames = [
+                        "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+                        "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+                        "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                    ];
+                    let monthNames_Short = [
+                        "ม.ค.", "ก.พ.", "มี.ค.", "มี.ค.",
+                        "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.",
+                        "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."
+                    ];
+
+                    let year = date.getFullYear() + 543;
+                    let month = monthNames_Short[date.getMonth()];
+                    let numOfDay = date.getDate();
+                
+                    return `${numOfDay} ${month} ${year}`;
                 }
-            }},
-            {data: 'qrcode_id', render: function (qrcode_id) {
-                return '<button type="button" name="update" id="' + qrcode_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_borrow_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
-            }},
-            {data: 'qrcode_id', render: function (qrcode_id) {
-                if (check_qrcode_status == '0') {
-                    return '<button type="button" name="delete" id="' + qrcode_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
-                } else {
-                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                }
+                let date = new Date(qrcode_date);
+                return toThaiDateString(date);
             }}
         ],
         "paging": true,
@@ -176,7 +177,7 @@ $(document).ready(function () {
     });
     table2.on('order.dt search.dt', function () {
         let i = 1;
-        table2.cells(null, 1, { search: 'applied', order: 'applied' }).every(function (cell) {
+        table2.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
             this.data(i++);
         });
     }).draw();
