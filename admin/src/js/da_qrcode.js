@@ -44,36 +44,37 @@ $(document).ready(function () {
             }
         })
     })
-    // Delete Da_Item
-    $('#Da_ItemTable').on('click', '.delete', function () {
+    // Qrcode Da_Item
+    $('#Da_ItemTable_QrCode').on('click', '.qrcode', function () {
         var uid = $(this).attr("id");
-        $('#da_item_delete').modal('show');
-        $('.da_item_confirm_delete').click(function () {
+        $('#da_item_qrcode').modal('show');
+        $('.da_item_confirm_qrcode').click(function () {
             $.ajax({
-                url: "./src/da_item_delete.php",
+                url: "./src/da_item_qrcode.php",
                 method: "post",
                 data: { id: uid },
                 success: function () {
-                    $('#da_item_delete').modal('hide');
-                    $('#Da_ItemTable').DataTable().ajax.reload();
+                    $('#da_item_qrcode').modal('hide');
+                    $('#Da_ItemTable_QrCode').DataTable().ajax.reload();
+                    $('#Da_ItemQrCodeTable').DataTable().ajax.reload();
                 }
             })
         })
     })
-    // DeleteSelect Da_Item
-    $('#da_item_form').on('click', '.delete_all', function (e) {
+    // QrCodeSelect Da_Item
+    $('#qrcode_select_form').on('click', '.qrcode_select2', function (e) {
         e.preventDefault();
-        $.ajax({
-            url: "./src/da_item_delete_select.php",
-            method: "post",
-            data: $('#da_item_form').serialize(),
-            beforeSend: function () {
-                $('#da_item_delete').val("กำลังลบ...");
-            },
-            success: function () {
-                $('#da_item_delete_select').modal('hide');
-                $('#Da_ItemTable').DataTable().ajax.reload();
-            }
+        $('.qrcode_confirm').click(function () {
+            $.ajax({
+                url: "./src/da_item_qrcode_array.php",
+                method: "post",
+                data: $('#qrcode_select_form').serialize(),
+                success: function () {
+                    $('#da_item_qrcode_select').modal('hide');
+                    $('#Da_ItemTable_QrCode').DataTable().ajax.reload();
+                    $('#Da_ItemQrCodeTable').DataTable().ajax.reload();
+                }
+            })
         })
     })
 })

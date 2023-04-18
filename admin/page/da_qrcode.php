@@ -30,38 +30,65 @@
                                     *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถกดเพิ่มได้โดยตรง ต้องเพิ่มข้อมูลเท่านั้น</span>
                             </h3>
                         </div>
-                        <div class="card-body">
-                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                <table id="Da_ItemTable_QrCode" class="table table-bordered dataTable dtr-inline"
-                                    aria-describedby="example1_info">
-                                    <thead class="text-center">
-                                        <tr>
-                                            <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                    value="" onclick="checkUncheck(this)"></th>
-                                            <th>ลำดับ</th>
-                                            <th>รหัสครุภัณฑ์</th>
-                                            <th>รายการครุภัณฑ์</th>
-                                            <th>รูปครุภัณฑ์</th>
-                                            <th>สภาพครุภัณฑ์</th>
-                                            <th>หน่วยนับ</th>
-                                            <th>มูลค่าครุภัณฑ์ (บาท)</th>
-                                            <th>วันที่ได้มา</th>
-                                            <th>แหล่งเงิน</th>
-                                            <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
-                                            <th>หมายเหตุ/เลขครุภัณฑ์เดิม</th>
-                                            <th>สถานที่ตั้ง/จัดเก็บ</th>
-                                            <th>สถานะครุภัณฑ์</th>
-                                            <th>ประเภทครุภัณฑ์</th>
-                                            <th>รหัสห้อง</th>
-                                            <th>ประเภทห้อง</th>
-                                            <th>สาขา</th>
-                                            <th>คณะ</th>
-                                            <th>เพิ่ม QrCode</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-center">
-                                    </tbody>
-                                </table>
+                        <form method="post" id="qrcode_select_form">
+                            <div class="card-body">
+                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <table id="Da_ItemTable_QrCode" class="table table-bordered dataTable dtr-inline"
+                                        aria-describedby="example1_info">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" onclick="checkUncheck(this)"></th>
+                                                <th>ลำดับ</th>
+                                                <th>รหัสครุภัณฑ์</th>
+                                                <th>รายการครุภัณฑ์</th>
+                                                <th>รูปครุภัณฑ์</th>
+                                                <th>สภาพครุภัณฑ์</th>
+                                                <th>หน่วยนับ</th>
+                                                <th>มูลค่าครุภัณฑ์ (บาท)</th>
+                                                <th>วันที่ได้มา</th>
+                                                <th>แหล่งเงิน</th>
+                                                <th>คุณสมบัติ (ยี่ห้อ/รุ่น)</th>
+                                                <th>หมายเหตุ/เลขครุภัณฑ์เดิม</th>
+                                                <th>สถานที่ตั้ง/จัดเก็บ</th>
+                                                <th>สถานะครุภัณฑ์</th>
+                                                <th>ประเภทครุภัณฑ์</th>
+                                                <th>รหัสห้อง</th>
+                                                <th>ประเภทห้อง</th>
+                                                <th>สาขา</th>
+                                                <th>คณะ</th>
+                                                <th>เพิ่ม QrCode</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                        </tbody>
+                                    </table>
+                                    <button class="btn btn-success qrcode_select2" type="button" data-toggle="modal"
+                                    data-target="#da_item_qrcode_select" title="Qrcode">
+                                        <i class="fas fa-qrcode"></i> เพิ่ม Qrcode
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Modal Qrcode Select -->
+                        <div class="modal fade" id="da_item_qrcode_select" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle02" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle02">
+                                            เพิ่ม Qrcode ครุภัณฑ์
+                                        </h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span>ต้องการเพิ่ม Qrcode ครุภัณฑ์ที่เลือกหรือไม่</span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info qrcode_confirm">เพิ่ม
+                                            Qrcode</button>
+                                        <button type="button" class="btn btn-danger"
+                                            data-dismiss="modal">ยกเลิก</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -76,13 +103,12 @@
                         </div>
                         <form method="post" id="da_qrcode_form">
                             <div class="card-body">
-                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    <table id="Da_ItemTable" class="table table-bordered dataTable dtr-inline"
+                                <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <table id="Da_ItemQrCodeTable" class="table table-bordered dataTable dtr-inline"
                                         aria-describedby="example1_info">
                                         <thead class="text-center">
                                             <tr>
-                                                <th><input type="checkbox" name="checkbox_da_id2[]" id="checkbox_da_id2" value=""
-                                                        onclick="checkUncheck2(this)"></th>
+                                                <th><input type="checkbox" name="checkbox_da_id2[]" id="checkbox_da_id2" onclick="checkUncheck2(this)"></th>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
                                                 <th>QRCode</th>
@@ -102,13 +128,13 @@
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
                                 <button class="btn btn-info qrcode_select" type="button" data-toggle="modal"
-                                    data-target="#da_item_qrcode_select" title="Qrcode">
+                                    data-target="#da_qrcode_select" title="Qrcode">
                                     <i class="fas fa-qrcode"></i> Qrcode
                                 </button>
                             </div>
 
                             <!-- Modal Qrcode Select -->
-                            <div class="modal fade" id="da_item_qrcode_select" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="da_qrcode_select" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalCenterTitle02" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -121,7 +147,7 @@
                                             <span>ต้องการสร้าง Qrcode ครุภัณฑ์ที่เลือกหรือไม่</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info" id="da_item_qrcode_select">สร้าง
+                                            <button type="button" class="btn btn-info">สร้าง
                                                 Qrcode</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">ยกเลิก</button>
@@ -324,6 +350,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Qrcode -->
+<div class="modal fade" id="da_item_qrcode" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                    เพิ่ม qrcode
+                </h5>
+            </div>
+            <div class="modal-body">
+                <span>ต้องการเพิ่ม qrcode ฑ์หรือไม่</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info da_item_confirm_qrcode">เพิ่ม</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
