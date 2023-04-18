@@ -35,7 +35,7 @@
                                         <thead class="text-center">
                                             <tr>
                                                 <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                        value="" onclick="checkUncheck(this)"></th>
+                                                    onclick="checkUncheck(this)"></th>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
                                                 <th>รายการครุภัณฑ์</th>
