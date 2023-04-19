@@ -229,7 +229,7 @@ $(document).ready(function () {
         });
     }).draw();
     new $.fn.dataTable.Buttons( table2, {
-        "buttons": ["colvis"]
+        "buttons": ["excel", "print", "colvis"]
     } );
     table2.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)', table2.table().container());
 });

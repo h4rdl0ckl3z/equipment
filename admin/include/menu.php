@@ -1,5 +1,5 @@
 <?php
-if ($row["access_level"] == '0') {
+if ($row["access_level"] == '0' or $row["access_level"] == '2') {
 ?>
 <li class="nav-item" id="1">
     <a href="./index.php" class="nav-link">
@@ -104,30 +104,59 @@ if ($row["access_level"] == '0') {
 </li>
 <li class="nav-header">รายงาน</li>
 <li class="nav-item">
+    <a href="./doc_da.php" class="nav-link">
+        <i class="nav-icon far fa-file-pdf"></i>
+        <p>
+            ครุภัณฑ์
+        </p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon far fa-file-pdf"></i>
         <p>
-            รายงานครุภัณฑ์
+            การยืม-คืนครุภัณฑ์
         </p>
     </a>
 </li>
-<li class="nav-header">ตั้งค่าระบบอื่นๆ</li>
 <li class="nav-item">
     <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-cog"></i>
+        <i class="nav-icon far fa-file-pdf"></i>
         <p>
-            ตั้งค่าระบบ
+            การจัดจำหน่ายครุภัณฑ์
         </p>
     </a>
 </li>
 <?php
-} elseif ($row["access_level"] == '2') {
+} elseif ($row["access_level"] == '1') {
 ?>
-
+<li class="nav-item" id="1">
+    <a href="./index.php" class="nav-link">
+        <i class="nav-icon fas fa-home"></i>
+        <p>
+            หน้าหลัก
+        </p>
+    </a>
+</li>
 <?php
 } else {
 ?>
-
+<li class="nav-item" id="1">
+    <a href="./index.php" class="nav-link">
+        <i class="nav-icon fas fa-home"></i>
+        <p>
+            หน้าหลัก
+        </p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="./da_borrow.php" class="nav-link">
+        <i class="nav-icon fas fa-exchange-alt"></i>
+        <p>
+            ยืม-คืนครุภัณฑ์
+        </p>
+    </a>
+</li>
 <?php
 }
 ?>
