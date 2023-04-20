@@ -18,5 +18,6 @@ include("./page/da_qrcode.php");
 include("./include/footer.php");
 ?>
 
+
 <script src="./src/js/da_qrcode_table_json.js"></script>
 <script src="./src/js/da_qrcode.js"></script>

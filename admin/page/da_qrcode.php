@@ -105,7 +105,7 @@
                         <div class="card-body">
                             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <table id="Da_ItemQrCodeTable" class="table table-bordered dataTable dtr-inline"
-                                    aria-describedby="example1_info">
+                                    aria-describedby="example1_info" style="font-family: 'THSarabun';">
                                     <thead class="text-center">
                                         <tr>
                                             <th>ลำดับ</th>
@@ -119,6 +119,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <button class="btn btn-success" onclick="Convert_HTML_To_PDF()">ดาวน์โหลด</button>
                         </div>
                     </div>
                 </div>

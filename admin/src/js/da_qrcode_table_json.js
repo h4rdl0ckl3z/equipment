@@ -138,7 +138,7 @@ $(document).ready(function () {
                     return '';
                 }
             }},
-            {data: 'da_id', render: function (da_id) {
+            {data: 'da_id', visible: false, render: function (da_id) {
                 return '<a href="../da_item.html?da_id=' + da_id + '"class="btn btn-info" target="_blank">link</a>';
             }},
             {data: 'qrcode_date', render: function (qrcode_date) {
