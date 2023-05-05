@@ -112,7 +112,7 @@ if ($row["access_level"] == '0' or $row["access_level"] == '2') {
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="./doc_da_borrow.php" class="nav-link">
         <i class="nav-icon far fa-file-pdf"></i>
         <p>
             การยืม-คืนครุภัณฑ์
@@ -120,7 +120,7 @@ if ($row["access_level"] == '0' or $row["access_level"] == '2') {
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link">
+    <a href="./doc_da_sale.php" class="nav-link">
         <i class="nav-icon far fa-file-pdf"></i>
         <p>
             การจัดจำหน่ายครุภัณฑ์
@@ -135,6 +135,31 @@ if ($row["access_level"] == '0' or $row["access_level"] == '2') {
         <i class="nav-icon fas fa-home"></i>
         <p>
             หน้าหลัก
+        </p>
+    </a>
+</li>
+<li class="nav-header">รายงาน</li>
+<li class="nav-item">
+    <a href="./doc_da.php" class="nav-link">
+        <i class="nav-icon far fa-file-pdf"></i>
+        <p>
+            ครุภัณฑ์
+        </p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="./doc_da_borrow.php" class="nav-link">
+        <i class="nav-icon far fa-file-pdf"></i>
+        <p>
+            การยืม-คืนครุภัณฑ์
+        </p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="./doc_da_sale.php" class="nav-link">
+        <i class="nav-icon far fa-file-pdf"></i>
+        <p>
+            การจัดจำหน่ายครุภัณฑ์
         </p>
     </a>
 </li>
