@@ -26,14 +26,23 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
+                <!-- <h3>150</h3> -->
+                <?php
+                    include_once("./src/connect.php");
+                    $conn = connectDB();
+                    $sql = "SELECT COUNT(da_id) AS count_da_id FROM da_items";
+                    $objQuery = mysqli_query($conn, $sql);
+                    $row = mysqli_num_rows($objQuery);
+                    if($row) {
+                        $res = mysqli_fetch_assoc($objQuery);
+                    }
+                    echo '<h3>' . $res["count_da_id"] . '</h3>';
+                ?>
+                <p>ครุภัณฑ์ทั้งหมด</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-cube"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -41,29 +50,23 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
+                <!-- <h3>53<sup style="font-size: 20px">%</sup></h3> -->
+                <?php
+                    include_once("./src/connect.php");
+                    $conn = connectDB();
+                    $sql = "SELECT COUNT(dabr_id) AS count_dabr_id FROM da_brs";
+                    $objQuery = mysqli_query($conn, $sql);
+                    $row = mysqli_num_rows($objQuery);
+                    if($row) {
+                        $res = mysqli_fetch_assoc($objQuery);
+                    }
+                    echo '<h3>' . $res["count_dabr_id"] . '</h3>';
+                ?>
+                <p>ยืม-คืนครุภัณฑ์</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-arrow-swap"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>ผู้ใช้งานในระบบทั้งหมด</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
@@ -71,17 +74,52 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
-
-                <p>Unique Visitors</p>
+                <!-- <h3>65</h3> -->
+                <?php
+                    include_once("./src/connect.php");
+                    $conn = connectDB();
+                    $sql = "SELECT COUNT(da_r_id) AS count_da_r_id FROM da_repairs";
+                    $objQuery = mysqli_query($conn, $sql);
+                    $row = mysqli_num_rows($objQuery);
+                    if($row) {
+                        $res = mysqli_fetch_assoc($objQuery);
+                    }
+                    echo '<h3>' . $res["count_da_r_id"] . '</h3>';
+                ?>
+                <p>แจ้งซ่อม</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-settings"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <!-- <h3>44</h3> -->
+                <?php
+                    include_once("./src/connect.php");
+                    $conn = connectDB();
+                    $sql = "SELECT COUNT(account_id) AS count_account FROM accounts";
+                    $objQuery = mysqli_query($conn, $sql);
+                    $row = mysqli_num_rows($objQuery);
+                    if($row) {
+                        $res = mysqli_fetch_assoc($objQuery);
+                    }
+                    echo '<h3>' . $res["count_account"] . '</h3>';
+                ?>
+
+                <p>ผู้ใช้งานในระบบทั้งหมด</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person"></i>
+              </div>
+              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+            </div>
+          </div>
         </div>
         <!-- /.row -->
         <!-- Main row -->
