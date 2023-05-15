@@ -5,7 +5,7 @@ if ($row["access_level"] == '0' or $row["access_level"] == '2') {
     <a href="./index.php" class="nav-link">
         <i class="nav-icon fas fa-home"></i>
         <p>
-            หน้าหลัก
+            Dashboard
         </p>
     </a>
 </li>
@@ -170,7 +170,7 @@ if ($row["access_level"] == '0' or $row["access_level"] == '2') {
     <a href="./index.php" class="nav-link">
         <i class="nav-icon fas fa-home"></i>
         <p>
-            หน้าหลัก
+            Dashboard
         </p>
     </a>
 </li>
