@@ -91,9 +91,9 @@ $(document).ready(function () {
             {data: 'da_id', render: function (da_id) {
                 return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
             }},
-            {data: 'da_id', visible: false, render: function (da_id) {
-                return '<a href="../da_item.html?da_id=' + da_id + '" class="btn btn-info" target="_blank" title="API"><i class="fas fa-qrcode"></i></a>';
-            }}
+            // {data: 'da_id', visible: false, render: function (da_id) {
+            //     return '<a href="../da_item.html?da_id=' + da_id + '" class="btn btn-info" target="_blank" title="API"><i class="fas fa-qrcode"></i></a>';
+            // }}
         ],
         "paging": true,
         "lengthChange": true,
