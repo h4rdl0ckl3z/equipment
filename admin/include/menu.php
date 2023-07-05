@@ -1,5 +1,5 @@
 <?php
-if ($row["access_level"] == '0' or $row["access_level"] == '2') {
+if ($row["access_level"] = '0' or $row["access_level"] = '2') {
 ?>
 <li class="nav-item" id="1">
     <a href="./index.php" class="nav-link">
@@ -128,7 +128,7 @@ if ($row["access_level"] == '0' or $row["access_level"] == '2') {
     </a>
 </li>
 <?php
-} elseif ($row["access_level"] == '1') {
+} elseif ($row["access_level"] = '1') {
 ?>
 <li class="nav-item" id="1">
     <a href="./index.php" class="nav-link">
