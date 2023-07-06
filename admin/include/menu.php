@@ -191,14 +191,6 @@ echo '
         </p>
     </a>
 </li>
-<li class="nav-item">
-    <a href="./agency.php" class="nav-link">
-        <i class="nav-icon fa fa-map-pin"></i>
-        <p>
-            สาขา
-        </p>
-    </a>
-</li>
 <li class="nav-header">จัดการห้อง</li>
 <li class="nav-item">
     <a href="./room.php" class="nav-link">
