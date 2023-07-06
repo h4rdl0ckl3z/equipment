@@ -1,9 +1,15 @@
 $(document).ready(function () {
     var check_allow_br = '';
+    var agency_id = document.getElementById('agency_id');
+    var access_level = document.getElementById('access_level');
     var table2 = $('#Da_BorrowTable').DataTable({
         ajax: {
             url: './src/doc_da_borrow_select.php',
-            method: 'post'
+            method: 'post',
+            data: {
+                agency_id: agency_id.value,
+                access_level: access_level.value
+            }
         },
         columns: [
             {
