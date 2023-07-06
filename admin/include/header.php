@@ -82,7 +82,18 @@
       <!-- Brand Logo -->
       <a href="javascript:void(0);" class="brand-link">
         <img src="../logo/SciTech-G.png" alt="SCI Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">ผู้ดูแลระบบ</span>
+        <span class="brand-text font-weight-light">
+          <?php
+            if ($row['access_level'] == 0)
+            echo 'ผู้ดูแลระบบ';
+            if ($row['access_level'] == 1)
+            echo 'ผู้บริหาร';
+            if ($row['access_level'] == 2)
+            echo 'เจ้าหน้าที่';
+            if ($row['access_level'] == 3)
+            echo 'ผู้ใช้งาน';
+          ?>
+        </span>
       </a>
 
       <!-- Sidebar -->
