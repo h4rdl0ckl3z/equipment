@@ -1,5 +1,7 @@
 $(document).ready(function () {
     var check_da_status_ii = '';
+    var agency_id = document.getElementById('agency_id');
+    var access_level = document.getElementById('access_level');
     var table = $('#Da_ItemTable_QrCode').DataTable({
         ajax: {
             url: './src/da_item_qrcode_select.php',
