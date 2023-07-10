@@ -107,6 +107,10 @@
 <!-- /.content-wrapper -->
 <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
 <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
+<?php
+    $agency_id = $row['agency_id'];
+    $access_level = $row['access_level'];
+?>
 <!-- Modal Add $Edit-->
 <div class="modal fade" id="da_item_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -250,7 +254,12 @@
                                             <?php
                                             include_once("./src/connect.php");
                                             $conn = connectDB();
-                                            $sql = "SELECT * FROM rooms";
+                                            if ($access_level == 0) {
+                                                $sql = "SELECT * FROM rooms";
+                                            } else {
+                                                $sql = "SELECT * FROM rooms WHERE agency_id = '$agency_id'";
+                                            }
+                                            
                                             $result = $conn->query($sql);
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {

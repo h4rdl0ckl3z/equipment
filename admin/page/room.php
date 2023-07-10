@@ -62,6 +62,11 @@
 </div>
 <!-- /.content-wrapper -->
 
+<?php
+    $agency_id = $row['agency_id'];
+    $access_level = $row['access_level'];
+?>
+
 <!-- Modal Add $Edit-->
 <div class="modal fade" id="room_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -102,19 +107,24 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">คณะ/สาขา</label>
                             <select class="form-control" name="agency_id" id="agency_id" required>
-                                        <?php
-                                        include_once("./src/connect.php");
-                                        $conn = connectDB();
+                                <?php
+                                    include_once("./src/connect.php");
+                                    $conn = connectDB();
+                                    if ($access_level == 0) {
                                         $sql = "SELECT * FROM agencys";
-                                        $result = $conn->query($sql);
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo '<option value="' . $row["agency_id"] . '">' . $row["agency_name"] . '</option>';
-                                            }
+                                    } else {
+                                        $sql = "SELECT * FROM agencys WHERE agency_id = '$agency_id'";
+                                    }
+                                    
+                                    $result = $conn->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<option value="' . $row["agency_id"] . '">' . $row["agency_name"] . '</option>';
                                         }
-                                        $conn->close();
-                                        ?>
-                                    </select>
+                                    }
+                                    $conn->close();
+                                ?>
+                            </select>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" id="room_insert" class="btn btn-success">Submit</button>
