@@ -44,16 +44,18 @@ $(document).ready(function () {
                 }
             }},
             {data: 'account_id', render: function(account_id) {
-                if (check_access_level == '0') {
-                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';   
+                if (access_level.value != '0') {
+                    if (check_access_level != '3') {
+                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                    } else {
+                        return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
+                    }
                 } else {
-                    return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
-                }
-                // access_level 1,2
-                if (check_access_level == '1' || check_access_level == '2') {
-                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                } else {
-                    return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
+                    if (check_access_level != '0') {
+                        return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
+                    } else {
+                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                    }
                 }
             }},
             {data: 'account_id', render: function(account_id) {
