@@ -6,8 +6,16 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)
-  INNER JOIN agencys ON accounts.agency_id = agencys.agency_id)";
+  $agency_id = $_POST["agency_id"];
+  $access_level = $_POST["access_level"];
+  if ($access_level == 0) {
+    $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)
+    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id)";
+  } else {
+    $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)
+    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE accounts.agency_id = '$agency_id'";
+  }
+  
   $result = $conn -> query($sql);
   $data = array("data"=>array());
   if ($result->num_rows > 0) {
