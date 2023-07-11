@@ -47,7 +47,11 @@ $(document).ready(function () {
                 if (check_access_level == '0') {
                     return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';   
                 } else {
-                    return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
+                    if (check_access_level == '1' || check_access_level == '2') {
+                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                    } else {
+                        return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
+                    }
                 }
             }},
             {data: 'account_id', render: function(account_id) {
