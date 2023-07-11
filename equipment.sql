@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 18/04/2023 20:57:32
+ Date: 11/07/2023 15:32:33
 */
 
 SET NAMES utf8mb4;
@@ -45,7 +45,7 @@ CREATE TABLE `accounts`  (
 INSERT INTO `accounts` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Avatart0Dev', '20230409_64325a4ae006c.png', 'Bangkok', '0981111111', '0', 1, '22050000');
 INSERT INTO `accounts` VALUES (2, 'tester', '202cb962ac59075b964b07152d234b70', 'Tester', 'profile.png', 'Bangkok', '0981111112', '1', 3, '22020000');
 INSERT INTO `accounts` VALUES (3, 'asd', '7815696ecbf1c96e6894b779456d330e', 'asd eiei03', 'profile.png', 'asd', 'asd', '3', 2, '22050000');
-INSERT INTO `accounts` VALUES (4, 'asd02', '7815696ecbf1c96e6894b779456d330e', 'asd eiei02', 'profile.png', 'asd', '123', '3', 4, '22050000');
+INSERT INTO `accounts` VALUES (4, 'asd02', '7815696ecbf1c96e6894b779456d330e', 'asd eiei02', 'profile.png', 'asd', '123', '2', 4, '22050000');
 INSERT INTO `accounts` VALUES (5, 'tester03', '202cb962ac59075b964b07152d234b70', 'Tester03', 'profile.png', 'BKK', '123', '2', 4, '22010000');
 
 -- ----------------------------
@@ -100,11 +100,12 @@ CREATE TABLE `da_brs`  (
   INDEX `da_br_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `da_br_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `da_br_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_brs
 -- ----------------------------
+INSERT INTO `da_brs` VALUES (1, 3, '61-21-220500-201-00007-0001', '2023-07-10', '2023-07-14', '0');
 
 -- ----------------------------
 -- Table structure for da_items
@@ -114,7 +115,7 @@ CREATE TABLE `da_items`  (
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสครุภัณฑ์',
   `da_lists` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รายการครุภัณฑ์',
   `da_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'รูปภาพครุภัณฑ์',
-  `da_status_i` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'สภาพครุภัณฑ์\r\n0.ปกติ\r\n1.ชำรุด\r\n2.เสื่อมคุณถาพ\r\n3.สูญหาย',
+  `da_status_i` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'สภาพครุภัณฑ์\r\n0.ปกติ\r\n1.ชำรุด\r\n2.เสื่อมสภาพ\r\n3.สูญหาย',
   `da_unit` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'หน่วยนับ',
   `da_rates` decimal(10, 2) NOT NULL,
   `da_date` date NOT NULL COMMENT 'วันที่ได้มา',
@@ -136,7 +137,7 @@ CREATE TABLE `da_items`  (
 -- ----------------------------
 -- Records of da_items
 -- ----------------------------
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0001', 'เก้าอี้สํานักงาน', NULL, '0', 'ตัว', 1300.00, '2023-04-18', 'เงินรายได้ (งบ นโยบายต่อเนื่อง)', '', '', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '3', '201', 'CS0201', '0');
+INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0001', 'เก้าอี้สํานักงาน', NULL, '0', 'ตัว', 1300.00, '2023-04-18', 'เงินรายได้ (งบ นโยบายต่อเนื่อง)', '', '', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '0', '201', 'CS0201', '0');
 
 -- ----------------------------
 -- Table structure for da_repairs

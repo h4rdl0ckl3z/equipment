@@ -151,7 +151,7 @@
                                         <select class="form-control" name="da_status_i" id="da_status_i" required>
                                             <option value="0" selected>ปกติ</option>
                                             <option value="1">ชำรุด</option>
-                                            <option value="2">เสื่อมคุณถาพ</option>
+                                            <option value="2">เสื่อมสภาพ</option>
                                             <option value="3">สูญหาย</option>
                                         </select>
                                     </div>
