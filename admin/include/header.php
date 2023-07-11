@@ -4,18 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>
-    <?php
-      if ($row['access_level'] == 0)
-      echo 'ผู้ดูแลระบบ';
-      if ($row['access_level'] == 1)
-      echo 'ผู้บริหาร';
-      if ($row['access_level'] == 2)
-      echo 'เจ้าหน้าที่';
-      if ($row['access_level'] == 3)
-      echo 'ผู้ใช้งาน';
-    ?>
-  </title>
+  <title>ระบบบริหารครุภัณฑ์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏสุราษฎร์ธานี</title>
 
   <!-- icon tab -->
   <link rel="shortcut icon" href="../logo/SciTech-G.png" type="image/x-icon">
