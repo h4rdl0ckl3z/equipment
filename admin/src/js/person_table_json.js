@@ -2,6 +2,7 @@ $(document).ready(function () {
     var check_access_level = '';
     var agency_id = document.getElementById('agency_id');
     var access_level = document.getElementById('access_level');
+    var account_id_2 = document.getElementById('account_id');
     var table = $('#PersonTable').DataTable({
         ajax: {
             url: './src/profile_select.php',
@@ -40,7 +41,11 @@ $(document).ready(function () {
                 if (check_access_level == '0') {
                     return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
                 } else {
-                    return '<button type="button" name="update" id="' + account_id + '"class="btn btn-warning update" title="แก้ไข" onclick="person_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                    if (account_id == account_id_2.value) {
+                        return '<button type="button" name="update" id="' + account_id + '"class="btn btn-warning update" title="แก้ไข" onclick="person_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                    } else {
+                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                    }
                 }
             }},
             {data: 'account_id', render: function(account_id) {
