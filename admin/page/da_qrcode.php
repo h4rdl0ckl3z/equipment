@@ -99,7 +99,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">QrCode ครุภัณฑ์ <span style="font-size: 10pt; color: red;"></span>
+                            <h3 class="card-title">QrCode ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ *QrCode จะถูกลบก็ต่อเมื่อลบครุภัณฑ์</span>
                             </h3>
                         </div>
                         <div class="card-body">
