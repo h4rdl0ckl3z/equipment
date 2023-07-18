@@ -106,6 +106,11 @@
 </div>
 <!-- /.content-wrapper -->
 
+<?php
+    $agency_id = $row['agency_id'];
+    $access_level = $row['access_level'];
+?>
+
 <!-- Modal Add $Edit-->
 <div class="modal fade" id="da_borrow_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -129,7 +134,11 @@
                                 <?php
                                 include_once("./src/connect.php");
                                 $conn = connectDB();
-                                $sql = "SELECT * FROM accounts";
+                                if ($access_level == 0) {
+                                    $sql = "SELECT * FROM accounts";
+                                } else {
+                                    $sql = "SELECT * FROM accounts WHERE access_level <> '0' AND agency_id ='$agency_id'";
+                                }
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
