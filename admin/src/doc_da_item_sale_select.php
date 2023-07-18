@@ -8,7 +8,7 @@
   $conn = connectDB();
   $agency_id = $_POST["agency_id"];
   $access_level = $_POST["access_level"];
-  if ($access_level == 0) {
+  if ($access_level == 0 || $access_level == 1) {
     $sql = "SELECT * FROM (((((da_items INNER JOIN da_types ON da_items.da_type_id = da_types.da_type_id)
     INNER JOIN rooms ON da_items.room_id = rooms.room_id)
     INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
