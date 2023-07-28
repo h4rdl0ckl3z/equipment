@@ -84,7 +84,6 @@
 
 <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
 <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
-<input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
 
 <!-- Modal Add $Edit-->
 <div class="modal fade" id="person_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
