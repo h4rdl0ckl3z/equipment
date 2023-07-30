@@ -151,14 +151,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">รหัสผ่าน</label>
-                                        <input type="text" class="form-control" name="passwd" id="passwd"
+                                        <input type="password" class="form-control" name="passwd" id="passwd"
                                             placeholder="รหัสผ่าน" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ยืนยันรหัสผ่าน</label>
-                                        <input type="text" class="form-control" name="passwd2" id="passwd2"
+                                        <input type="password" class="form-control" name="passwd2" id="passwd2"
                                             placeholder="รหัสผ่าน" required>
                                     </div>
                                 </div>
