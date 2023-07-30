@@ -1,6 +1,6 @@
 # equipment ระบบยริหารครุภัณฑ์ มหาวิทยาลัยราชภัฏสุราษฎร์ธานี คณะวิทยาศาสตร์และเทคโนโลยี
 
-# QRCode
+# QRCode Library
     https://phpqrcode.sourceforge.net/
 
 # Username
