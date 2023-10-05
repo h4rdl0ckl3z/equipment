@@ -21,7 +21,7 @@ $(document).ready(function () {
                     setTimeout(function() {
                         Swal.fire({
                             icon: 'success',
-                            title: 'เพิ่มผู้ใช้งาน',
+                            title: 'เพิ่มข้อมูลผู้ใช้งาน',
                             text: 'ระบบเพิ่มข้อมูลผู้ใช้งานสำเร็จ',
                             timer: 1200,
                             showConfirmButton: false
@@ -31,7 +31,7 @@ $(document).ready(function () {
                     setTimeout(function() {
                         Swal.fire({
                             icon: 'success',
-                            title: 'อัพเดทผู้ใช้งาน',
+                            title: 'อัพเดทข้อมูลผู้ใช้งาน',
                             text: 'ระบบอัพเดทข้อมูลผู้ใช้งานสำเร็จ',
                             timer: 1200,
                             showConfirmButton: false
@@ -42,7 +42,7 @@ $(document).ready(function () {
                         Swal.fire({
                             icon: 'error',
                             title: 'เพิ่มผู้ใช้งานไม่สำเร็จ',
-                            text: 'ชื่อผู้ใช้งานนี้มีอยู่ในระบบแล้ว',
+                            text: 'มีชื่อผู้ใช้งานนี้มีอยู่ในระบบแล้ว',
                             timer: 1200,
                             showConfirmButton: false
                         })
@@ -99,6 +99,15 @@ $(document).ready(function () {
                 success: function () {
                     $('#person_delete').modal('hide');
                     $('#PersonTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ลบข้อมูลผู้ใช้งาน',
+                            text: 'ระบบลบข้อมูลผู้ใช้งานเรียบร้อย',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })
