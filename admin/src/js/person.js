@@ -10,12 +10,46 @@ $(document).ready(function () {
             beforeSend: function () {
                 $('#person_insert').val("กำลังบันทึก...");
             },
-            success: function () {
+            success: function (data) {
                 $('#insert_person_form')[0].reset();
                 $('#person_add').modal('hide');
                 $('#PersonTable').DataTable().ajax.reload();
+                // console.log(data);
+                let user = JSON.parse(data);
+                var account_id = document.getElementById('account_id').value;
+                if (user == null) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มผู้ใช้งาน',
+                            text: 'ระบบเพิ่มข้อมูลผู้ใช้งานสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else if (user.account_id == account_id) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'อัพเดทผู้ใช้งาน',
+                            text: 'ระบบอัพเดทข้อมูลผู้ใช้งานสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เพิ่มผู้ใช้งานไม่สำเร็จ',
+                            text: 'ชื่อผู้ใช้งานนี้มีอยู่ในระบบแล้ว',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
             }
-        })
+        })       
     })
     // Person View
     $('#PersonTable').on('click', '.view', function () {
@@ -42,6 +76,7 @@ $(document).ready(function () {
                 $('#person_add').modal('show');
                 $('#account_id').val(data.account_id);
                 $('#username').val(data.username);
+                $('#name_title').val(data.name_title);
                 $('#fullname').val(data.fullname);
                 $('#address').val(data.address);
                 $('#phone').val(data.phone);

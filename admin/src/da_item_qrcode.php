@@ -10,8 +10,13 @@ $conn = connectDB();
 $conn2 = connectDB();
 $da_id = $_POST["id"];
 $hostname = $_SERVER['HTTP_HOST'];
-$str = $hostname . "/da_item.html?da_id=" . $da_id;
-// echo $str;
+
+if (filter_var($hostname, FILTER_VALIDATE_IP)) {
+    $str = $hostname . "/equipment/da_item.html?da_id=" . $da_id;
+} else {
+    $str = $hostname . "/da_item.html?da_id=" . $da_id;
+}
+
 $file = date("Ymd") . "_" . uniqid();
 QRcode::png($str, "../../upload/qrcode/" . $file . ".png");
 $sql = "INSERT INTO qrcodes (da_id, qrcode_img, qrcode_date) VALUES ('$da_id', '$file.png', DATE(NOW()))";

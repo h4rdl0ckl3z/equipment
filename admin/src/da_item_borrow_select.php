@@ -19,7 +19,7 @@
     INNER JOIN rooms ON da_items.room_id = rooms.room_id)
     INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
     INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
-    INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE agencys.agency_id='$agency_id' AND da_status_ii='0'";
+    INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE da_status_ii='0'";     // agencys.agency_id='$agency_id' AND
   }
   $result = $conn -> query($sql);
   $data = array("data"=>array());

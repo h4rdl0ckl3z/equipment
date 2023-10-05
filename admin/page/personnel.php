@@ -33,6 +33,7 @@
                                     <thead class="text-center">
                                         <tr>
                                             <th>ลำดับ</th>
+                                            <th>คำนำหน้า</th>
                                             <th>ชื่อ-สกุล</th>
                                             <th>ที่อยู่</th>
                                             <th>เบอร์โทร</th>
@@ -44,22 +45,9 @@
                                             <th>เพิ่มเติม</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-center" id="tbody">
+                                    <tbody class="" id="tbody">
 
                                     </tbody>
-                                    <!-- <tfoot class="text-center">
-                                        <tr>
-                                            <th>ลำดับ</th>
-                                            <th>ชื่อ-สกุล</th>
-                                            <th>ที่อยู่</th>
-                                            <th>เบอร์โทร</th>
-                                            <th>แผนก</th>
-                                            <th>ระดับผู้ใช้งาน</th>
-                                            <th>แก้ไข</th>
-                                            <th>ลบ</th>
-                                            <th>เพิ่มเติม</th>
-                                        </tr>
-                                    </tfoot> -->
                                 </table>
                             </div>
                             <!-- Button trigger modal -->
@@ -102,21 +90,29 @@
                     <form method="post" id="insert_person_form">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-auto">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">คำนำหน้า</label>
+                                        <select class="form-control" name="name_title" id="name_title" required>
+                                            <option value="นาย" selected>นาย</option>
+                                            <option value="นาง">นาง</option>
+                                            <option value="นางสาว">นางสาว</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
                                     <input type="hidden" name="account_id" id="account_id">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ชื่อ-สกุล</label>
                                         <input type="text" class="form-control" name="fullname" id="fullname"
-                                            placeholder="ชื่อ-สกุล" required>
-                                    </div>
+                                            placeholder="ชื่อ-สกุล (ภาษาไทย)" required>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">เบอร์โทร</label>
-                                        <input type="text" class="form-control" name="phone" id="phone"
-                                            placeholder="เบอร์โทร" required>
-                                    </div>
-                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">เบอร์โทร</label>
+                                <input type="tel" class="form-control" name="phone" id="phone" pattern="[0-9]{10}" maxlength="10" size="10"
+                                    placeholder="เบอร์โทร" required title="กรุณากรอกเบอร์โทรศัพท์">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">ที่อยู่</label>
@@ -159,7 +155,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">ยืนยันรหัสผ่าน</label>
                                         <input type="password" class="form-control" name="passwd2" id="passwd2"
-                                            placeholder="รหัสผ่าน" required>
+                                            placeholder="กรอกรหัสผ่านอีกครั้ง" required>
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +200,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="locat_insert" class="btn btn-success">Submit</button>
+                            <button type="submit" id="person_insert" class="btn btn-success">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"
                                 onclick="clear_modal()">Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>

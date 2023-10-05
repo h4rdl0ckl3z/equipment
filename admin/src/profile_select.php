@@ -11,9 +11,9 @@
   if ($access_level == 0) {
     $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)
     INNER JOIN agencys ON accounts.agency_id = agencys.agency_id)";
-  } else {
+  } elseif ($access_level == 2) {
     $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)
-    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE accounts.agency_id = '$agency_id'";
+    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE access_level <> '$access_level' AND access_level <> '0'";
   }
   
   $result = $conn -> query($sql);

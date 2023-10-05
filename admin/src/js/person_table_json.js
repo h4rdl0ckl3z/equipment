@@ -16,9 +16,21 @@ $(document).ready(function () {
                 data: '',
                 defaultContent: ''
             },
+            {data: 'name_title'},
             {data: 'fullname'},
-            {data: 'address'},
-            {data: 'phone'},
+            {data: 'address', visible: false},
+            {data: 'phone', render: function(phone) {
+                if(typeof(phone) !== 'string') phone = phone.toString()
+                if(phone.length === 10){
+                  return phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+                } else if(phone.length < 10) {
+                  return 'was not supplied enough numbers please pass a 10 digit number'
+                } else if(phone.length > 10) {
+                  return 'was supplied too many numbers please pass a 10 digit number'
+                } else {
+                  return 'something went wrong'
+                }
+            }},
             {data: 'section_name'},
             {data: 'agency_name'},
             {data: 'access_level', render: function(access_level) {
@@ -37,41 +49,21 @@ $(document).ready(function () {
                 }
             }},
             {data: 'account_id', render: function(account_id) {
-                if (access_level.value != '0') {
-                    if (check_access_level != '3') {
-                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                    } else {
-                        return '<button type="button" name="update" id="' + account_id + '"class="btn btn-warning update" title="แก้ไข" onclick="person_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
-                    }
+                if (check_access_level == '0') {
+                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
                 } else {
-                    if (check_access_level != '0') {
-                        return '<button type="button" name="update" id="' + account_id + '"class="btn btn-warning update" title="แก้ไข" onclick="person_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
-                    } else {
-                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                    }
-                }
-            }},
-            {data: 'account_id', render: function(account_id) {
-                if (access_level.value != '0') {
-                    if (check_access_level != '3') {
-                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                    } else {
-                        return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
-                    }
-                } else {
-                    if (check_access_level != '0') {
-                        return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
-                    } else {
-                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                    }
+                    return '<button type="button" name="update" id="' + account_id + '"class="btn btn-warning update" title="แก้ไข" onclick="person_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
                 }
             }},
             {data: 'account_id', render: function(account_id) {
                 if (check_access_level == '0') {
                     return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
                 } else {
-                    return '<button type="button" name="view" id="' + account_id + '"class="btn btn-info view" title="เพิ่มเติม"><i class="far fa-id-card"></i></button>';
+                    return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
                 }
+            }},
+            {data: 'account_id', render: function(account_id) {
+                return '<button type="button" name="view" id="' + account_id + '"class="btn btn-info view" title="เพิ่มเติม"><i class="far fa-id-card"></i></button>';
             }}
         ],
         "paging": true,
