@@ -10,7 +10,7 @@ $conn = connectDB();
 $conn2 = connectDB();
 $da_id = $_POST["id"];
 $hostname = $_SERVER['HTTP_HOST'];
-$str = $hostname . "/equipment/da_item.html?da_id=" . $da_id;
+$str = $hostname . "/da_item.html?da_id=" . $da_id;
 // echo $str;
 $file = date("Ymd") . "_" . uniqid();
 QRcode::png($str, "../../upload/qrcode/" . $file . ".png");
