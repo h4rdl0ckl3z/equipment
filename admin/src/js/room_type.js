@@ -10,10 +10,43 @@ $(document).ready(function () {
             beforeSend: function () {
                 $('#room_type_insert').val("กำลังบันทึก...");
             },
-            success: function () {
+            success: function (data) {
                 $('#insert_room_type_form')[0].reset();
                 $('#room_type_add').modal('hide');
                 $('#Room_TypeTable').DataTable().ajax.reload();
+                let room_type = JSON.parse(data);
+                let room_type_id = document.getElementById('room_type_id').value;
+                if (room_type == null) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลประเภทห้อง',
+                            text: 'ระบบเพิ่มข้อมูลประเภทห้องสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else if (room_type.room_type_id == room_type_id) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'อัพเดทข้อมูลประเภทห้อง',
+                            text: 'ระบบอัพเดทข้อมูลประเภทห้องสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เพิ่มผู้ประเภทห้องไม่สำเร็จ',
+                            text: 'มีชื่อประเภทห้องนี้มีอยู่ในระบบแล้ว',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
             }
         })
     })
@@ -45,6 +78,15 @@ $(document).ready(function () {
                 success: function () {
                     $('#room_type_delete').modal('hide');
                     $('#Room_TypeTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ลบข้อมูลประเภทห้อง',
+                            text: 'ระบบลบข้อมูลประเภทห้องเรียบร้อย',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })
@@ -54,10 +96,10 @@ $(document).ready(function () {
 // Update Modal-Title
 
 function room_type_add_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มประเภทห้อง";
+    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มประเภทประเภทห้อง";
 }
 function room_type_edit_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขประเภทห้อง";
+    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขประเภทประเภทห้อง";
 }
 
 // Clear Modal

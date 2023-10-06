@@ -1,14 +1,8 @@
 $(document).ready(function () {
-    var agency_id = document.getElementById('agency_id');
-    var access_level = document.getElementById('access_level');
     var table = $('#RoomTable').DataTable({
         ajax: {
             url: './src/room_select.php',
             method: 'post',
-            data: {
-                agency_id: agency_id.value,
-                access_level: access_level.value
-            }
         },
         columns: [
             {
