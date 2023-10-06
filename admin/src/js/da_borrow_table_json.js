@@ -1,23 +1,27 @@
 $(document).ready(function () {
-    var agency_id = document.getElementById('agency_id');
-    var access_level = document.getElementById('access_level');
-    // console.log(access_level.value);
-    var check_da_status_ii = '';
     var table = $('#Da_ItemTable_Borrow').DataTable({
         ajax: {
             url: './src/da_item_borrow_select.php',
             method: 'post',
-            data: {
-                agency_id: agency_id.value,
-                access_level: access_level.value
-            }
         },
         columns: [
             {
                 data: '',
                 defaultContent: ''
             },
-            {data: 'da_id'},
+            {data: 'da_id', render: function (da_id) {
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return pat_daid;
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
+            }},
             {data: 'da_lists'},
             {data: 'da_img', visible: false, render: function (da_img) {
                 if (da_img != null) {
@@ -70,15 +74,15 @@ $(document).ready(function () {
             {data: 'da_location'},
             {data: 'da_status_ii', render: function (da_status_ii) {
                 if (da_status_ii == '0') {
-                    check_da_status_ii = da_status_ii;
                     return 'ปกติ';
                 } else if (da_status_ii == '1') {
-                    check_da_status_ii = da_status_ii;
                     return 'ยืม';
                 } else if (da_status_ii == '2') {
                     return 'แจ้งซ่อม';
+                } else if (da_status_ii == '3') {
+                    return 'การตัดจำหน่าย';
                 } else {
-                    return 'ครุภัณฑ์ห้อง';
+                    return 'ตรวจสอบสภาพ';
                 }
             }},
             {data: 'da_type_name', visible: false},
@@ -87,15 +91,7 @@ $(document).ready(function () {
             {data: 'agency_name', visible: false},
             {data: 'community_name', visible: false},
             {data: 'da_id', render: function (da_id) {
-                if (access_level.value == '0' || access_level.value == '2') {
-                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                } else {
-                    if (check_da_status_ii == '0') {
-                        return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ยืม"><i class="fas fa-archive"></i></button>';
-                    } else {
-                        return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                    }
-                }
+                return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ยืม"><i class="fas fa-archive"></i></button>';
             }}
         ],
         "paging": true,
@@ -123,18 +119,10 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    var agency_id = document.getElementById('agency_id');
-    var access_level = document.getElementById('access_level');
-    var check_allow_br = '';
-    // console.log(access_level.value);
     var table2 = $('#Da_BorrowTable').DataTable({
         ajax: {
             url: './src/da_borrow_select.php',
             method: 'post',
-            data: {
-                agency_id: agency_id.value,
-                access_level: access_level.value
-            }
         },
         columns: [
             {

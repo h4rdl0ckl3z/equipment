@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('#insert_da_borrow_form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: "./src/da_borrow_add.php",
+            url: "./src/da_borrow_update.php",
             method: "post",
             data: $('#insert_da_borrow_form').serialize(),
             beforeSend: function () {
@@ -59,9 +59,10 @@ $(document).ready(function () {
     // Da_Item Borrow
     $('#Da_ItemTable_Borrow').on('click', '.borrow', function () {
         var uid = $(this).attr("id");
-        var account_id = document.getElementById('account_id');
-        var da_borrow = document.getElementById('da_borrow');
-        var da_return = document.getElementById('da_return');
+        var account_id = document.getElementById('account_id').value;
+        var da_borrow = document.getElementById('da_borrow').value;
+        var da_return = document.getElementById('da_return').value;
+        var da_br_location = document.getElementById('da_br_location').value;
         $('#da_item_borrow').modal('show');
         $('.da_item_confirm_borrow').click(function () {
             $.ajax({
@@ -69,9 +70,10 @@ $(document).ready(function () {
                 method: "post",
                 data: {
                     id: uid,
-                    account_id: account_id.value,
-                    da_borrow: da_borrow.value,
-                    da_return: da_return.value
+                    account_id: account_id,
+                    da_borrow: da_borrow,
+                    da_return: da_return,
+                    da_br_location: da_br_location
                 },
                 success: function () {
                     $('#da_item_borrow').modal('hide');
@@ -87,25 +89,24 @@ $(document).ready(function () {
 function da_borrow_add_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มการยืม";
     document.getElementById("da_id").readOnly = false;
-    document.getElementById("da_location").readOnly = true;
 }
 function da_borrow_edit_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขการยืม <span style='font-size: 10pt; color: red;'>หมายเหตุ *ชื่อผู้ยืมไม่มีผลต่อการแก้ไข</span>";
     document.getElementById("da_id").readOnly = true;
-    document.getElementById("da_location").readOnly = false;
 }
 
 // Clear Modal
 function clear_modal() {
     var da_id = document.getElementById("da_id").readOnly;
     if (da_id == true) {
-        $('#da_location').val('');
+        $('#da_br_location').val('');
     } else {
         $('#da_id').val('');
-        $('#da_location').val('');
+        $('#da_br_location').val('');
     }
 }
 function clear_modal_borrow_date() {
+    $('#da_br_location').val('');
     $('#da_borrow').val('');
     $('#da_return').val('');
 }

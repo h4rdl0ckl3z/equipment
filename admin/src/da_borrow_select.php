@@ -6,16 +6,10 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  $agency_id = $_POST["agency_id"];
-  $access_level = $_POST["access_level"];
-  if ($access_level == '0') {
-    $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
-    INNER JOIN da_items ON da_brs.da_id = da_items.da_id) WHERE da_status_ii='0' OR da_status_ii='1'";
-  } else {
-    $sql = "SELECT * FROM (((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
-    INNER JOIN da_items ON da_brs.da_id = da_items.da_id)
-    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE agencys.agency_id='$agency_id'";
-  }
+
+  $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
+  INNER JOIN da_items ON da_brs.da_id = da_items.da_id) WHERE da_status_ii='0'";
+
   $result = $conn -> query($sql);
   $data = array("data"=>array());
   if ($result->num_rows > 0) {
