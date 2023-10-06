@@ -15,9 +15,9 @@ $(document).ready(function () {
                 $('#person_add').modal('hide');
                 $('#PersonTable').DataTable().ajax.reload();
                 // console.log(data);
-                let user = JSON.parse(data);
-                var account_id = document.getElementById('account_id').value;
-                if (user == null) {
+                let account = JSON.parse(data);
+                let account_id = document.getElementById('account_id').value;
+                if (account == null) {
                     setTimeout(function() {
                         Swal.fire({
                             icon: 'success',
@@ -27,7 +27,7 @@ $(document).ready(function () {
                             showConfirmButton: false
                         })
                     })
-                } else if (user.account_id == account_id) {
+                } else if (account.account_id == account_id) {
                     setTimeout(function() {
                         Swal.fire({
                             icon: 'success',

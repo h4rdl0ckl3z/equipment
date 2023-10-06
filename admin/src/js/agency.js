@@ -10,10 +10,44 @@ $(document).ready(function () {
             beforeSend: function () {
                 $('#agency_insert').val("กำลังบันทึก...");
             },
-            success: function () {
+            success: function (data) {
                 $('#insert_agency_form')[0].reset();
                 $('#agency_add').modal('hide');
                 $('#AgencyTable').DataTable().ajax.reload();
+                let agency = JSON.parse(data);
+                let agency_id = document.getElementById('agency_id').value;
+                console.log(typeof(agency_id));
+                if (agency == null) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลสาขา',
+                            text: 'ระบบเพิ่มข้อมูลสาขาสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else if (agency.agency_id == agency_id) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'อัพเดทข้อมูลสาขา',
+                            text: 'ระบบอัพเดทข้อมูลสาขาสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เพิ่มผู้สาขาไม่สำเร็จ',
+                            text: 'มีชื่อสาขานี้มีอยู่ในระบบแล้ว',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
             }
         })
     })
@@ -45,6 +79,15 @@ $(document).ready(function () {
                 success: function () {
                     $('#agency_delete').modal('hide');
                     $('#AgencyTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ลบข้อมูลสาขา',
+                            text: 'ระบบลบข้อมูลสาขาเรียบร้อย',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })

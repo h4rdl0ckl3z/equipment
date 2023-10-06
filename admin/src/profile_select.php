@@ -6,14 +6,14 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  $agency_id = $_POST["agency_id"];
+  // $agency_id = $_POST["agency_id"];
   $access_level = $_POST["access_level"];
   if ($access_level == 0) {
     $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)
     INNER JOIN agencys ON accounts.agency_id = agencys.agency_id)";
   } elseif ($access_level == 2) {
     $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)
-    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE access_level <> '$access_level' AND access_level <> '0'";
+    INNER JOIN agencys ON accounts.agency_id = agencys.agency_id) WHERE access_level <> '2' AND access_level <> '0'";
   }
   
   $result = $conn -> query($sql);

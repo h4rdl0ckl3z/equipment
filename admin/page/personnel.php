@@ -45,7 +45,7 @@
                                             <th>เพิ่มเติม</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="" id="tbody">
+                                    <tbody>
 
                                     </tbody>
                                 </table>
@@ -132,10 +132,10 @@
                                         <select class="form-control" name="access_level" id="access_level" required>
                                             <?php
                                                 if ($row['access_level'] == 0)
-                                                echo '
+                                            ?>
                                                 <option value="0">ผู้ดูแลระบบ</option>
                                                 <option value="2">เจ้าหน้าที่</option>
-                                                ';
+                                            <?php
                                             ?>
                                             <option value="1">ผู้บริหาร</option>
                                             <option value="3" selected>ผู้ใช้งาน</option>

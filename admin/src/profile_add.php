@@ -21,8 +21,7 @@
 
     $passwd = md5($password);
 
-
-    $sql1 = "SELECT account_id FROM accounts WHERE username='$username'";
+    $sql1 = "SELECT account_id FROM accounts WHERE account_id='$account_id'";
     $result = $conn->query($sql1);
     $row = $result -> fetch_array(MYSQLI_ASSOC);
     
@@ -35,10 +34,8 @@
         }
     } else {
         if ($password == $password2) {
-            if ($account_id == '') {
-
-            } else {
-                $sql = "UPDATE accounts SET username='$username',passwd='$passwd', name_title='$name_title', fullname='$fullname', address='$address', phone='$phone', access_level=$access_level, section_id=$section_id, agency_id=$agency_id WHERE account_id=" . $account_id;
+            if ($account_id != '') {
+                $sql = "UPDATE accounts SET username='$username',passwd='$passwd', name_title='$name_title', fullname='$fullname', address='$address', phone='$phone', access_level='$access_level', section_id=$section_id, agency_id=$agency_id WHERE account_id=" . $account_id;
                 $conn->query($sql);
             }
         }

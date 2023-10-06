@@ -7,7 +7,7 @@ $(document).ready(function () {
             url: './src/profile_select.php',
             method: 'post',
             data: {
-                agency_id: agency_id.value,
+                // agency_id: agency_id.value,
                 access_level: access_level.value
             }
         },

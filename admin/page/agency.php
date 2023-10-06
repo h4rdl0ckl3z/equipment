@@ -39,7 +39,7 @@
                                             <th>ลบ</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-center">
+                                    <tbody>
                                     </tbody>
                                 </table>
                             </div>

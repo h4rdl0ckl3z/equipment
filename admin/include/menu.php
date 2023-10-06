@@ -183,31 +183,6 @@ echo '
         </p>
     </a>
 </li>
-<li class="nav-item">
-    <a href="./section.php" class="nav-link">
-        <i class="nav-icon far fa-address-card"></i>
-        <p>
-            แผนก
-        </p>
-    </a>
-</li>
-<li class="nav-header">จัดการห้อง</li>
-<li class="nav-item">
-    <a href="./room.php" class="nav-link">
-        <i class="nav-icon far fa-building"></i>
-        <p>
-            ห้อง
-        </p>
-    </a>
-</li>
-<li class="nav-item">
-    <a href="./room_type.php" class="nav-link">
-        <i class="nav-icon fas fa-door-closed"></i>
-        <p>
-            ประเภทห้อง
-        </p>
-    </a>
-</li>
 <li class="nav-header">จัดการครุภัณฑ์</li>
 <li class="nav-item">
     <a href="./da_item.php" class="nav-link">
