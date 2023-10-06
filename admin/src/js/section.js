@@ -16,7 +16,6 @@ $(document).ready(function () {
                 $('#SectionTable').DataTable().ajax.reload();
                 let section = JSON.parse(data);
                 let section_id = document.getElementById('section_id').value;
-                console.log(section);
                 if (section == null) {
                     setTimeout(function() {
                         Swal.fire({

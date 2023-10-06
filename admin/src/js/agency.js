@@ -16,7 +16,6 @@ $(document).ready(function () {
                 $('#AgencyTable').DataTable().ajax.reload();
                 let agency = JSON.parse(data);
                 let agency_id = document.getElementById('agency_id').value;
-                console.log(typeof(agency_id));
                 if (agency == null) {
                     setTimeout(function() {
                         Swal.fire({
@@ -27,7 +26,7 @@ $(document).ready(function () {
                             showConfirmButton: false
                         })
                     })
-                } else if (agency.agency_id == agency_id) {
+                } else if (agency.agency_id != agency_id) {
                     setTimeout(function() {
                         Swal.fire({
                             icon: 'success',
