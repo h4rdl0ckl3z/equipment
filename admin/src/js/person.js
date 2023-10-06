@@ -14,7 +14,6 @@ $(document).ready(function () {
                 $('#insert_person_form')[0].reset();
                 $('#person_add').modal('hide');
                 $('#PersonTable').DataTable().ajax.reload();
-                // console.log(data);
                 let account = JSON.parse(data);
                 let account_id = document.getElementById('account_id').value;
                 if (account == null) {

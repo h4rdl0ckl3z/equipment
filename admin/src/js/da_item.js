@@ -10,10 +10,43 @@ $(document).ready(function () {
             beforeSend: function () {
                 $('#da_item_insert').val("กำลังบันทึก...");
             },
-            success: function () {
+            success: function (data) {
                 $('#insert_da_item_form')[0].reset();
                 $('#da_item_add').modal('hide');
                 $('#Da_ItemTable').DataTable().ajax.reload();
+                let da_item = JSON.parse(data);
+                let da_id = document.getElementById('da_id').value;
+                if (da_item == null) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลครุภัณฑ์',
+                            text: 'ระบบเพิ่มข้อมูลครุภัณฑ์สำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else if (da_item.da_id != da_id) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'อัพเดทข้อมูลครุภัณฑ์',
+                            text: 'ระบบอัพเดทข้อมูลครุภัณฑ์สำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เพิ่มผู้ครุภัณฑ์ไม่สำเร็จ',
+                            text: 'มีชื่อครุภัณฑ์นี้มีอยู่ในระบบแล้ว',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
             }
         })
     })
@@ -56,6 +89,15 @@ $(document).ready(function () {
                 success: function () {
                     $('#da_item_delete').modal('hide');
                     $('#Da_ItemTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ลบข้อมูลครุภัณฑ์',
+                            text: 'ระบบลบข้อมูลครุภัณฑ์เรียบร้อย',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })
@@ -73,6 +115,15 @@ $(document).ready(function () {
             success: function () {
                 $('#da_item_delete_select').modal('hide');
                 $('#Da_ItemTable').DataTable().ajax.reload();
+                setTimeout(function() {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'ลบข้อมูลครุภัณฑ์',
+                        text: 'ระบบลบข้อมูลครุภัณฑ์เรียบร้อย',
+                        timer: 1200,
+                        showConfirmButton: false
+                    })
+                })
             }
         })
     })

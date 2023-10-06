@@ -59,7 +59,7 @@
                                                 <!-- <th>API</th> -->
                                             </tr>
                                         </thead>
-                                        <tbody class="text-center">
+                                        <tbody>
                                         </tbody>
                                     </table>
                                 </div>
@@ -105,12 +105,8 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
-<input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
-<?php
-    $agency_id = $row['agency_id'];
-    $access_level = $row['access_level'];
-?>
+
+
 <!-- Modal Add $Edit-->
 <div class="modal fade" id="da_item_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -132,7 +128,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
-                                        <input type="text" class="form-control" name="da_id" id="da_id"
+                                        <input type="text" class="form-control" name="da_id" id="da_id" pattern="[0-9]{22}" maxlength="22" size="22"
                                             placeholder="รหัสครุภัณฑ์" required>
                                     </div>
                                 </div>
@@ -183,14 +179,16 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-auto">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">แหล่งเงิน</label>
-                                        <input type="text" class="form-control" name="da_source" id="da_source"
-                                            placeholder="แหล่งเงิน" required>
+                                        <select class="form-control" name="da_source" id="da_source" required>
+                                            <option value="งบประมาณเงินรายได้" selected>งบประมาณเงินรายได้</option>
+                                            <option value="งบประมาณแผ่นดิน">งบประมาณแผ่นดิน</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-auto">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">คุณสมบัติ</label>
                                         <input type="text" class="form-control" name="da_feature" id="da_feature"
@@ -219,11 +217,10 @@
                                     <label for="exampleInputEmail1">สถานะครุภัณฑ์</label>
                                     <select class="form-control" name="da_status_ii" id="da_status_ii">
                                         <option value="0" selected>ปกติ</option>
-                                        <!-- <option value="1">ยืม</option> -->
-                                        <option value="2">แจ้งซ่อม</option>
-                                        <option value="3">ครุภัณฑ์ห้อง</option>
-                                        <option value="4">การตัดจำหน่าย</option>
-                                        <option value="5">ตรวจสอบสภาพ</option>
+                                        <option value="1">แจ้งซ่อม</option>
+                                        <option value="2">ครุภัณฑ์ห้อง</option>
+                                        <option value="3">การตัดจำหน่าย</option>
+                                        <option value="4">ตรวจสอบสภาพ</option>
                                     </select>
                                 </div>
                             </div>

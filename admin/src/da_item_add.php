@@ -19,13 +19,25 @@
     $da_status_ii = $_POST["da_status_ii"];
     $da_type_id = $_POST["da_type_id"];
     $room_id = $_POST["room_id"];
-    $sql = "INSERT INTO da_items (da_id, da_lists, da_status_i, da_unit, da_rates, da_date,
-    da_source, da_feature, da_annotation, da_location, da_status_ii, da_type_id, room_id) VALUES
-    ('$da_id', '$da_lists', '$da_status_i', '$da_unit', '$da_rates', '$da_date', '$da_source', 
-    '$da_feature', '$da_annotation', '$da_location', '$da_status_ii', '$da_type_id', '$room_id') 
-    ON DUPLICATE KEY UPDATE da_id='$da_id', da_lists='$da_lists', da_status_i='$da_status_i', da_unit='$da_unit', 
-    da_rates='$da_rates', da_date='$da_date', da_source='$da_source', da_feature='$da_feature', 
-    da_annotation='$da_annotation', da_location='$da_location', da_status_ii='$da_status_ii', 
-    da_type_id='$da_type_id', room_id='$room_id'";
-    $conn->query($sql);
+
+    $sql1 = "SELECT da_id FROM da_items WHERE da_id='$da_id'";
+    $result = $conn->query($sql1);
+    $row = $result -> fetch_array(MYSQLI_ASSOC);
+    
+    echo json_encode($row);
+
+    if ($row == null) {
+        $sql = "INSERT INTO da_items (da_id, da_lists, da_status_i, da_unit, da_rates, da_date,
+        da_source, da_feature, da_annotation, da_location, da_status_ii, da_type_id, room_id) VALUES
+        ('$da_id', '$da_lists', '$da_status_i', '$da_unit', '$da_rates', '$da_date', '$da_source', 
+        '$da_feature', '$da_annotation', '$da_location', '$da_status_ii', '$da_type_id', '$room_id')";
+        $conn->query($sql);
+    } else {
+        $sql = "UPDATE da_items SET da_id='$da_id', da_lists='$da_lists', da_status_i='$da_status_i', da_unit='$da_unit', 
+        da_rates='$da_rates', da_date='$da_date', da_source='$da_source', da_feature='$da_feature', 
+        da_annotation='$da_annotation', da_location='$da_location', da_status_ii='$da_status_ii', 
+        da_type_id='$da_type_id', room_id='$room_id' WHERE da_id='$da_id'";
+        $conn->query($sql);
+    }
+    $conn->close();
 ?>

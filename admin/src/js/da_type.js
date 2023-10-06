@@ -10,10 +10,43 @@ $(document).ready(function () {
             beforeSend: function () {
                 $('#da_type_insert').val("กำลังบันทึก...");
             },
-            success: function () {
+            success: function (data) {
                 $('#insert_da_type_form')[0].reset();
                 $('#da_type_add').modal('hide');
                 $('#Da_TypeTable').DataTable().ajax.reload();
+                let da_type = JSON.parse(data);
+                let da_type_id = document.getElementById('da_type_id').value;
+                if (da_type == null) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลประเภทครุภัณฑ์',
+                            text: 'ระบบเพิ่มข้อมูลประเภทครุภัณฑ์สำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else if (da_type.da_type_id != da_type_id) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'อัพเดทข้อมูลประเภทครุภัณฑ์',
+                            text: 'ระบบอัพเดทข้อมูลประเภทครุภัณฑ์สำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เพิ่มผู้ประเภทครุภัณฑ์ไม่สำเร็จ',
+                            text: 'มีชื่อประเภทครุภัณฑ์นี้มีอยู่ในระบบแล้ว',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
             }
         })
     })
@@ -45,6 +78,15 @@ $(document).ready(function () {
                 success: function () {
                     $('#da_type_delete').modal('hide');
                     $('#Da_TypeTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ลบข้อมูลประเภทครุภัณฑ์',
+                            text: 'ระบบลบข้อมูลประเภทครุภัณฑ์เรียบร้อย',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })

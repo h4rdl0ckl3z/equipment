@@ -65,12 +65,7 @@
 </div>
 <!-- /.content-wrapper -->
 
-<?php
-    $access_level = $row['access_level'];
-?>
-
 <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
-<input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
 
 <!-- Modal Add $Edit-->
 <div class="modal fade" id="person_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

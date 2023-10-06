@@ -22,11 +22,11 @@ $(document).ready(function () {
                 if(phone.length === 10){
                   return phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
                 } else if(phone.length < 10) {
-                  return 'was not supplied enough numbers please pass a 10 digit number'
+                  return ''
                 } else if(phone.length > 10) {
-                  return 'was supplied too many numbers please pass a 10 digit number'
+                  return ''
                 } else {
-                  return 'something went wrong'
+                  return ''
                 }
             }},
             {data: 'section_name'},

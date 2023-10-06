@@ -1,14 +1,8 @@
 $(document).ready(function () {
-    var agency_id = document.getElementById('agency_id');
-    var access_level = document.getElementById('access_level');
     var table = $('#Da_ItemTable').DataTable({
         ajax: {
             url: './src/da_item_select.php',
             method: 'post',
-            data: {
-                agency_id: agency_id.value,
-                access_level: access_level.value
-            }
         },
         columns: [
             {data: 'da_id', render: function (da_id) {
@@ -19,7 +13,17 @@ $(document).ready(function () {
                 defaultContent: ''
             },
             {data: 'da_id', render: function (da_id) {
-                return '<a href="./da_id.php?da_id=' + da_id + '" class="text-dark">' + da_id + '</a>';
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return '<a href="./da_id.php?da_id=' + pat_daid + '" class="text-dark">' + pat_daid + '</a>';
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
             }},
             {data: 'da_lists'},
             {data: 'da_img', visible: false, render: function (da_img) {
