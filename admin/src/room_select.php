@@ -6,15 +6,8 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  $agency_id = $_POST["agency_id"];
-  $access_level = $_POST["access_level"];
-  if ($access_level == 0) {
-    $sql = "SELECT * FROM ((rooms INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
-    INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)";
-  } else {
-    $sql = "SELECT * FROM ((rooms INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
-    INNER JOIN agencys ON agencys.agency_id = rooms.agency_id) WHERE agencys.agency_id = '$agency_id'";
-  }
+  $sql = "SELECT * FROM ((rooms INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
+  INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)";
   
   $result = $conn -> query($sql);
   $data = array("data"=>array());

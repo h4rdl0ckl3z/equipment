@@ -6,7 +6,6 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  // $agency_id = $_POST["agency_id"];
   $access_level = $_POST["access_level"];
   if ($access_level == 0) {
     $sql = "SELECT * FROM ((accounts INNER JOIN sections ON accounts.section_id = sections.section_id)

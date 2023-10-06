@@ -66,7 +66,6 @@
 <!-- /.content-wrapper -->
 
 <?php
-    $agency_id = $row['agency_id'];
     $access_level = $row['access_level'];
 ?>
 

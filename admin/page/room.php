@@ -62,11 +62,6 @@
 </div>
 <!-- /.content-wrapper -->
 
-<?php
-    $agency_id = $row['agency_id'];
-    $access_level = $row['access_level'];
-?>
-
 <!-- Modal Add $Edit-->
 <div class="modal fade" id="room_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
