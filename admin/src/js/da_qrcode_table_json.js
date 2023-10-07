@@ -6,7 +6,17 @@ $(document).ready(function () {
         },
         columns: [
             {data: 'da_id', render: function (da_id) {
-                return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + da_id + '">';
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + pat_daid + '">';
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
             }},
             {
                 data: '',
@@ -94,7 +104,17 @@ $(document).ready(function () {
             {data: 'agency_name', visible: false},
             {data: 'community_name', visible: false},
             {data: 'da_id', render: function (da_id) {
-                return '<button type="button" name="qrcode" id="' + da_id + '"class="btn btn-success qrcode" title="QrCode"><i class="fas fa-qrcode"></i></button>';
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return '<button type="button" name="qrcode" id="' + pat_daid + '"class="btn btn-success qrcode" title="QrCode"><i class="fas fa-qrcode"></i></button>';
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
             }}
         ],
         "paging": true,
@@ -154,7 +174,17 @@ $(document).ready(function () {
                 }
             }},
             {data: 'da_id', visible: false, render: function (da_id) {
-                return '<a href="../da_item.html?da_id=' + da_id + '"class="btn btn-info" target="_blank">link</a>';
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return '<a href="../da_item.html?da_id=' + pat_daid + '"class="btn btn-info" target="_blank">link</a>';
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
             }},
             {data: 'qrcode_date', render: function (qrcode_date) {
                 function toThaiDateString(date) {

@@ -102,7 +102,17 @@ if (access_level == 0) {
                     return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
                 }},
                 {data: 'da_id', visible: false, render: function (da_id) {
-                    return '<a href="../da_item.html?da_id=' + da_id + '" class="btn btn-info" target="_blank" title="API"><i class="fas fa-qrcode"></i></a>';
+                    if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                    if(da_id.length === 22){
+                      pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                      return '<a href="../da_item.html?da_id=' + pat_daid + '" class="btn btn-info" target="_blank" title="API"><i class="fas fa-qrcode"></i></a>';
+                    } else if(da_id.length < 22) {
+                      return ''
+                    } else if(da_id.length > 22) {
+                      return ''
+                    } else {
+                      return ''
+                    }
                 }}
             ],
             "paging": true,

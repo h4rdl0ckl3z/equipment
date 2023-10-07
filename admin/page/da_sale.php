@@ -80,15 +80,15 @@
                                     data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
                                     <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
                                 </button>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="dropdown dropright">
+                                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         ตรวจสอบสภาพ
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <button type="button">ตรวจสอบสภาพ: ปกติ</button>
-                                        <button type="button">ตรวจสอบสภาพ: ชำรุด</button>
-                                        <button type="button">ตรวจสอบสภาพ: เสื่อมสภาพ</button>
-                                        <button type="button">ตรวจสอบสภาพ: สูญหาย</button>
+                                        <button type="button" class="dropdown-item btn-success">ตรวจสอบสภาพ: ปกติ</button>
+                                        <button type="button" class="dropdown-item btn-primary">ตรวจสอบสภาพ: ชำรุด</button>
+                                        <button type="button" class="dropdown-item btn-danger">ตรวจสอบสภาพ: เสื่อมสภาพ</button>
+                                        <button type="button" class="dropdown-item btn-warning">ตรวจสอบสภาพ: สูญหาย</button>
                                     </div>
                                 </div>
                                 <?php

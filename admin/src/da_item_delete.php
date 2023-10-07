@@ -10,11 +10,11 @@
   // sql to delete a record
   $sql = "DELETE FROM da_items WHERE da_id='" . $da_id . "'";
 
-  if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully";
-  } else {
-    echo "Error deleting record: " . $conn->error;
-  }
+  // if ($conn->query($sql) === TRUE) {
+  //   echo "Record deleted successfully";
+  // } else {
+  //   echo "Error deleting record: " . $conn->error;
+  // }
 
   $conn->close();
 ?>
