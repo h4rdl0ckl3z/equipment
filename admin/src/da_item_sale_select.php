@@ -10,7 +10,7 @@
   INNER JOIN rooms ON da_items.room_id = rooms.room_id)
   INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
   INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
-  INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE da_items.da_status_ii = '5' OR da_items.da_status_ii = '4'";
+  INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE da_items.da_status_ii = '3' OR da_items.da_status_ii = '4'";
   $result = $conn -> query($sql);
   $data = array("data"=>array());
   if ($result->num_rows > 0) {

@@ -7,7 +7,7 @@
   <title>ระบบบริหารครุภัณฑ์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏสุราษฎร์ธานี</title>
 
   <!-- icon tab -->
-  <link rel="shortcut icon" href="../logo/SciTech-G.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../logo/SciTech.jpg" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -45,7 +45,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="../logo/SciTech-G.png" alt="sci logo" height="60" width="60">
+      <img class="animation__shake" src="../logo/SciTech.jpg" alt="sci logo" height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -81,7 +81,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="javascript:void(0);" class="brand-link">
-        <img src="../logo/SciTech-G.png" alt="SCI Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="../logo/SciTech.jpg" alt="SCI Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">
           <?php
             if ($row['access_level'] == 0)

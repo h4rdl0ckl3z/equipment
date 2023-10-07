@@ -6,16 +6,9 @@ if (!isset($_SESSION['account'])) { // ถ้าไม่เข้าระบ�
 }
 include_once("./connect.php");
 $conn = connectDB();
-$agency_id = $_POST["agency_id"];
-$access_level = $_POST["access_level"];
-if ($access_level == 0 || $access_level == 1) {
-  $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
-  INNER JOIN da_items ON da_brs.da_id = da_items.da_id)";
-} else {
-  $sql = "SELECT * FROM (((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
-  INNER JOIN da_items ON da_brs.da_id = da_items.da_id)
-  INNER JOIN agencys ON agencys.agency_id = accounts.agency_id) WHERE agencys.agency_id = '$agency_id'";
-}
+
+$sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
+INNER JOIN da_items ON da_brs.da_id = da_items.da_id)";
 
 $result = $conn->query($sql);
 $data = array("data" => array());

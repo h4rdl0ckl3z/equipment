@@ -6,21 +6,12 @@ if (!isset($_SESSION['account'])) { // ถ้าไม่เข้าระบ�
 }
 include_once("./connect.php");
 $conn = connectDB();
-$agency_id = $_POST["agency_id"];
-$access_level = $_POST["access_level"];
-if ($access_level == 0) {
-  $sql = "SELECT * FROM (((((da_items INNER JOIN da_types ON da_items.da_type_id = da_types.da_type_id)
-  INNER JOIN rooms ON da_items.room_id = rooms.room_id)
-  INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
-  INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
-  INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE qrcode_status != '1'";
-} else {
-  $sql = "SELECT * FROM (((((da_items INNER JOIN da_types ON da_items.da_type_id = da_types.da_type_id)
-  INNER JOIN rooms ON da_items.room_id = rooms.room_id)
-  INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
-  INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
-  INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE qrcode_status != '1' AND agencys.agency_id = '$agency_id'";
-}
+
+$sql = "SELECT * FROM (((((da_items INNER JOIN da_types ON da_items.da_type_id = da_types.da_type_id)
+INNER JOIN rooms ON da_items.room_id = rooms.room_id)
+INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
+INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
+INNER JOIN communitys ON communitys.community_id = agencys.community_id) WHERE qrcode_status != '1'";
 
 $result = $conn->query($sql);
 $data = array("data" => array());

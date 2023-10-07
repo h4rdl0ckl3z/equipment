@@ -4,16 +4,49 @@ $(document).ready(function () {
     $('#insert_da_item_form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: "./src/da_item_sale_add.php",
+            url: "./src/da_item_add.php",
             method: "post",
             data: $('#insert_da_item_form').serialize(),
             beforeSend: function () {
                 $('#da_item_insert').val("กำลังบันทึก...");
             },
-            success: function () {
+            success: function (data) {
                 $('#insert_da_item_form')[0].reset();
                 $('#da_item_add').modal('hide');
                 $('#Da_ItemTable').DataTable().ajax.reload();
+                let da_item = JSON.parse(data);
+                let da_id = document.getElementById('da_id').value;
+                if (da_item == null) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลครุภัณฑ์ประจำปี',
+                            text: 'ระบบเพิ่มข้อมูลครุภัณฑ์ประจำปีสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else if (da_item.da_id != da_id) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'อัพเดทข้อมูลครุภัณฑ์ประจำปี',
+                            text: 'ระบบอัพเดทข้อมูลครุภัณฑ์ประจำปีสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เพิ่มผู้ครุภัณฑ์ประจำปีไม่สำเร็จ',
+                            text: 'มีชื่อครุภัณฑ์ประจำปีนี้มีอยู่ในระบบแล้ว',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
             }
         })
     })
@@ -21,7 +54,7 @@ $(document).ready(function () {
     $('#Da_ItemTable').on('click', '.update', function () {
         var uid = $(this).attr("id");
         $.ajax({
-            url: "./src/da_item_sale_fetch.php",
+            url: "./src/da_item_fetch.php",
             method: "post",
             data: { id: uid },
             dataType: "json",
@@ -50,29 +83,47 @@ $(document).ready(function () {
         $('#da_item_delete').modal('show');
         $('.da_item_confirm_delete').click(function () {
             $.ajax({
-                url: "./src/da_item_sale_delete.php",
+                url: "./src/da_item_delete.php",
                 method: "post",
                 data: { id: uid },
                 success: function () {
                     $('#da_item_delete').modal('hide');
                     $('#Da_ItemTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ลบข้อมูลครุภัณฑ์ประจำปี',
+                            text: 'ระบบลบข้อมูลครุภัณฑ์ประจำปีเรียบร้อย',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })
     })
     // DeleteSelect Da_Item
-    $('#delete_da_item_form').on('submit', function (e) {
+    $('#da_item_form').on('click', '.delete_all', function (e) {
         e.preventDefault();
         $.ajax({
-            url: "./src/da_item_sale_delete_select.php",
+            url: "./src/da_item_delete_select.php",
             method: "post",
-            data: $('#delete_da_item_form').serialize(),
+            data: $('#da_item_form').serialize(),
             beforeSend: function () {
                 $('#da_item_delete').val("กำลังลบ...");
             },
             success: function () {
                 $('#da_item_delete_select').modal('hide');
                 $('#Da_ItemTable').DataTable().ajax.reload();
+                setTimeout(function() {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'ลบข้อมูลครุภัณฑ์ประจำปี',
+                        text: 'ระบบลบข้อมูลครุภัณฑ์ประจำปีเรียบร้อย',
+                        timer: 1200,
+                        showConfirmButton: false
+                    })
+                })
             }
         })
     })
@@ -81,10 +132,18 @@ $(document).ready(function () {
         $('.da_item_year_confirm').click(function () {
             $.ajax({
                 url: "./src/da_item_year.php",
-                method: "post",
                 success: function () {
                     $('#da_item_year').modal('hide');
                     $('#Da_ItemTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลครุภัณฑ์ประจำปี',
+                            text: 'ระบบเพิ่มข้อมูลครุภัณฑ์ประจำปีสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })

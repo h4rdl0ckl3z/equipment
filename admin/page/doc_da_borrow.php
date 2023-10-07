@@ -17,8 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
-    <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">

@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 80030 (8.0.30)
  Source Host           : localhost:3306
- Source Schema         : equipment
+ Source Schema         : test
 
  Target Server Type    : MySQL
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 11/07/2023 15:32:33
+ Date: 08/10/2023 02:40:05
 */
 
 SET NAMES utf8mb4;
@@ -25,28 +25,25 @@ CREATE TABLE `accounts`  (
   `account_id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `passwd` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `name_title` enum('นาย','นาง','นางสาว') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `fullname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `profile_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT 'profile.png',
-  `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `phone` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `access_level` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '0.ผู้ดูแลระบบ\r\n1.ผู้บริหาร\r\n2.เจ้าหน้าที่\r\n3.ผู้ใช้งาน',
   `section_id` int NULL DEFAULT NULL,
   `agency_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`account_id`) USING BTREE,
   INDEX `account_section`(`section_id` ASC) USING BTREE,
   INDEX `account_agency`(`agency_id` ASC) USING BTREE,
-  CONSTRAINT `account_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `account_section` FOREIGN KEY (`section_id`) REFERENCES `sections` (`section_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `accounts_ibfk_2` FOREIGN KEY (`section_id`) REFERENCES `sections` (`section_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of accounts
 -- ----------------------------
-INSERT INTO `accounts` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Avatart0Dev', '20230409_64325a4ae006c.png', 'Bangkok', '0981111111', '0', 1, '22050000');
-INSERT INTO `accounts` VALUES (2, 'tester', '202cb962ac59075b964b07152d234b70', 'Tester', 'profile.png', 'Bangkok', '0981111112', '1', 3, '22020000');
-INSERT INTO `accounts` VALUES (3, 'asd', '7815696ecbf1c96e6894b779456d330e', 'asd eiei03', 'profile.png', 'asd', 'asd', '3', 2, '22050000');
-INSERT INTO `accounts` VALUES (4, 'asd02', '7815696ecbf1c96e6894b779456d330e', 'asd eiei02', 'profile.png', 'asd', '123', '2', 4, '22050000');
-INSERT INTO `accounts` VALUES (5, 'tester03', '202cb962ac59075b964b07152d234b70', 'Tester03', 'profile.png', 'BKK', '123', '2', 4, '22010000');
+INSERT INTO `accounts` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'นาย', 'Admin', 'profile.png', NULL, NULL, '0', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for agencys
@@ -58,16 +55,12 @@ CREATE TABLE `agencys`  (
   `community_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '013',
   PRIMARY KEY (`agency_id`) USING BTREE,
   INDEX `agency_community`(`community_id` ASC) USING BTREE,
-  CONSTRAINT `agency_community` FOREIGN KEY (`community_id`) REFERENCES `communitys` (`community_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `agencys_ibfk_1` FOREIGN KEY (`community_id`) REFERENCES `communitys` (`community_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of agencys
 -- ----------------------------
-INSERT INTO `agencys` VALUES ('22010000', 'สาขาวิชาเทคโนโลยีดิจิตอล', '013');
-INSERT INTO `agencys` VALUES ('22020000', 'สาขาวิชาการจัดการภัยพิบัติ', '013');
-INSERT INTO `agencys` VALUES ('22050000', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '013');
-INSERT INTO `agencys` VALUES ('22060000', 'สาขาวิชาชีววิทยา', '013');
 
 -- ----------------------------
 -- Table structure for communitys
@@ -82,7 +75,6 @@ CREATE TABLE `communitys`  (
 -- ----------------------------
 -- Records of communitys
 -- ----------------------------
-INSERT INTO `communitys` VALUES ('013', 'คลังคณะวิทยาศาสตร์และเทคโนโลยี');
 
 -- ----------------------------
 -- Table structure for da_brs
@@ -92,20 +84,20 @@ CREATE TABLE `da_brs`  (
   `dabr_id` int NOT NULL AUTO_INCREMENT,
   `account_id` int NOT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `da_br_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ที่อยู่ปัจจุบัน ในการยืม',
   `da_borrow` date NULL DEFAULT NULL,
   `da_return` date NULL DEFAULT NULL,
   `allow_br` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT 'สถานะการยืม\r\n0.รอดำเนินการ\r\n1.ยืม',
   PRIMARY KEY (`dabr_id`) USING BTREE,
   INDEX `da_br_accounts`(`account_id` ASC) USING BTREE,
   INDEX `da_br_da_id`(`da_id` ASC) USING BTREE,
-  CONSTRAINT `da_br_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `da_br_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `da_brs_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `da_brs_ibfk_2` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_brs
 -- ----------------------------
-INSERT INTO `da_brs` VALUES (1, 3, '61-21-220500-201-00007-0001', '2023-07-10', '2023-07-14', '0');
 
 -- ----------------------------
 -- Table structure for da_items
@@ -115,7 +107,7 @@ CREATE TABLE `da_items`  (
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสครุภัณฑ์',
   `da_lists` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รายการครุภัณฑ์',
   `da_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'รูปภาพครุภัณฑ์',
-  `da_status_i` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'สภาพครุภัณฑ์\r\n0.ปกติ\r\n1.ชำรุด\r\n2.เสื่อมสภาพ\r\n3.สูญหาย',
+  `da_status_i` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT 'สภาพครุภัณฑ์\r\n0.ปกติ\r\n1.ชำรุด\r\n2.เสื่อมสภาพ\r\n3.สูญหาย',
   `da_unit` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'หน่วยนับ',
   `da_rates` decimal(10, 2) NOT NULL,
   `da_date` date NOT NULL COMMENT 'วันที่ได้มา',
@@ -123,21 +115,20 @@ CREATE TABLE `da_items`  (
   `da_feature` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'คุณสมบัติ (ยี่ห้อ/รุ่น)',
   `da_annotation` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'หมายเหตุ/เลขครุภัณฑ์เดิม',
   `da_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานที่ตั้ง/จัดเก็บ',
-  `da_status_ii` enum('0','1','2','3','4','5') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานะครุภัณฑ์\r\n0.ปกติ\r\n1.ยืม\r\n2.แจ้งซ่อม\r\n3.ครุภัณฑ์ห้อง\r\n4.การตัดจำหน่าย\r\n5.ตรวจสอบสภาพ',
+  `da_status_ii` enum('0','1','2','3','4') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT 'สถานะครุภัณฑ์\r\n0.ปกติ\r\n1.ยืม\r\n2.แจ้งซ่อม\r\n3.การตัดจำหน่าย\r\n4.ตรวจสอบสภาพ',
   `da_type_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสประเภทครุภัณฑ์',
   `room_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสห้อง',
   `qrcode_status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`da_id`) USING BTREE,
   INDEX `room_da`(`room_id` ASC) USING BTREE,
   INDEX `da_type`(`da_type_id` ASC) USING BTREE,
-  CONSTRAINT `da_type` FOREIGN KEY (`da_type_id`) REFERENCES `da_types` (`da_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `room_da` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `da_items_ibfk_1` FOREIGN KEY (`da_type_id`) REFERENCES `da_types` (`da_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `da_items_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_items
 -- ----------------------------
-INSERT INTO `da_items` VALUES ('61-21-220500-201-00007-0001', 'เก้าอี้สํานักงาน', NULL, '0', 'ตัว', 1300.00, '2023-04-18', 'เงินรายได้ (งบ นโยบายต่อเนื่อง)', '', '', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '0', '201', 'CS0201', '0');
 
 -- ----------------------------
 -- Table structure for da_repairs
@@ -148,13 +139,13 @@ CREATE TABLE `da_repairs`  (
   `account_id` int NOT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `da_repair` date NOT NULL COMMENT 'วันแจ้งซ่อม',
-  `da_repair_status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานะส่งซ่อม\r\n0.แจ้งซ่อม\r\n1.ดำเนินการส่งซ่อม',
+  `da_repair_status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT 'สถานะส่งซ่อม\r\n0.แจ้งซ่อม\r\n1.ดำเนินการส่งซ่อม',
   PRIMARY KEY (`da_r_id`) USING BTREE,
   INDEX `da_repair_accounts`(`account_id` ASC) USING BTREE,
   INDEX `da_repair_da_id`(`da_id` ASC) USING BTREE,
-  CONSTRAINT `da_repair_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `da_repair_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `da_repairs_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `da_repairs_ibfk_2` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_repairs
@@ -173,8 +164,6 @@ CREATE TABLE `da_types`  (
 -- ----------------------------
 -- Records of da_types
 -- ----------------------------
-INSERT INTO `da_types` VALUES ('200', 'EiEi');
-INSERT INTO `da_types` VALUES ('201', 'ครุภัณฑ์สํานักงาน');
 
 -- ----------------------------
 -- Table structure for qrcodes
@@ -187,8 +176,8 @@ CREATE TABLE `qrcodes`  (
   `qrcode_date` date NOT NULL,
   PRIMARY KEY (`qrcode_id`) USING BTREE,
   INDEX `qrcode_da_id`(`da_id` ASC) USING BTREE,
-  CONSTRAINT `qrcode_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  CONSTRAINT `qrcodes_ibfk_1` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrcodes
@@ -202,16 +191,11 @@ CREATE TABLE `room_types`  (
   `room_type_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสประเภทห้อง',
   `room_type_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ชื่อประเภทห้อง',
   PRIMARY KEY (`room_type_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of room_types
 -- ----------------------------
-INSERT INTO `room_types` VALUES (1, 'ห้องเรียน');
-INSERT INTO `room_types` VALUES (2, 'ห้องสำนักงาน');
-INSERT INTO `room_types` VALUES (3, 'ห้องคณบดี');
-INSERT INTO `room_types` VALUES (4, 'ห้องสำนักงานคณะ');
-INSERT INTO `room_types` VALUES (5, 'ห้องเรียนสาขา');
 
 -- ----------------------------
 -- Table structure for rooms
@@ -224,20 +208,13 @@ CREATE TABLE `rooms`  (
   PRIMARY KEY (`room_id`) USING BTREE,
   INDEX `room_type`(`room_type_id` ASC) USING BTREE,
   INDEX `room_agency`(`agency_id` ASC) USING BTREE,
-  CONSTRAINT `room_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `room_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rooms
 -- ----------------------------
-INSERT INTO `rooms` VALUES ('CS0201', 2, '22050000');
-INSERT INTO `rooms` VALUES ('CS0202', 2, '22050000');
-INSERT INTO `rooms` VALUES ('CS0203', 2, '22050000');
-INSERT INTO `rooms` VALUES ('SCI0401', 2, '22010000');
-INSERT INTO `rooms` VALUES ('SCI0402', 2, '22050000');
-INSERT INTO `rooms` VALUES ('SCI0403', 5, '22050000');
-INSERT INTO `rooms` VALUES ('SCI0501', 1, '22020000');
 
 -- ----------------------------
 -- Table structure for sections
@@ -247,15 +224,11 @@ CREATE TABLE `sections`  (
   `section_id` int NOT NULL AUTO_INCREMENT,
   `section_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`section_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sections
 -- ----------------------------
-INSERT INTO `sections` VALUES (1, 'ผู้ดุแลครุภัณฑ์คณะ');
-INSERT INTO `sections` VALUES (2, 'ผู้ดูแลห้องเรียน');
-INSERT INTO `sections` VALUES (3, 'ผู้บริหาร');
-INSERT INTO `sections` VALUES (4, 'บุคลากร');
 
 -- ----------------------------
 -- Table structure for system_info
@@ -269,11 +242,10 @@ CREATE TABLE `system_info`  (
   `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `system_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of system_info
 -- ----------------------------
-INSERT INTO `system_info` VALUES (1, 'ระบบบริหารครุภัณฑ์', 'SciTech-G.png', 'วิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏสุราษฎร์ธานี', 'http://cs.sci.sru.ac.th/', 'ระบบบริหารครุภัณฑ์ คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชภัฏสุราษฎร์ธานี');
 
 SET FOREIGN_KEY_CHECKS = 1;

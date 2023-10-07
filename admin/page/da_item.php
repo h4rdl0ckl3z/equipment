@@ -17,6 +17,9 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+    <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -34,8 +37,11 @@
                                         aria-describedby="example1_info">
                                         <thead class="text-center">
                                             <tr>
-                                                <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                    onclick="checkUncheck(this)"></th>
+                                                <?php
+                                                    if ($row['access_level'] == 0)
+                                                        echo '<th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
+                                                        onclick="checkUncheck(this)"></th>';
+                                                ?>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
                                                 <th>รายการครุภัณฑ์</th>
@@ -55,8 +61,11 @@
                                                 <th>สาขา</th>
                                                 <th>คณะ</th>
                                                 <th>แก้ไข</th>
-                                                <th>ลบ</th>
-                                                <!-- <th>API</th> -->
+                                                <?php
+                                                    if ($row['access_level'] == 0)
+                                                        echo '<th>ลบ</th>
+                                                        <th>API</th>';
+                                                ?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,10 +77,13 @@
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
-                                <button class="btn btn-danger" type="button" data-toggle="modal"
+                                <?php
+                                    if ($row['access_level'] == 0)
+                                    echo '<button class="btn btn-danger" type="button" data-toggle="modal"
                                     data-target="#da_item_delete_select" title="Delete">
                                     <i class="fas fa-trash-alt"></i> Delete
-                                </button>
+                                </button>';
+                                ?>
                             </div>
 
                             <!-- Modal Delete Select -->
@@ -217,8 +229,8 @@
                                     <label for="exampleInputEmail1">สถานะครุภัณฑ์</label>
                                     <select class="form-control" name="da_status_ii" id="da_status_ii">
                                         <option value="0" selected>ปกติ</option>
-                                        <option value="1">แจ้งซ่อม</option>
-                                        <option value="2">ครุภัณฑ์ห้อง</option>
+                                        <option value="1">ยืม</option>
+                                        <option value="2">แจ้งซ่อม</option>
                                         <option value="3">การตัดจำหน่าย</option>
                                         <option value="4">ตรวจสอบสภาพ</option>
                                     </select>

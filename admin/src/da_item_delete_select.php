@@ -17,7 +17,6 @@ if (isset($_POST["checkbox_da_id"]) <> '') {
     } else {
       $extract_id = implode(', ', $da_id);
       $sql = "DELETE FROM da_items WHERE da_id IN ($extract_id)";
-      echo $sql;
     }
     $conn->query($sql);
     $conn->close();

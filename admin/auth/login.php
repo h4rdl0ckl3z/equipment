@@ -7,12 +7,12 @@
     <title>ระบบบริหารครุภัณฑ์</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="signin.css">
-    <link rel="shortcut icon" href="../../logo/SciTech-G.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../logo/SciTech.jpg" type="image/x-icon">
     <link rel="stylesheet" href="../dist/css/sweetalert2.min.css">
 </head>
 <body class="text-center">
     <form class="form-signin" method="post" action="">
-        <img class="mb-4 img-fluid" src="../../logo/SciTech-G.png" alt="" width="auto" height="auto">
+        <img class="mb-4 img-fluid" src="../../logo/SciTech.jpg" alt="" width="auto" height="auto">
         <h1 class="h3 mb-3 font-weight-normal">กรุณาเข้าสู่ระบบ</h1>
         <label for="inputUser" class="sr-only">Username</label>
         <input type="user" id="username" name="username" class="form-control" placeholder="Username" required autofocus="">

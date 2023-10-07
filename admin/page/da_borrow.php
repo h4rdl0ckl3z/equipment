@@ -18,6 +18,8 @@
     </div>
     <!-- /.content-header -->
 
+    <input type="hidden" name="access_level" id="access_level" value="<?= $row['access_level']?>">
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -82,8 +84,10 @@
                                             <th>ยืมวันที่</th>
                                             <th>คืนวันที่</th>
                                             <th>สถานะการยืม</th>
-                                            <th>อนุมัติ</th>
-                                            <th>แก้ไข</th>
+                                            <?php
+                                                if ($row['access_level'] == 0 || $row['access_level'] == 2)
+                                                echo '<th>อนุมัติ</th>';
+                                            ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -101,7 +105,6 @@
 </div>
 <!-- /.content-wrapper -->
 
-<input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
 
 <!-- Modal Borrow Add -->
 <div class="modal fade" id="da_item_borrow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -115,18 +118,21 @@
             </div>
             <div class="modal-body">
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">วันที่ยืม</label>
-                        <input type="date" class="form-control" name="da_borrow" id="da_borrow" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">วันที่คืน</label>
-                        <input type="date" class="form-control" name="da_return" id="da_return" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">สถานที่</label>
-                        <input type="text" class="form-control" name="da_br_location" id="da_br_location" placeholder="สถานที่" required>
-                    </div>
+                    <form method="post" id="da_borrow_form">
+                        <div class="form-group">
+                            <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
+                            <label for="exampleInputEmail1">วันที่ยืม</label>
+                            <input type="date" class="form-control" name="da_borrow" id="da_borrow" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">วันที่คืน</label>
+                            <input type="date" class="form-control" name="da_return" id="da_return" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">สถานที่</label>
+                            <input type="text" class="form-control" name="da_br_location" id="da_br_location" placeholder="สถานที่" required>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">

@@ -23,7 +23,6 @@ $(document).ready(function () {
         $('.qrcode_confirm').click(function () {
             $.ajax({
                 url: "./src/da_item_qrcode_array.php",
-                method: "post",
                 data: $('#qrcode_select_form').serialize(),
                 success: function () {
                     $('#da_item_qrcode_select').modal('hide');

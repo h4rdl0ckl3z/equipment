@@ -48,14 +48,14 @@ $(document).ready(function () {
             }},
             {data: 'account_id', render: function(account_id) {
                 if (check_access_level == '0') {
-                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                    return '<button class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></button>';
                 } else {
                     return '<button type="button" name="update" id="' + account_id + '"class="btn btn-warning update" title="แก้ไข" onclick="person_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
                 }
             }},
             {data: 'account_id', render: function(account_id) {
                 if (check_access_level == '0') {
-                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
+                    return '<button class="btn btn-secondary"><i class="fas fa-user-minus"></i></button>';
                 } else {
                     return '<button type="button" name="delete" id="' + account_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-user-minus"></i></button>';
                 }

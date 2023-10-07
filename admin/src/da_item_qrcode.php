@@ -21,8 +21,7 @@ $file = date("Ymd") . "_" . uniqid();
 QRcode::png($str, "../../upload/qrcode/" . $file . ".png");
 $sql = "INSERT INTO qrcodes (da_id, qrcode_img, qrcode_date) VALUES ('$da_id', '$file.png', DATE(NOW()))";
 $conn->query($sql);
-$conn->close();
 $sql2 = "UPDATE da_items SET qrcode_status='1' WHERE da_id='$da_id'";
-$conn2->query($sql2);
-$conn2->close();
+$conn->query($sql2);
+$conn->close();
 ?>

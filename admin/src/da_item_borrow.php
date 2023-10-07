@@ -11,8 +11,9 @@
   $da_br_location = $_POST["da_br_location"];
   $da_borrow = $_POST["da_borrow"];
   $da_return = $_POST["da_return"];
-  $sql = "INSERT INTO da_brs (account_id, da_id, da_borrow, da_return, allow_br) VALUES ('$account_id', '$da_id', '$da_borrow', '$da_return', '0')";
-  // $conn->query($sql);
+  $sql = "INSERT INTO da_brs (account_id, da_id, da_br_location, da_borrow, da_return, allow_br) VALUES ('$account_id', '$da_id', '$da_br_location', '$da_borrow', '$da_return', '0')";
+  $conn->query($sql);
+  // echo $sql;
   // if ($conn->query($sql) === TRUE) {
   //   echo "Record deleted successfully";
   // } else {

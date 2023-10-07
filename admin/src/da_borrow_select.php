@@ -8,7 +8,7 @@
   $conn = connectDB();
 
   $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
-  INNER JOIN da_items ON da_brs.da_id = da_items.da_id) WHERE da_status_ii='0'";
+  INNER JOIN da_items ON da_brs.da_id = da_items.da_id)";
 
   $result = $conn -> query($sql);
   $data = array("data"=>array());

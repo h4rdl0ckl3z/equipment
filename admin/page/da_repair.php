@@ -17,7 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -121,6 +121,7 @@
                 <div class="card-body">
                     <form method="post" id="insert_da_repair_form">
                         <input type="hidden" name="da_r_id" id="da_r_id">
+                        <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
                         <div class="form-group">
                             <label for="exampleInputEmail1">ชื่อผู้แจ้งซ่อม</label>
                             <input type="text" class="form-control" name="fullname" id="fullname" required placeholder="ชื่อผู้แจ้งซ่อม">

@@ -1,21 +1,27 @@
 $(document).ready(function () {
-    var agency_id = document.getElementById('agency_id');
-    var access_level = document.getElementById('access_level');
     var table = $('#Da_ItemTable').DataTable({
         ajax: {
             url: './src/doc_da_item_sale_select.php',
             method: 'post',
-            data: {
-                agency_id: agency_id.value,
-                access_level: access_level.value
-            }
         },
         columns: [
             {
                 data: '',
                 defaultContent: ''
             },
-            {data: 'da_id'},
+            {data: 'da_id', render: function (da_id) {
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return pat_daid;
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
+            }},
             {data: 'da_lists'},
             {data: 'da_img', visible: false, render: function (da_img) {
                 if (da_img != null) {
@@ -100,7 +106,7 @@ $(document).ready(function () {
     });
     table.on('order.dt search.dt', function () {
         let i = 1;
-        table.cells(null, 1, { search: 'applied', order: 'applied' }).every(function (cell) {
+        table.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
             this.data(i++);
         });
     }).draw();

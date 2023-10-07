@@ -1,7 +1,9 @@
 # equipment ระบบบริหารครุภัณฑ์ มหาวิทยาลัยราชภัฏสุราษฎร์ธานี คณะวิทยาศาสตร์และเทคโนโลยี
 
-# QRCode Library
+
+QRCode Library
     https://phpqrcode.sourceforge.net/
 
-# Username
+
+Username : Password
     admin: admin

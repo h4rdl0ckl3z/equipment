@@ -17,6 +17,9 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+    <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -34,8 +37,11 @@
                                         aria-describedby="example1_info">
                                         <thead class="text-center">
                                             <tr>
-                                                <th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
-                                                        onclick="checkUncheck(this)"></th>
+                                                <?php
+                                                    if ($row['access_level'] == 0)
+                                                    echo '<th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
+                                                    onclick="checkUncheck(this)"></th>';
+                                                ?>
                                                 <th>ลำดับ</th>
                                                 <th>รหัสครุภัณฑ์</th>
                                                 <th>รายการครุภัณฑ์</th>
@@ -55,10 +61,13 @@
                                                 <th>สาขา</th>
                                                 <th>คณะ</th>
                                                 <th>แก้ไข</th>
-                                                <th>ลบ</th>
+                                                <?php
+                                                    if ($row['access_level'] == 0)
+                                                    echo '<th>ลบ</th>';
+                                                ?>
                                             </tr>
                                         </thead>
-                                        <tbody class="text-center">
+                                        <tbody>
                                         </tbody>
                                     </table>
                                 </div>
@@ -67,10 +76,13 @@
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
-                                <button class="btn btn-danger delete_select" type="button" data-toggle="modal"
+                                <?php
+                                    if ($row['access_level'] == 0)
+                                    echo '<button class="btn btn-danger" type="button" data-toggle="modal"
                                     data-target="#da_item_delete_select" title="Delete">
                                     <i class="fas fa-trash-alt"></i> Delete
-                                </button>
+                                </button>';
+                                ?>
                                 <button class="btn btn-info da_year_update" type="button" data-toggle="modal"
                                     data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
                                     <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
@@ -91,7 +103,7 @@
                                             <span>ต้องการลบครุภัณฑ์ที่เลือกหรือไม่</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-info"
+                                            <button type="button" class="btn btn-info delete_all"
                                                 id="da_item_delete_select">ลบข้อมูล</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">ยกเลิก</button>
@@ -130,7 +142,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
-                                        <input type="text" class="form-control" name="da_id" id="da_id"
+                                        <input type="text" class="form-control" name="da_id" id="da_id" pattern="[0-9]{22}" maxlength="22" size="22"
                                             placeholder="รหัสครุภัณฑ์" required>
                                     </div>
                                 </div>
@@ -216,12 +228,14 @@
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">สถานะครุภัณฑ์</label>
                                     <select class="form-control" name="da_status_ii" id="da_status_ii">
-                                        <option value="0">ปกติ</option>
-                                        <option value="1">ยืม</option>
-                                        <option value="2">แจ้งซ่อม</option>
-                                        <option value="3" selected>ครุภัณฑ์ห้อง</option>
-                                        <option value="4">การตัดจำหน่าย</option>
-                                        <option value="5">ตรวจสอบสภาพ</option>
+                                        <option value="0" selected>ปกติ</option>
+                                        <?php
+                                            if ($row['access_level'] == 0)
+                                            echo '<option value="1">ยืม</option>
+                                            <option value="2">แจ้งซ่อม</option>';
+                                        ?>
+                                        <option value="3">การตัดจำหน่าย</option>
+                                        <option value="4">ตรวจสอบสภาพ</option>
                                     </select>
                                 </div>
                             </div>

@@ -22,11 +22,10 @@ if (isset($_POST["checkbox_da_id"]) <> '') {
                 // echo $sql . "<br>";
                 $conn->query($sql);
                 $sql2 = "UPDATE da_items SET qrcode_status='1' WHERE da_id='$da_id[$i]'";
-                $conn2->query($sql2);
+                $conn->query($sql2);
             }
         }
         $conn->close();
-        $conn2->close();
     }
 }
 ?>

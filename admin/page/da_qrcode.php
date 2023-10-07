@@ -17,8 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <input type="hidden" name="access_level" id="access_level" value="<?= $row["access_level"] ?>">
-    <input type="hidden" name="agency_id" id="agency_id" value="<?= $row["agency_id"] ?>">
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -27,7 +26,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">ครุภัณฑ์ <span style="font-size: 10pt; color: red;">หมายเหตุ
-                                    *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถกดเพิ่มได้โดยตรง ต้องเพิ่มข้อมูลเท่านั้น</span>
+                                    *ผู้ดูแลระบบ และเจ้าหน้าที่สามารถกดเพิ่มได้</span>
                             </h3>
                         </div>
                         <form method="post" id="qrcode_select_form">
