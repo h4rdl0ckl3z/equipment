@@ -54,7 +54,7 @@
                                             <th>แจ้งซ่อม</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-center">
+                                    <tbody>
                                     </tbody>
                                 </table>
                             </div>
@@ -84,7 +84,7 @@
                                             <th>ลบ</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="text-center">
+                                    <tbody>
 
                                     </tbody>
                                 </table>

@@ -133,6 +133,7 @@ $(document).ready(function () {
 function da_item_add_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มครุภัณฑ์";
     document.getElementById("da_id").readOnly = false;
+    $('#da_id').val('');
 }
 function da_item_edit_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขครุภัณฑ์";

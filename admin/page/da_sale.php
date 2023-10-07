@@ -76,6 +76,21 @@
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
+                                <button class="btn btn-info da_year_update" type="button" data-toggle="modal"
+                                    data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
+                                    <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ตรวจสอบสภาพ
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <button type="button">ตรวจสอบสภาพ: ปกติ</button>
+                                        <button type="button">ตรวจสอบสภาพ: ชำรุด</button>
+                                        <button type="button">ตรวจสอบสภาพ: เสื่อมสภาพ</button>
+                                        <button type="button">ตรวจสอบสภาพ: สูญหาย</button>
+                                    </div>
+                                </div>
                                 <?php
                                     if ($row['access_level'] == 0)
                                     echo '<button class="btn btn-danger" type="button" data-toggle="modal"
@@ -83,10 +98,6 @@
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>';
                                 ?>
-                                <button class="btn btn-info da_year_update" type="button" data-toggle="modal"
-                                    data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
-                                    <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
-                                </button>
                             </div>
 
                             <!-- Modal Delete Select -->

@@ -10,7 +10,19 @@ $(document).ready(function () {
                 data: '',
                 defaultContent: ''
             },
-            {data: 'da_id'},
+            {data: 'da_id', render: function (da_id) {
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return pat_daid;
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
+            }},
             {data: 'da_lists'},
             {data: 'da_img', visible: false, render: function (da_img) {
                 if (da_img != null) {
@@ -61,17 +73,17 @@ $(document).ready(function () {
             {data: 'da_feature'},
             {data: 'da_annotation'},
             {data: 'da_location'},
-            {data: 'da_status_ii', render: function (da_status_ii) {
+            {data: 'da_status_ii', visible: true, render: function (da_status_ii) {
                 if (da_status_ii == '0') {
-                    check_da_status_ii = da_status_ii;
                     return 'ปกติ';
                 } else if (da_status_ii == '1') {
-                    check_da_status_ii = da_status_ii;
                     return 'ยืม';
                 } else if (da_status_ii == '2') {
                     return 'แจ้งซ่อม';
+                } else if (da_status_ii == '3') {
+                    return 'การตัดจำหน่าย';
                 } else {
-                    return 'ครุภัณฑ์ห้อง';
+                    return 'ตรวจสอบสภาพ';
                 }
             }},
             {data: 'da_type_name', visible: false},
