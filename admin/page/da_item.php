@@ -169,8 +169,20 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">หน่วยนับ</label>
-                                        <input type="text" class="form-control" name="da_unit" id="da_unit"
+                                        <input type="text" class="form-control" name="da_unit" id="da_unit" list="list_unit"
                                             placeholder="หน่วยนับ" required>
+                                        <datalist id="list_unit">
+                                            <option value="ตัว">
+                                            <option value="ชุด">
+                                            <option value="อัน">
+                                            <option value="เล่ม">
+                                            <option value="เครื่อง">
+                                            <option value="ใบ">
+                                            <option value="แผ่น">
+                                            <option value="ลูก">
+                                            <option value="คัน">
+                                            <option value="คู่">
+                                        </datalist>
                                     </div>
                                 </div>
                             </div>
