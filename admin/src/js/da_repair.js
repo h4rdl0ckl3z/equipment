@@ -4,6 +4,7 @@ $(document).ready(function () {
     $('#Da_ItemTable_Repair').on('click', '.repair', function () {
         var uid = $(this).attr("id");
         var account_id = document.getElementById('account_id');
+        var da_repair_location = document.getElementById('da_repair_location');
         var da_repair_btn = document.getElementById('da_repair_btn');
         $('#da_item_repair').modal('show');
         $('.da_item_confirm_repair').click(function () {
@@ -13,7 +14,8 @@ $(document).ready(function () {
                 data: {
                     id: uid,
                     account_id: account_id.value,
-                    da_repair: da_repair_btn.value
+                    da_repair: da_repair_btn.value,
+                    da_repair_location: da_repair_location.value
                 },
                 success: function () {
                     $('#da_item_repair').modal('hide');

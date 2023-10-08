@@ -11,7 +11,10 @@
   $da_repair_location = $_POST["da_repair_location"];
   $da_repair = $_POST["da_repair"];
 
+  $sql = "UPDATE da_items SET da_status_ii='2' WHERE da_id='$da_id'";
   $sql2 = "INSERT INTO da_repairs (account_id, da_id, da_repair_location, da_repair, da_repair_status) VALUES ('$account_id', '$da_id', '$da_repair_location', '$da_repair', '0')";
+
+  $conn->query($sql);
   $conn->query($sql2);
   // if ($conn->query($sql) === TRUE) {
   //   echo "Record deleted successfully";

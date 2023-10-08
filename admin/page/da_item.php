@@ -229,10 +229,10 @@
                                     <label for="exampleInputEmail1">สถานะครุภัณฑ์</label>
                                     <select class="form-control" name="da_status_ii" id="da_status_ii">
                                         <option value="0" selected>ปกติ</option>
-                                        <option value="1">ยืม</option>
+                                        <!-- <option value="1">ยืม</option> -->
                                         <option value="2">แจ้งซ่อม</option>
-                                        <option value="3">การตัดจำหน่าย</option>
-                                        <option value="4">ตรวจสอบสภาพ</option>
+                                        <!-- <option value="3">การตัดจำหน่าย</option>
+                                        <option value="4">ตรวจสอบสภาพ</option> -->
                                     </select>
                                 </div>
                             </div>
