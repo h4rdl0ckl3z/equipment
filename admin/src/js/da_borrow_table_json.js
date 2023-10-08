@@ -146,8 +146,7 @@ if (access_level == 0 || access_level == 2) {
                     }
                 }},
                 {data: 'da_lists'},
-                {data: 'da_status_i', render: function (da_status_i) {
-                    check_da_status_i = da_status_i
+                {data: 'da_br_status', render: function (da_status_i) {
                     if (da_status_i == '0') {
                         return 'ปกติ';
                     } else if (da_status_i == '1') {
@@ -158,7 +157,8 @@ if (access_level == 0 || access_level == 2) {
                         return 'สูญหาย';
                     }
                 }},
-                {data: 'da_br_status', render: function (da_status_i) {
+                {data: 'da_status_i', render: function (da_status_i) {
+                    check_da_status_i = da_status_i
                     if (da_status_i == '0') {
                         return 'ปกติ';
                     } else if (da_status_i == '1') {

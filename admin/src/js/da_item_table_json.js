@@ -77,7 +77,7 @@ if (access_level == 0) {
                 {data: 'da_feature'},
                 {data: 'da_annotation'},
                 {data: 'da_location'},
-                {data: 'da_status_ii', visible: false, render: function (da_status_ii) {
+                {data: 'da_status_ii', visible: true, render: function (da_status_ii) {
                     if (da_status_ii == '0') {
                         return 'ปกติ';
                     } else if (da_status_ii == '1') {
@@ -86,8 +86,10 @@ if (access_level == 0) {
                         return 'แจ้งซ่อม';
                     } else if (da_status_ii == '3') {
                         return 'การตัดจำหน่าย';
-                    } else {
+                    } else if (da_status_ii == '4') {
                         return 'ตรวจสอบสภาพ';
+                    } else {
+                        return 'ดำเนินการซ่อม';
                     }
                 }},
                 {data: 'da_type_name', visible: false},
@@ -212,7 +214,7 @@ if (access_level == 0) {
                 {data: 'da_feature'},
                 {data: 'da_annotation'},
                 {data: 'da_location'},
-                {data: 'da_status_ii', visible: false, render: function (da_status_ii) {
+                {data: 'da_status_ii', visible: true, render: function (da_status_ii) {
                     if (da_status_ii == '0') {
                         return 'ปกติ';
                     } else if (da_status_ii == '1') {
@@ -221,8 +223,10 @@ if (access_level == 0) {
                         return 'แจ้งซ่อม';
                     } else if (da_status_ii == '3') {
                         return 'การตัดจำหน่าย';
-                    } else {
+                    } else if (da_status_ii == '4') {
                         return 'ตรวจสอบสภาพ';
+                    } else {
+                        return 'ดำเนินการซ่อม';
                     }
                 }},
                 {data: 'da_type_name', visible: false},

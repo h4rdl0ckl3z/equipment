@@ -174,12 +174,27 @@ $(document).ready(function () {
                 check_repair_status = da_repair_status
                 if (da_repair_status == '0') {
                     return 'แจ้งซ่อม';
-                } else {
+                } else if (check_repair_status == '1') {
                     return 'ดำเนินการส่งซ่อม';
+                } else {
+                    return 'สำเร็จ';
                 }
             }},
             {data: 'da_r_id', render: function (da_r_id) {
-                return '<button type="button" name="update" id="' + da_r_id + '"class="btn btn-warning update" title="ดำเนินการ"><i class="fas fa-pencil-alt"></i></button>';
+                if (check_repair_status == '0') {
+                    return '<button type="button" name="update" id="' + da_r_id + '"class="btn btn-info update" title="แจ้งซ่อม"><i class="fas fa-share"></i></button>';
+                } else if (check_repair_status == '1') {
+                    return '<button type="button" name="update" id="' + da_r_id + '"class="btn btn-warning update" title="ดำเนินการ"><i class="fas fa-undo-alt"></i></button>';
+                } else {
+                    return '<button type="button" class="btn btn-secondary" title="ดำเนินการ"><i class="fas fa-undo-alt"></i></button>';
+                }
+            }},
+            {data: 'da_r_id', render: function (da_r_id) {
+                if (check_repair_status == '1') {
+                    return '<button type="button" name="success" id="' + da_r_id + '"class="btn btn-success success" title="สำเร็จ"><i class="fas fa-share"></i></button>';
+                } else {
+                    return '<button type="button" class="btn btn-secondary" title="ดำเนินการ"><i class="fas fa-undo-alt"></i></button>';
+                }
             }}
         ],
         "paging": true,

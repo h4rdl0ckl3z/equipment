@@ -3,21 +3,14 @@ $(document).ready(function () {
     //Add Da_Item Repair
     $('#Da_ItemTable_Repair').on('click', '.repair', function () {
         var uid = $(this).attr("id");
-        var account_id = document.getElementById('account_id');
-        var da_repair_location = document.getElementById('da_repair_location');
-        var da_repair_btn = document.getElementById('da_repair_btn');
         $('#da_item_repair').modal('show');
         $('.da_item_confirm_repair').click(function () {
             $.ajax({
                 url: "./src/da_item_repair.php",
                 method: "post",
-                data: {
-                    id: uid,
-                    account_id: account_id.value,
-                    da_repair: da_repair_btn.value,
-                    da_repair_location: da_repair_location.value
-                },
+                data: $('#insert_da_repair_form').serialize() + '&id=' + uid,
                 success: function () {
+                    $('#insert_da_repair_form')[0].reset();
                     $('#da_item_repair').modal('hide');
                     $('#Da_ItemTable_Repair').DataTable().ajax.reload();
                     $('#Da_RepairTable').DataTable().ajax.reload();
@@ -34,12 +27,73 @@ $(document).ready(function () {
             })
         })
     })
+    // Edit(Update) Da_Item Repair
+    $('#Da_RepairTable').on('click', '.update', function () {
+        var uid = $(this).attr("id");
+        $.ajax({
+            url: "./src/da_repair_update.php",
+            method: "post",
+            data: { id: uid },
+            dataType: "json",
+            success: function (data) {
+                $('#Da_ItemTable_Repair').DataTable().ajax.reload();
+                $('#Da_RepairTable').DataTable().ajax.reload();
+                if (data.da_repair_status != 0) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'แจ้งซ่อม',
+                            text: 'ระบบแจ้งซ่อมสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ดำเนินการซ่อม',
+                            text: 'ระบบดำเนินการซ่อมสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
+            }
+        })
+    })
+
+    // Edit(Update) Da_Item Repair(Success)
+    $('#Da_RepairTable').on('click', '.success', function () {
+        var uid = $(this).attr("id");
+        $.ajax({
+            url: "./src/da_repair_success.php",
+            method: "post",
+            data: { id: uid },
+            dataType: "json",
+            success: function (data) {
+                $('#Da_ItemTable_Repair').DataTable().ajax.reload();
+                $('#Da_RepairTable').DataTable().ajax.reload();
+                if (data.da_repair_status == 1) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'สำเร็จ',
+                            text: 'ระบบดำเนินการซ่อมสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
+            }
+        })
+    })
 })
 
 
 // Clear Modal
 function clear_modal() {
-    $('#da_repair').val('');
+    $('#da_repair_btn').val('');
     $('#da_repair_location').val('');
 }
 
