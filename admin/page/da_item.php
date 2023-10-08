@@ -63,9 +63,9 @@
                                                 <th>แก้ไข</th>
                                                 <?php
                                                     if ($row['access_level'] == 0)
-                                                        echo '<th>ลบ</th>
-                                                        <th>API</th>';
+                                                        echo '<th>ลบ</th>';
                                                 ?>
+                                                <th>ติดตาม</th>
                                             </tr>
                                         </thead>
                                         <tbody>

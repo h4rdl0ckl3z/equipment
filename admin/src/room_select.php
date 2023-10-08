@@ -6,8 +6,9 @@
   }
   include_once("./connect.php");
   $conn = connectDB();
-  $sql = "SELECT * FROM ((rooms INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
-  INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)";
+  $sql = "SELECT * FROM (((rooms INNER JOIN room_types ON rooms.room_type_id = room_types.room_type_id)
+  INNER JOIN agencys ON agencys.agency_id = rooms.agency_id)
+  INNER JOIN communitys ON agencys.community_id = communitys.community_id)";
   
   $result = $conn -> query($sql);
   $data = array("data"=>array());

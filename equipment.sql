@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/10/2023 17:02:44
+ Date: 08/10/2023 18:27:28
 */
 
 SET NAMES utf8mb4;
@@ -69,7 +69,8 @@ DROP TABLE IF EXISTS `communitys`;
 CREATE TABLE `communitys`  (
   `community_id` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `community_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`community_id`) USING BTREE
+  PRIMARY KEY (`community_id`) USING BTREE,
+  INDEX `community_name`(`community_name` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -210,8 +211,8 @@ CREATE TABLE `rooms`  (
   PRIMARY KEY (`room_id`) USING BTREE,
   INDEX `room_type`(`room_type_id` ASC) USING BTREE,
   INDEX `room_agency`(`agency_id` ASC) USING BTREE,
-  CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `rooms_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `room_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
