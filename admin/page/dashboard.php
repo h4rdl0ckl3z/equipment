@@ -78,7 +78,7 @@
                 <?php
                     include_once("./src/connect.php");
                     $conn = connectDB();
-                    $sql = "SELECT COUNT(da_r_id) AS count_da_r_id FROM da_repairs";
+                    $sql = "SELECT COUNT(da_r_id) AS count_da_r_id FROM da_repairs WHERE da_repair_status='0' OR da_repair_status='1'";
                     $objQuery = mysqli_query($conn, $sql);
                     $row = mysqli_num_rows($objQuery);
                     if($row) {
