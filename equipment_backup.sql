@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/10/2023 18:52:55
+ Date: 08/10/2023 21:26:07
 */
 
 SET NAMES utf8mb4;
@@ -167,6 +167,7 @@ INSERT INTO `da_items` VALUES ('6223900000201000070004', 'คอมพิวเ�
 INSERT INTO `da_items` VALUES ('6223900000201000070005', 'acer laptop', NULL, '0', 'ชุด', 250000.00, '2023-10-05', 'งบประมาณเงินรายได้', 'Acer', NULL, 'สาขาวิชาวิทยาการคอมพิวเตอร์', '0', '201', 'CS0203', '1');
 INSERT INTO `da_items` VALUES ('6223900000201000070006', 'mac 1 ชุด', NULL, '0', 'ชุด', 300000.00, '2023-10-05', 'งบประมาณเงินรายได้', 'Mac', '', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '0', '201', 'CS0203', '1');
 INSERT INTO `da_items` VALUES ('6223900000201000070007', 'desktop pc 1 ชุด', NULL, '0', 'ชุด', 300000.00, '2023-10-05', 'งบประมาณเงินรายได้', 'PC ยี่ห้อ HP', '', 'ห้องเรียนคณะ', '0', '203', 'SCI0501', '0');
+INSERT INTO `da_items` VALUES ('6323900000201000070001', 'หนังสือการเขียนโปรแกรมเบื้องต้น', NULL, '0', 'เล่ม', 150.00, '2023-10-08', 'งบประมาณเงินรายได้', '', '', '	สาขาวิชาวิทยาการคอมพิวเตอร์', '0', '201', 'CS0203', '0');
 
 -- ----------------------------
 -- Table structure for da_repairs
@@ -184,13 +185,14 @@ CREATE TABLE `da_repairs`  (
   INDEX `da_repair_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `da_repair_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `da_repair_da_id` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_repairs
 -- ----------------------------
 INSERT INTO `da_repairs` VALUES (21, 3, '4921110000201002850004', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '2023-10-08', '2');
 INSERT INTO `da_repairs` VALUES (23, 3, '5721410000201004570010', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '2023-10-08', '2');
+INSERT INTO `da_repairs` VALUES (24, 1, '5721410000201004570010', 'สาขาวิชาวิทยาการคอมพิวเตอร์', '2023-10-08', '2');
 
 -- ----------------------------
 -- Table structure for da_types
@@ -261,8 +263,8 @@ CREATE TABLE `rooms`  (
   PRIMARY KEY (`room_id`) USING BTREE,
   INDEX `room_type`(`room_type_id` ASC) USING BTREE,
   INDEX `room_agency`(`agency_id` ASC) USING BTREE,
-  CONSTRAINT `room_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `room_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `room_agency` FOREIGN KEY (`agency_id`) REFERENCES `agencys` (`agency_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `room_type` FOREIGN KEY (`room_type_id`) REFERENCES `room_types` (`room_type_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
