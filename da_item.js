@@ -153,6 +153,29 @@ $(document).ready(function () {
             }},
             {data: 'da_lists'},
             {data: 'da_br_location'},
+            {data: 'da_status_i', render: function (da_status_i) {
+                check_da_status_i = da_status_i
+                if (da_status_i == '0') {
+                    return 'ปกติ';
+                } else if (da_status_i == '1') {
+                    return 'ชำรุด';
+                } else if (da_status_i == '2') {
+                    return 'เสื่อมคุณถาพ';
+                } else {
+                    return 'สูญหาย';
+                }
+            }},
+            {data: 'da_br_status', render: function (da_status_i) {
+                if (da_status_i == '0') {
+                    return 'ปกติ';
+                } else if (da_status_i == '1') {
+                    return 'ชำรุด';
+                } else if (da_status_i == '2') {
+                    return 'เสื่อมคุณถาพ';
+                } else {
+                    return 'สูญหาย';
+                }
+            }},
             {data: 'da_borrow', render: function (da_borrow) {
                 function toThaiDateString(date) {
                     let monthNames = [
