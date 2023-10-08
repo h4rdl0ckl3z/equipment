@@ -13,6 +13,15 @@ $(document).ready(function () {
                     $('#da_item_qrcode').modal('hide');
                     $('#Da_ItemTable_QrCode').DataTable().ajax.reload();
                     $('#Da_ItemQrCodeTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่ม QRCode',
+                            text: 'ระบบ QRCode สำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })
@@ -23,11 +32,21 @@ $(document).ready(function () {
         $('.qrcode_confirm').click(function () {
             $.ajax({
                 url: "./src/da_item_qrcode_array.php",
+                method: "post",
                 data: $('#qrcode_select_form').serialize(),
                 success: function () {
                     $('#da_item_qrcode_select').modal('hide');
                     $('#Da_ItemTable_QrCode').DataTable().ajax.reload();
                     $('#Da_ItemQrCodeTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่ม QRCode',
+                            text: 'ระบบ QRCode สำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })
