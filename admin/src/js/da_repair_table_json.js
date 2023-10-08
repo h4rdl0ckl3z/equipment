@@ -169,6 +169,7 @@ $(document).ready(function () {
                 let date = new Date(da_borrow);
                 return toThaiDateString(date);
             }},
+            {data: 'da_repair_location'},
             {data: 'da_repair_status', render: function (da_repair_status) {
                 check_repair_status = da_repair_status
                 if (da_repair_status == '0') {

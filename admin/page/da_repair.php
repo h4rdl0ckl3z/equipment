@@ -79,6 +79,7 @@
                                             <th>รหัสครุภัณฑ์</th>
                                             <th>รายการครุภัณฑ์</th>
                                             <th>วันที่แจ้ง</th>
+                                            <th>สถานที่ซ่อม/จัดเก็บ</th>
                                             <th>สถานะการแจ้งซ่อม</th>
                                             <th>สถานะการดำเนินการ</th>
                                         </tr>
@@ -114,6 +115,10 @@
                         <input type="hidden" name="account_id" id="account_id" value="<?= $row['account_id']?>">
                         <label for="exampleInputEmail1">วันที่แจ้ง</label>
                         <input type="date" class="form-control" name="da_repair_btn" id="da_repair_btn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">สถานที่ซ่อม/จัดเก็บ</label>
+                        <input type="text" class="form-control" name="da_repair_location" id="da_repair_location" placeholder="สถานที่" required>
                     </div>
                 </div>
             </div>

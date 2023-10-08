@@ -25,22 +25,10 @@ $(document).ready(function () {
     })
 })
 
-// Update Modal-Title
-function da_repair_add_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มการแจ้งซ่อม";
-    document.getElementById("da_id").readOnly = false;
-    document.getElementById("fullname").readOnly = false;
-    document.getElementById("da_location").readOnly = false;
-}
-function da_repair_edit_data() {
-    document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขการแจ้งซ่อม";
-    document.getElementById("da_id").readOnly = true;
-    document.getElementById("fullname").readOnly = true;
-    document.getElementById("da_location").readOnly = true;
-}
 
 // Clear Modal
 function clear_modal() {
     $('#da_repair').val('');
+    $('#da_repair_location').val('');
 }
 
