@@ -161,8 +161,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">สภาพครุภัณฑ์</label>
                                         <select class="form-control" name="da_status_i" id="da_status_i" required>
-                                            <option value="0" selected>ปกติ</option>
-                                            <option value="1">ชำรุด</option>
+                                            <!-- <option value="0">ปกติ</option> -->
+                                            <option value="1" selected>ชำรุด</option>
                                             <option value="2">เสื่อมสภาพ</option>
                                             <option value="3">สูญหาย</option>
                                         </select>
@@ -228,14 +228,11 @@
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">สถานะครุภัณฑ์</label>
                                     <select class="form-control" name="da_status_ii" id="da_status_ii">
-                                        <option value="0" selected>ปกติ</option>
-                                        <?php
-                                            if ($row['access_level'] == 0)
-                                            echo '<option value="1">ยืม</option>
-                                            <option value="2">แจ้งซ่อม</option>';
-                                        ?>
+                                        <!-- <option value="0">ปกติ</option>
+                                        <option value="1">ยืม</option>
+                                        <option value="2">แจ้งซ่อม</option> -->
                                         <option value="3">การตัดจำหน่าย</option>
-                                        <option value="4">ตรวจสอบสภาพ</option>
+                                        <option value="4" selected>ตรวจสอบสภาพ</option>
                                     </select>
                                 </div>
                             </div>

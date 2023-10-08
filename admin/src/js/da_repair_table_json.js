@@ -133,7 +133,19 @@ $(document).ready(function () {
                 defaultContent: ''
             },
             {data: 'fullname'},
-            {data: 'da_id'},
+            {data: 'da_id', render: function (da_id) {
+                if(typeof(da_id) !== 'string') da_id = da_id.toString()
+                if(da_id.length === 22){
+                  pat_daid = da_id.replace(/(\d{2})(\d{2})(\d{6})(\d{3})(\d{5})(\d{4})/, "$1-$2-$3-$4-$5-$6");
+                  return pat_daid;
+                } else if(da_id.length < 22) {
+                  return ''
+                } else if(da_id.length > 22) {
+                  return ''
+                } else {
+                  return ''
+                }
+            }},
             {data: 'da_lists'},
             {data: 'da_repair', render: function (da_borrow) {
                 function toThaiDateString(date) {
@@ -166,14 +178,7 @@ $(document).ready(function () {
                 }
             }},
             {data: 'da_r_id', render: function (da_r_id) {
-                return '<button type="button" name="update" id="' + da_r_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_repair_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
-            }},
-            {data: 'da_r_id', render: function (da_r_id) {
-                if (check_repair_status == '0') {
-                    return '<button type="button" name="delete" id="' + da_r_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
-                } else {
-                    return '<button class="btn btn-secondary"><i class="fas fa-eye-slash"></i></button>';
-                }
+                return '<button type="button" name="update" id="' + da_r_id + '"class="btn btn-warning update" title="ดำเนินการ"><i class="fas fa-pencil-alt"></i></button>';
             }}
         ],
         "paging": true,

@@ -80,8 +80,7 @@
                                             <th>รายการครุภัณฑ์</th>
                                             <th>วันที่แจ้ง</th>
                                             <th>สถานะการแจ้งซ่อม</th>
-                                            <th>แก้ไข</th>
-                                            <th>ลบ</th>
+                                            <th>สถานะการดำเนินการ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -89,11 +88,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- Button trigger modal -->
-                            <!-- <button class="btn btn-success" type="button" data-toggle="modal"
-                                data-target="#da_repair_add" title="เพิ่มข้อมูล" onclick="da_repair_add_data()">
-                                <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
-                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -103,62 +97,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-<!-- Modal Add $Edit-->
-<div class="modal fade" id="da_repair_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">
-
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <form method="post" id="insert_da_repair_form">
-                        <input type="hidden" name="da_r_id" id="da_r_id">
-                        <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">ชื่อผู้แจ้งซ่อม</label>
-                            <input type="text" class="form-control" name="fullname" id="fullname" required placeholder="ชื่อผู้แจ้งซ่อม">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">รหัสครุภัณฑ์</label>
-                            <input type="text" class="form-control" name="da_id" id="da_id" placeholder="รหัสครุภัณฑ์"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">สถานที่ตั้ง/จัดเก็บ</label>
-                            <input type="text" class="form-control" name="da_location" id="da_location"
-                                placeholder="สถานที่ตั้ง/จัดเก็บ" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">วันที่แจ้ง</label>
-                            <input type="date" class="form-control" name="da_repair" id="da_repair" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">สถานะการแจ้งซ่อม</label>
-                            <select class="form-control" name="da_repair_status" id="da_repair_status">
-                                <option value="0" selected>แจ้งซ่อม</option>
-                                <option value="1">ดำเนินการส่งซ่อม</option>
-                            </select>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" id="da_repair_insert" class="btn btn-success">Submit</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"
-                                onclick="clear_modal()">Cancel</button>
-                            <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Modal Repair -->
 <div class="modal fade" id="da_item_repair" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -173,6 +111,7 @@
             <div class="modal-body">
                 <div class="card-body">
                     <div class="form-group">
+                        <input type="hidden" name="account_id" id="account_id" value="<?= $row['account_id']?>">
                         <label for="exampleInputEmail1">วันที่แจ้ง</label>
                         <input type="date" class="form-control" name="da_repair_btn" id="da_repair_btn" required>
                     </div>

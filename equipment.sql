@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 08/10/2023 02:40:05
+ Date: 08/10/2023 15:01:48
 */
 
 SET NAMES utf8mb4;
@@ -85,6 +85,7 @@ CREATE TABLE `da_brs`  (
   `account_id` int NOT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `da_br_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ที่อยู่ปัจจุบัน ในการยืม',
+  `da_br_status` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT 'สภาพครุภัณฑ์\r\n0.ปกติ\r\n1.ชำรุด\r\n2.เสื่อมสภาพ\r\n3.สูญหาย',
   `da_borrow` date NULL DEFAULT NULL,
   `da_return` date NULL DEFAULT NULL,
   `allow_br` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT 'สถานะการยืม\r\n0.รอดำเนินการ\r\n1.ยืม',
@@ -93,7 +94,7 @@ CREATE TABLE `da_brs`  (
   INDEX `da_br_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `da_brs_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `da_brs_ibfk_2` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_brs
@@ -138,6 +139,7 @@ CREATE TABLE `da_repairs`  (
   `da_r_id` int NOT NULL AUTO_INCREMENT,
   `account_id` int NOT NULL,
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `da_repair_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'สถานที่ซ้อม/จัดเก็บ',
   `da_repair` date NOT NULL COMMENT 'วันแจ้งซ่อม',
   `da_repair_status` enum('0','1') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT 'สถานะส่งซ่อม\r\n0.แจ้งซ่อม\r\n1.ดำเนินการส่งซ่อม',
   PRIMARY KEY (`da_r_id`) USING BTREE,
@@ -145,7 +147,7 @@ CREATE TABLE `da_repairs`  (
   INDEX `da_repair_da_id`(`da_id` ASC) USING BTREE,
   CONSTRAINT `da_repairs_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `da_repairs_ibfk_2` FOREIGN KEY (`da_id`) REFERENCES `da_items` (`da_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of da_repairs
