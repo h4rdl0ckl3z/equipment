@@ -19,6 +19,15 @@ $(document).ready(function () {
                     $('#da_item_repair').modal('hide');
                     $('#Da_ItemTable_Repair').DataTable().ajax.reload();
                     $('#Da_RepairTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลแจ้งซ่อม',
+                            text: 'ระบบเพิ่มข้อมูลแจ้งซ่อมสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
                 }
             })
         })
