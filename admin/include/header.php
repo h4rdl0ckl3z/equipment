@@ -62,7 +62,7 @@
       </ul>
 
       <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
+      <!-- <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
@@ -73,7 +73,7 @@
             <i class="fas fa-th-large"></i>
           </a>
         </li>
-      </ul>
+      </ul> -->
     </nav>
     <!-- /.navbar -->
 
