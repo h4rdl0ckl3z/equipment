@@ -9,7 +9,7 @@
   $da_id = $_POST["id"];
   // sql to delete a record
   $sql = "DELETE FROM da_items WHERE da_id='" . $da_id . "'";
-
+  $conn->query($sql);
   // if ($conn->query($sql) === TRUE) {
   //   echo "Record deleted successfully";
   // } else {
