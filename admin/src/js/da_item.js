@@ -127,6 +127,29 @@ $(document).ready(function () {
             }
         })
     })
+    // Year Da_Item
+    $('.da_year_update').click(function () {
+        $('.da_item_year_confirm').click(function () {
+            $.ajax({
+                url: "./src/da_item_year.php",
+                method: "post",
+                data: $('#da_item_form').serialize(),
+                success: function () {
+                    $('#da_item_year').modal('hide');
+                    $('#Da_ItemTable').DataTable().ajax.reload();
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'เพิ่มข้อมูลครุภัณฑ์ประจำปี',
+                            text: 'ระบบเพิ่มข้อมูลครุภัณฑ์ประจำปีสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
+            })
+        })
+    })
 })
 
 // Update Modal-Title

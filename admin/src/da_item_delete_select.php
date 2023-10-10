@@ -9,7 +9,6 @@ $conn = connectDB();
 if (isset($_POST["checkbox_da_id"]) <> '') {
   $da_id = $_POST["checkbox_da_id"];
   if ($da_id <> '') {
-    // print_r($da_id);
     if ($da_id[0] == 'on') {
       unset($da_id[0]);
       $extract_id = implode(', ', $da_id);

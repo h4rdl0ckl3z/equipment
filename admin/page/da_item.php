@@ -77,6 +77,10 @@
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
                                 </button>
+                                <button class="btn btn-info da_year_update" type="button" data-toggle="modal"
+                                    data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
+                                    <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
+                                </button>
                                 <?php
                                     if ($row['access_level'] == 0)
                                     echo '<button class="btn btn-danger" type="button" data-toggle="modal"
@@ -322,6 +326,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal DaYear -->
+<div class="modal fade" id="da_item_year" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                ครุภัณฑ์ประจำปี
+                </h5>
+            </div>
+            <div class="modal-body">
+                <span>ต้องการดึงครุภัณฑ์ประจำปีหรือไม่</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info da_item_year_confirm">ครุภัณฑ์ประจำปี</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>

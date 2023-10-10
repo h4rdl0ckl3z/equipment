@@ -72,14 +72,13 @@
                                     </table>
                                 </div>
                                 <!-- Button trigger modal -->
-                                <button class="btn btn-success" type="button" data-toggle="modal"
+                                <?php
+                                    if ($row['access_level'] == 0)
+                                    echo '<button class="btn btn-success" type="button" data-toggle="modal"
                                     data-target="#da_item_add" title="เพิ่มข้อมูล" onclick="da_item_add_data()">
                                     <i class="fas fa-plus-square"></i> เพิ่มข้อมูล
-                                </button>
-                                <button class="btn btn-info da_year_update" type="button" data-toggle="modal"
-                                    data-target="#da_item_year" title="ครุภัณฑ์ประจำปี">
-                                    <i class="fas fa-store-slash"></i> ครุภัณฑ์ประจำปี
-                                </button>
+                                </button>';
+                                ?>
                                 <?php
                                     if ($row['access_level'] == 0)
                                     echo '<button class="btn btn-danger" type="button" data-toggle="modal"
@@ -161,8 +160,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">สภาพครุภัณฑ์</label>
                                         <select class="form-control" name="da_status_i" id="da_status_i" required>
-                                            <!-- <option value="0">ปกติ</option> -->
-                                            <option value="1" selected>ชำรุด</option>
+                                            <option value="0" selected>ปกติ</option>
+                                            <option value="1">ชำรุด</option>
                                             <option value="2">เสื่อมสภาพ</option>
                                             <option value="3">สูญหาย</option>
                                         </select>
@@ -240,11 +239,11 @@
                                 <div class="col-sm-6">
                                     <label for="exampleInputEmail1">สถานะครุภัณฑ์</label>
                                     <select class="form-control" name="da_status_ii" id="da_status_ii">
-                                        <!-- <option value="0">ปกติ</option>
+                                        <option value="0" selected>ปกติ</option>
                                         <option value="1">ยืม</option>
-                                        <option value="2">แจ้งซ่อม</option> -->
+                                        <option value="2">แจ้งซ่อม</option>
                                         <option value="3">การตัดจำหน่าย</option>
-                                        <option value="4" selected>ตรวจสอบสภาพ</option>
+                                        <option value="4">ตรวจสอบสภาพ</option>
                                     </select>
                                 </div>
                             </div>
@@ -317,28 +316,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info da_item_confirm_delete">ลบข้อมูล</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal DaYear -->
-<div class="modal fade" id="da_item_year" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">
-                ครุภัณฑ์ประจำปี
-                </h5>
-            </div>
-            <div class="modal-body">
-                <span>ต้องการดึงครุภัณฑ์ประจำปีหรือไม่</span>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info da_item_year_confirm">ครุภัณฑ์ประจำปี</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
             </div>
         </div>
