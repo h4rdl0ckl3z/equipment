@@ -89,7 +89,8 @@
                                             <th>สถานะการยืม</th>
                                             <?php
                                                 if ($row['access_level'] == 0 || $row['access_level'] == 2)
-                                                echo '<th>อนุมัติ</th>';
+                                                echo '<th>อนุมัติ</th>
+                                                <th>ไม่อนุมัติ</th>';
                                             ?>
                                         </tr>
                                     </thead>

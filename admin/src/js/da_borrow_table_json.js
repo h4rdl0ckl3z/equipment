@@ -146,12 +146,12 @@ if (access_level == 0 || access_level == 2) {
                     }
                 }},
                 {data: 'da_lists'},
-                {data: 'da_br_status', render: function (da_status_i) {
-                    if (da_status_i == '0') {
+                {data: 'da_br_status', render: function (da_br_status) {
+                    if (da_br_status == '0') {
                         return 'ปกติ';
-                    } else if (da_status_i == '1') {
+                    } else if (da_br_status == '1') {
                         return 'ชำรุด';
-                    } else if (da_status_i == '2') {
+                    } else if (da_br_status == '2') {
                         return 'เสื่อมคุณถาพ';
                     } else {
                         return 'สูญหาย';
@@ -228,25 +228,23 @@ if (access_level == 0 || access_level == 2) {
                         return 'ตรวจสอบสภาพ';
                     }
                 }},
-                {data: 'allow_br', render: function (allow_br) {
-                    check_allow_br = allow_br
-                    if (allow_br == '0') {
+                {data: 'dabr_status', render: function (dabr_status) {
+                    check_dabr_status = dabr_status
+                    if (dabr_status == '0') {
                         return 'รอดำเนินการ';
-                    } else {
+                    } else if (dabr_status == '1') {
                         return 'ยืม';
+                    } else {    // 2
+                        return 'คืน';
                     }
                 }},
                 {data: 'dabr_id', render: function (dabr_id) {
-                    if (check_allow_br == '0') {
-                        if (check_da_status_ii == '0' && check_da_status_i == '0') {
-                            return '<button type="button" name="update" id="' + dabr_id + '"class="btn btn-success update" title="อนุมัติ"><i class="fas fa-share"></i></button>';
-                        } else {
-                            return '<button class="btn btn-secondary"><i class="fas fa-share"></i></button>';
-                        }
+                    if (check_allow_br == 0) {
+                        return '';
                     } else {
-                        return '<button type="button" name="update" id="' + dabr_id + '"class="btn btn-warning update" title="เรียกคืน"><i class="fas fa-undo-alt"></i></button>';
+                        return '';
                     }
-                }},
+                }}
             ],
             "paging": true,
             "lengthChange": true,
@@ -269,7 +267,7 @@ if (access_level == 0 || access_level == 2) {
             "buttons": ["excel", "print", "colvis"]
         } );
         table2.buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)', table2.table().container());
-    });    
+    });
 } else {
     $(document).ready(function () {
         var table = $('#Da_ItemTable_Borrow').DataTable({
@@ -499,12 +497,14 @@ if (access_level == 0 || access_level == 2) {
                         return 'ตรวจสอบสภาพ';
                     }
                 }},
-                {data: 'allow_br', render: function (allow_br) {
-                    check_allow_br = allow_br
-                    if (allow_br == '0') {
+                {data: 'dabr_status', render: function (dabr_status) {
+                    check_dabr_status = dabr_status
+                    if (dabr_status == '0') {
                         return 'รอดำเนินการ';
-                    } else {
+                    } else if (dabr_status == '1') {
                         return 'ยืม';
+                    } else {    // 2
+                        return 'คืน';
                     }
                 }}
             ],
