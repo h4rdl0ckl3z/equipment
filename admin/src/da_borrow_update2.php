@@ -13,7 +13,11 @@
     
     echo json_encode($row);
 
-    $sql2 = "UPDATE da_brs INNER JOIN da_items ON da_brs.da_id = da_items.da_id SET da_brs.allow_br = '1', da_brs.dabr_status = '1', da_items.da_status_ii = '1' WHERE da_brs.dabr_id = '$dabr_id' AND da_brs.da_id = '" . $row['da_id'] . "'";
+    if ($row['dabr_status'] == 1) {
+        $sql2 = "UPDATE da_brs INNER JOIN da_items ON da_brs.da_id = da_items.da_id SET da_brs.allow_br = '0', da_brs.dabr_status = '2', da_items.da_status_ii = '0' WHERE da_brs.dabr_id = '$dabr_id' AND da_brs.da_id = '" . $row['da_id'] . "'";
+    } else {
+        $sql2 = "UPDATE da_brs INNER JOIN da_items ON da_brs.da_id = da_items.da_id SET da_brs.allow_br = '0', da_brs.dabr_status = '3', da_items.da_status_ii = '0' WHERE da_brs.dabr_id = '$dabr_id' AND da_brs.da_id = '" . $row['da_id'] . "'";
+    }
     
     // echo $sql2;
     $conn->query($sql2);

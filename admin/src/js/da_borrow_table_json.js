@@ -234,15 +234,35 @@ if (access_level == 0 || access_level == 2) {
                         return 'รอดำเนินการ';
                     } else if (dabr_status == '1') {
                         return 'ยืม';
-                    } else {    // 2
+                    } else if (dabr_status == '2') {
                         return 'คืน';
+                    } else {    // 3
+                        return 'ไม่อนุมัติ';
                     }
                 }},
                 {data: 'dabr_id', render: function (dabr_id) {
-                    if (check_allow_br == 0) {
-                        return '';
+                    if (check_dabr_status == 0) {
+                        if (check_da_status_ii == 0) {
+                            return '<button type="button" name="update" id="' + dabr_id + '"class="btn btn-success update" title="อนุมัติ"><i class="fa fa-check"></i></button>';
+                        } else {
+                            return '<button type="button" class="btn btn-secondary" title="อนุมัติ"><i class="fa fa-check"></i></button>';
+                        }
                     } else {
-                        return '';
+                        return '<button type="button" class="btn btn-secondary" title="อนุมัติ"><i class="fa fa-check"></i></button>';
+                    }
+                }},
+                {data: 'dabr_id', render: function (dabr_id) {
+                    if (check_dabr_status == 0) {
+                        return '<button type="button" name="update_status" id="' + dabr_id + '"class="btn btn-danger update_status" title="ไม่อนุมัติ"><i class="fa fa-window-close"></i></button>';
+                    } else {
+                        return '<button type="button" class="btn btn-secondary" title="ไม่อนุมัติ"><i class="fa fa-window-close"></i></button>';
+                    }
+                }},
+                {data: 'dabr_id', render: function (dabr_id) {
+                    if (check_dabr_status == 1) {
+                        return '<button type="button" name="update_status" id="' + dabr_id + '"class="btn btn-success update_status" title="คืน"><i class="fas fa-undo"></i></button>';
+                    } else {
+                        return '<button type="button" class="btn btn-secondary" title="ไม่อนุมัติ"><i class="fas fa-undo"></i></button>';
                     }
                 }}
             ],

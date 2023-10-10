@@ -25,8 +25,44 @@ $(document).ready(function () {
                     setTimeout(function() {
                         Swal.fire({
                             icon: 'success',
+                            title: 'ไม่อนุมัติการยืม',
+                            text: 'ระบบไม่อนุมัติการยืมสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                }
+            }
+        })
+    })
+
+    // Edit(Update) Da_Item Borrow Status
+    $('#Da_BorrowTable').on('click', '.update_status', function () {
+        var uid = $(this).attr("id");
+        $.ajax({
+            url: "./src/da_borrow_update2.php",
+            method: "post",
+            data: { id: uid },
+            dataType: "json",
+            success: function (data) {
+                $('#Da_ItemTable_Borrow').DataTable().ajax.reload();
+                $('#Da_BorrowTable').DataTable().ajax.reload();
+                if (data.dabr_status == 1) {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
                             title: 'เรียกคืน',
                             text: 'ระบบเรียกคืนสำเร็จ',
+                            timer: 1200,
+                            showConfirmButton: false
+                        })
+                    })
+                } else {
+                    setTimeout(function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'ไม่อนุมัติการยืม',
+                            text: 'ระบบไม่อนุมัติการยืมสำเร็จ',
                             timer: 1200,
                             showConfirmButton: false
                         })

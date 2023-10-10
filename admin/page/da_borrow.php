@@ -90,7 +90,8 @@
                                             <?php
                                                 if ($row['access_level'] == 0 || $row['access_level'] == 2)
                                                 echo '<th>อนุมัติ</th>
-                                                <th>ไม่อนุมัติ</th>';
+                                                <th>ไม่อนุมัติ</th>
+                                                <th>คืน</th>';
                                             ?>
                                         </tr>
                                     </thead>
