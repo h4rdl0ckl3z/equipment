@@ -78,6 +78,7 @@ if (access_level == 0) {
                 {data: 'da_annotation'},
                 {data: 'da_location'},
                 {data: 'da_status_ii', visible: true, render: function (da_status_ii) {
+                    check_da_status_ii = da_status_ii
                     if (da_status_ii == '0') {
                         return 'ปกติ';
                     } else if (da_status_ii == '1') {
@@ -98,10 +99,18 @@ if (access_level == 0) {
                 {data: 'agency_name', visible: false},
                 {data: 'community_name', visible: false},
                 {data: 'da_id', render: function (da_id) {
-                    return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_item_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                    if (check_da_status_ii == 4) {
+                        return '<button type="button" class="btn btn-secondary" title="แก้ไข"><i class="fas fa-pencil-alt"></i></button>';
+                    } else {
+                        return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_item_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                    }
                 }},
                 {data: 'da_id', render: function (da_id) {
-                    return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
+                    if (check_da_status_ii == 4) {
+                        return '<button type="button" class="btn btn-secondary" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
+                    } else {
+                        return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
+                    }
                 }},
                 {data: 'da_id', visible: true, render: function (da_id) {
                     if(typeof(da_id) !== 'string') da_id = da_id.toString()
