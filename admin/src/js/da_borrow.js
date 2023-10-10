@@ -60,7 +60,7 @@ $(document).ready(function () {
                 } else {
                     setTimeout(function() {
                         Swal.fire({
-                            icon: 'success',
+                            icon: 'error',
                             title: 'ไม่อนุมัติการยืม',
                             text: 'ระบบไม่อนุมัติการยืมสำเร็จ',
                             timer: 1200,
