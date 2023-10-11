@@ -106,6 +106,16 @@ $(document).ready(function () {
 
 function clear_modal_borrow_date() {
     $('#da_br_location').val('');
-    $('#da_borrow').val('');
     $('#da_return').val('');
+}
+
+// Date Borrow Return
+function br() {
+    let date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDay() + 8;
+    var today = `${year}-${month}-${day}`;
+    document.getElementById('da_borrow').valueAsDate = date;
+    document.getElementById('da_return').setAttribute('min', today);
 }

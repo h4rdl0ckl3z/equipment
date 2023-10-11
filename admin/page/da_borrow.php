@@ -127,7 +127,7 @@
                         <div class="form-group">
                             <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
                             <label for="exampleInputEmail1">วันที่ยืม</label>
-                            <input type="date" class="form-control" name="da_borrow" id="da_borrow" required>
+                            <input type="date" class="form-control" name="da_borrow" id="da_borrow" required readOnly>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">วันที่คืน</label>

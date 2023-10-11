@@ -93,7 +93,7 @@ if (access_level == 0 || access_level == 2) {
                 {data: 'agency_name', visible: false},
                 {data: 'community_name', visible: false},
                 {data: 'da_id', render: function (da_id) {
-                    return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ยืม"><i class="fas fa-archive"></i></button>';
+                    return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ยืม" onclick="br()"><i class="fas fa-archive"></i></button>';
                 }}
             ],
             "paging": true,
