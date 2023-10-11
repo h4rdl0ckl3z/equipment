@@ -112,10 +112,8 @@ function clear_modal_borrow_date() {
 // Date Borrow Return
 function br() {
     let date = new Date();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDay() + 8;
-    var today = `${year}-${month}-${day}`;
+    let result = date.toLocaleDateString('en-US').split('/');
+    var today = `${result[2]}-${result[0]}-${result[1]}`
     document.getElementById('da_borrow').valueAsDate = date;
     document.getElementById('da_return').setAttribute('min', today);
 }
