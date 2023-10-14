@@ -132,7 +132,7 @@ INSERT INTO `da_brs` VALUES (52, 1, '5721410000201004570010', 'dsf', '0', '2023-
 DROP TABLE IF EXISTS `da_items`;
 CREATE TABLE `da_items`  (
   `da_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสครุภัณฑ์',
-  `da_lists` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รายการครุภัณฑ์',
+  `da_lists` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ชื่อครุภัณฑ์',
   `da_img` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'รูปภาพครุภัณฑ์',
   `da_status_i` enum('0','1','2','3') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT 'สภาพครุภัณฑ์\r\n0.ปกติ\r\n1.ชำรุด\r\n2.เสื่อมสภาพ\r\n3.สูญหาย',
   `da_unit` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'หน่วยนับ',

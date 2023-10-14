@@ -152,7 +152,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">รายการครุภัณฑ์</label>
+                                        <label for="exampleInputEmail1">ชื่อครุภัณฑ์</label>
                                         <textarea class="form-control" name="da_lists" id="da_lists"
                                             required></textarea>
                                     </div>
