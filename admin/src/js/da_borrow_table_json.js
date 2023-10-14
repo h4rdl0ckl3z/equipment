@@ -1,4 +1,5 @@
 var access_level = document.getElementById('access_level').value;
+var account_id = document.getElementById('account_id').value;
 if (access_level == 0 || access_level == 2) {
     $(document).ready(function () {
         var table = $('#Da_ItemTable_Borrow').DataTable({
@@ -125,6 +126,10 @@ if (access_level == 0 || access_level == 2) {
             ajax: {
                 url: './src/da_borrow_select.php',
                 method: 'post',
+                data: {
+                    access_level: access_level,
+                    account_id: account_id
+                }
             },
             columns: [
                 {
@@ -382,7 +387,7 @@ if (access_level == 0 || access_level == 2) {
                 {data: 'agency_name', visible: false},
                 {data: 'community_name', visible: false},
                 {data: 'da_id', render: function (da_id) {
-                    return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ยืม"><i class="fas fa-archive"></i></button>';
+                    return '<button type="button" name="borrow" id="' + da_id + '"class="btn btn-success borrow" title="ยืม" onclick="br()"><i class="fas fa-archive"></i></button>';
                 }}
             ],
             "paging": true,
@@ -414,6 +419,10 @@ if (access_level == 0 || access_level == 2) {
             ajax: {
                 url: './src/da_borrow_select.php',
                 method: 'post',
+                data: {
+                    access_level: access_level,
+                    account_id: account_id
+                }
             },
             columns: [
                 {

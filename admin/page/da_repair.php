@@ -18,6 +18,9 @@
     </div>
     <!-- /.content-header -->
 
+    <input type="hidden" name="accecc_level" id="access_level" value="<?= $row['access_level']?>">
+    <input type="hidden" name="account_id" id="account_id" value="<?= $row['account_id']?>">
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -81,7 +84,10 @@
                                             <th>วันที่แจ้ง</th>
                                             <th>สถานที่ซ่อม/จัดเก็บ</th>
                                             <th>สถานะการแจ้งซ่อม</th>
-                                            <th colspan="2">สถานะการดำเนินการ</th>
+                                            <?php
+                                                if ($row['access_level'] == 0 || $row['access_level'] == 2)
+                                                echo '<th colspan="2">สถานะการดำเนินการ</th>';
+                                            ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -115,7 +121,7 @@
                         <div class="form-group">
                             <input type="hidden" name="account_id" id="account_id" value="<?= $row['account_id']?>">
                             <label for="exampleInputEmail1">วันที่แจ้ง</label>
-                            <input type="date" class="form-control" name="da_repair" id="da_repair" required>
+                            <input type="date" class="form-control" name="da_repair" id="da_repair" required readOnly>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">สถานที่ซ่อม/จัดเก็บ</label>

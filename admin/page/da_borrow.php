@@ -19,6 +19,7 @@
     <!-- /.content-header -->
 
     <input type="hidden" name="access_level" id="access_level" value="<?= $row['access_level']?>">
+    <input type="hidden" name="account_id" id="account_id" value="<?= $row['account_id']?>">
 
     <!-- Main content -->
     <section class="content">

@@ -7,8 +7,17 @@
   include_once("./connect.php");
   $conn = connectDB();
 
-  $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
+  $account_id = $_POST['account_id'];
+  $access_level = $_POST['access_level'];
+
+  if ($access_level == 0 || $access_level == 2) {
+    $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
   INNER JOIN da_items ON da_brs.da_id = da_items.da_id)";
+  } else {
+    $sql = "SELECT * FROM ((da_brs INNER JOIN accounts ON da_brs.account_id = accounts.account_id)
+  INNER JOIN da_items ON da_brs.da_id = da_items.da_id) WHERE da_brs.account_id = $account_id";
+  }
+  
 
   $result = $conn -> query($sql);
   $data = array("data"=>array());

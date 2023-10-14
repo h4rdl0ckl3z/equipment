@@ -296,4 +296,13 @@ echo '
         </p>
     </a>
 </li>
+<li class="nav-header">จัดการแจ้งซ่อม</li>
+<li class="nav-item">
+    <a href="./da_da_repair.php" class="nav-link">
+        <i class="nav-icon fas fa-tools"></i>
+        <p>
+            แจ้งซ่อม
+        </p>
+    </a>
+</li>
 ';

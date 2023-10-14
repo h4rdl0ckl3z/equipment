@@ -93,7 +93,10 @@ $(document).ready(function () {
 
 // Clear Modal
 function clear_modal() {
-    $('#da_repair_btn').val('');
     $('#da_repair_location').val('');
 }
 
+// Date Repair
+function dr() {
+    document.getElementById('da_repair').valueAsDate = new Date();
+}
