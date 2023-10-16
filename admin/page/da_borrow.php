@@ -122,9 +122,9 @@
                     เลือกระยะเวลาการยืม
                 </h5>
             </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <form method="post" id="da_borrow_form">
+            <form method="post" id="da_borrow_form">
+                <div class="modal-body">
+                    <div class="card-body">
                         <div class="form-group">
                             <input type="hidden" name="account_id" id="account_id" value="<?= $row["account_id"] ?>">
                             <label for="exampleInputEmail1">วันที่ยืม</label>
@@ -138,14 +138,14 @@
                             <label for="exampleInputEmail1">สถานที่</label>
                             <input type="text" class="form-control" name="da_br_location" id="da_br_location" placeholder="สถานที่" required>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info da_item_confirm_borrow">ยืม</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal_borrow_date()">ยกเลิก</button>
-                <button type="button" class="btn btn-primary" onclick="clear_modal_borrow_date()">Reset</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info">ยืม</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal_borrow_date()">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary" onclick="clear_modal_borrow_date()">Reset</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

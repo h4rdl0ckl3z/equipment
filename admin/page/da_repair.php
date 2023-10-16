@@ -115,9 +115,9 @@
                     วันที่แจ้งซ่อม
                 </h5>
             </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <form id="insert_da_repair_form" method="post">
+            <form id="insert_da_repair_form" method="post">
+                <div class="modal-body">
+                    <div class="card-body">
                         <div class="form-group">
                             <input type="hidden" name="account_id" id="account_id" value="<?= $row['account_id']?>">
                             <label for="exampleInputEmail1">วันที่แจ้ง</label>
@@ -127,14 +127,14 @@
                             <label for="exampleInputEmail1">สถานที่ซ่อม/จัดเก็บ</label>
                             <input type="text" class="form-control" name="da_repair_location" id="da_repair_location" placeholder="สถานที่" required>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info da_item_confirm_repair">แจ้งซ่อม</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-                <button type="button" class="btn btn-primary" onclick="clear_modal()">reset</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info">แจ้งซ่อม</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-primary" onclick="clear_modal()">reset</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

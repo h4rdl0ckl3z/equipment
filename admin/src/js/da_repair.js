@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('#Da_ItemTable_Repair').on('click', '.repair', function () {
         var uid = $(this).attr("id");
         $('#da_item_repair').modal('show');
-        $('.da_item_confirm_repair').click(function () {
+        $('#insert_da_repair_form').on('submit', function () {
             $.ajax({
                 url: "./src/da_item_repair.php",
                 method: "post",
