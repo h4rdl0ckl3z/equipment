@@ -267,7 +267,7 @@ if (access_level == 0 || access_level == 2) {
                     if (check_dabr_status == 1) {
                         return '<button type="button" name="update_status" id="' + dabr_id + '"class="btn btn-success update_status" title="คืน"><i class="fas fa-undo"></i></button>';
                     } else {
-                        return '<button type="button" class="btn btn-secondary" title="ไม่อนุมัติ"><i class="fas fa-undo"></i></button>';
+                        return '<button type="button" class="btn btn-secondary" title="คืน"><i class="fas fa-undo"></i></button>';
                     }
                 }}
             ],

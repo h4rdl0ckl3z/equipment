@@ -192,7 +192,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" id="person_insert" class="btn btn-success">Submit</button>
+                            <button type="submit" id="person_insert" class="btn btn-success" onclick="confirm_passwd()">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"
                                 onclick="clear_modal()">Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="clear_modal()">Reset</button>

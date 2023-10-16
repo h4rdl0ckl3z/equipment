@@ -7,7 +7,6 @@
     include_once("./connect.php");
     $conn = connectDB();
     $account_id = $_POST["account_id"];
-    // echo $account_id;
     $username = $_POST["username"];
     $password = $_POST["passwd"];
     $password2 = $_POST["passwd2"];

@@ -1,3 +1,12 @@
+var passwd;
+var passwd2;
+
+function confirm_passwd() {
+    passwd = document.getElementById('passwd').value;
+    passwd2 = document.getElementById('passwd2').value;
+    console.log(passwd, passwd2);
+}
+
 // Person
 $(document).ready(function () {
     // Add Person
@@ -16,35 +25,45 @@ $(document).ready(function () {
                 $('#PersonTable').DataTable().ajax.reload();
                 let account = JSON.parse(data);
                 let account_id = document.getElementById('account_id').value;
-                if (account == null) {
-                    setTimeout(function() {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'เพิ่มข้อมูลผู้ใช้งาน',
-                            text: 'ระบบเพิ่มข้อมูลผู้ใช้งานสำเร็จ',
-                            timer: 1200,
-                            showConfirmButton: false
+                if (passwd == passwd2) {
+                    if (account == null) {
+                        setTimeout(function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'เพิ่มข้อมูลผู้ใช้งาน',
+                                text: 'ระบบเพิ่มข้อมูลผู้ใช้งานสำเร็จ',
+                                timer: 1200,
+                                showConfirmButton: false
+                            })
                         })
-                    })
-                } else if (account.account_id == account_id) {
-                    setTimeout(function() {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'อัพเดทข้อมูลผู้ใช้งาน',
-                            text: 'ระบบอัพเดทข้อมูลผู้ใช้งานสำเร็จ',
-                            timer: 1200,
-                            showConfirmButton: false
+                    } else if (account.account_id == account_id) {
+                        setTimeout(function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'อัพเดทข้อมูลผู้ใช้งาน',
+                                text: 'ระบบอัพเดทข้อมูลผู้ใช้งานสำเร็จ',
+                                timer: 1200,
+                                showConfirmButton: false
+                            })
                         })
-                    })
+                    } else {
+                        setTimeout(function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'เพิ่มผู้ใช้งานไม่สำเร็จ',
+                                text: 'มีชื่อผู้ใช้งานนี้มีอยู่ในระบบแล้ว',
+                                timer: 1200,
+                                showConfirmButton: false
+                            })
+                        })
+                    }
                 } else {
-                    setTimeout(function() {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'เพิ่มผู้ใช้งานไม่สำเร็จ',
-                            text: 'มีชื่อผู้ใช้งานนี้มีอยู่ในระบบแล้ว',
-                            timer: 1200,
-                            showConfirmButton: false
-                        })
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'เกิดข้อผิดพลาด',
+                        text: 'รหัสผ่านไม่ถูกต้อง!',
+                        timer: 1200,
+                        showConfirmButton: false
                     })
                 }
             }
@@ -116,16 +135,17 @@ $(document).ready(function () {
 // Update Modal-Title
 function person_edit_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "แก้ไขผู้ใช้งาน";
+    document.getElementById('username').readOnly = true;
 }
 function person_add_data() {
     document.getElementById("exampleModalCenterTitle").innerHTML = "เพิ่มผู้ใช้งาน";
+    document.getElementById('username').readOnly = false;
 }
 
 
 // Clear Modal
 function clear_modal() {
     $('#account_id').val('');
-    $('#username').val('');
     $('#fullname').val('');
     $('#address').val('');
     $('#phone').val('');

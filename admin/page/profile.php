@@ -68,16 +68,16 @@
                                     <label for="exampleInputEmail1">ชื่อผู้ใช้งาน</label>
                                     <input type="text" class="form-control" name="username" id="username" value="<?=$res['username'];?>"
                                         placeholder="ชื่อผู้ใช้งาน" required>
-                                </div>                                           
+                                </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">รหัสผ่าน</label>
+                                    <label for="exampleInputEmail1">รหัสผ่าน</label>
                                     <input type="password" class="form-control" name="passwd" id="passwd"
                                         placeholder="รหัสผ่าน" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">ยืนยันรหัสผ่าน</label>
+                                    <label for="exampleInputEmail1">ยืนยันรหัสผ่าน</label>
                                     <input type="password" class="form-control" name="passwd2" id="passwd2"
-                                        placeholder="ยืนยันรหัสผ่าน" required>
+                                        placeholder="กรอกรหัสผ่านอีกครั้ง" required>
                                 </div>
                             </div>
                             <div class="card-footer">

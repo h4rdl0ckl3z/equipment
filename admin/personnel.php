@@ -18,6 +18,5 @@
   include("./include/footer.php");
 ?>
 
-<script src="./src/js/passwd_confirm.js"></script>
 <script src="./src/js/person_table_json.js"></script>
 <script src="./src/js/person.js"></script>
