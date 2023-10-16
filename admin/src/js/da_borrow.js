@@ -76,7 +76,7 @@ $(document).ready(function () {
     $('#Da_ItemTable_Borrow').on('click', '.borrow', function () {
         var uid = $(this).attr("id");
         $('#da_item_borrow').modal('show');
-        $('.da_item_confirm_borrow').click(function () {
+        $('#da_item_confirm_borrow').click(function () {
             $.ajax({
                 url: "./src/da_item_borrow.php",
                 method: "post",
