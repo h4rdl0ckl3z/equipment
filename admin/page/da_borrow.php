@@ -142,7 +142,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-info">ยืม</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal_borrow_date()">ยกเลิก</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal_borrow_date(); location.reload();">ยกเลิก</button>
                     <button type="button" class="btn btn-primary" onclick="clear_modal_borrow_date()">Reset</button>
                 </div>
             </form>

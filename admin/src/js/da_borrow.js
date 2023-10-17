@@ -75,7 +75,9 @@ $(document).ready(function () {
     //Add Da_Item Borrow
     $('#Da_ItemTable_Borrow').on('click', '.borrow', function () {
         var uid = $(this).attr("id");
-        $('#da_item_borrow').modal('show');
+        $('#da_item_borrow').modal({
+            backdrop: false
+        });
         $('#da_borrow_form').on('submit', function () {
             $.ajax({
                 url: "./src/da_item_borrow.php",
@@ -86,16 +88,16 @@ $(document).ready(function () {
                     $('#da_item_borrow').modal('hide');
                     $('#Da_ItemTable_Borrow').DataTable().ajax.reload();
                     $('#Da_BorrowTable').DataTable().ajax.reload();
-                    setTimeout(function() {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'เพิ่มข้อมูลการยืม',
-                            text: 'ระบบเพิ่มข้อมูลการยืมสำเร็จ',
-                            timer: 1200,
-                            showConfirmButton: false
-                        })
-                    })
                 }
+            })
+            setTimeout(function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'เพิ่มข้อมูลการยืม',
+                    text: 'ระบบเพิ่มข้อมูลการยืมสำเร็จ',
+                    timer: 1200,
+                    showConfirmButton: false
+                })
             })
         })
     })

@@ -131,7 +131,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-info">แจ้งซ่อม</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clear_modal(); location.reload();">ยกเลิก</button>
                     <button type="button" class="btn btn-primary" onclick="clear_modal()">reset</button>
                 </div>
             </form>
