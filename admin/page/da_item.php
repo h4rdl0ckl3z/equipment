@@ -38,7 +38,7 @@
                                         <thead class="text-center">
                                             <tr>
                                                 <?php
-                                                    if ($row['access_level'] == 0)
+                                                    if ($row['access_level'] == 0 || 2)
                                                         echo '<th><input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id"
                                                         onclick="checkUncheck(this)"></th>';
                                                 ?>

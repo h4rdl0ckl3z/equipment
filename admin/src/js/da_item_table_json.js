@@ -99,14 +99,14 @@ if (access_level == 0) {
                 {data: 'agency_name', visible: false},
                 {data: 'community_name', visible: false},
                 {data: 'da_id', render: function (da_id) {
-                    if (check_da_status_ii == 4) {
+                    if (check_da_status_ii == 4 || check_da_status_ii == 3) {
                         return '<button type="button" class="btn btn-secondary" title="แก้ไข"><i class="fas fa-pencil-alt"></i></button>';
                     } else {
                         return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_item_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
                     }
                 }},
                 {data: 'da_id', render: function (da_id) {
-                    if (check_da_status_ii == 4) {
+                    if (check_da_status_ii == 4 || check_da_status_ii == 3) {
                         return '<button type="button" class="btn btn-secondary" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
                     } else {
                         return '<button type="button" name="delete" id="' + da_id + '"class="btn btn-danger delete" title="ลบ"><i class="fas fa-trash-alt"></i></button>';
@@ -156,6 +156,9 @@ if (access_level == 0) {
                 method: 'post',
             },
             columns: [
+                {data: 'da_id', render: function (da_id) {
+                    return '<input type="checkbox" name="checkbox_da_id[]" id="checkbox_da_id" value="' + "'" + da_id + "'" + '">';
+                }},
                 {
                     data: '',
                     defaultContent: ''
@@ -224,6 +227,7 @@ if (access_level == 0) {
                 {data: 'da_annotation'},
                 {data: 'da_location'},
                 {data: 'da_status_ii', visible: true, render: function (da_status_ii) {
+                    check_da_status_ii = da_status_ii
                     if (da_status_ii == '0') {
                         return 'ปกติ';
                     } else if (da_status_ii == '1') {
@@ -244,7 +248,11 @@ if (access_level == 0) {
                 {data: 'agency_name', visible: false},
                 {data: 'community_name', visible: false},
                 {data: 'da_id', render: function (da_id) {
-                    return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_item_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                    if (check_da_status_ii == 4 || check_da_status_ii == 3) {
+                        return '<button type="button" class="btn btn-secondary" title="แก้ไข"><i class="fas fa-pencil-alt"></i></button>';
+                    } else {
+                        return '<button type="button" name="update" id="' + da_id + '"class="btn btn-warning update" title="แก้ไข" onclick="da_item_edit_data()"><i class="fas fa-pencil-alt"></i></button>';
+                    }
                 }},
                 {data: 'da_id', visible: true, render: function (da_id) {
                     if(typeof(da_id) !== 'string') da_id = da_id.toString()
@@ -273,7 +281,7 @@ if (access_level == 0) {
         });
         table.on('order.dt search.dt', function () {
             let i = 1;
-            table.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            table.cells(null, 1, { search: 'applied', order: 'applied' }).every(function (cell) {
                 this.data(i++);
             });
         }).draw();
